@@ -1,0 +1,16 @@
+.card{
+    /* display: block; */
+    width: 480px;
+    /* width: 480px; */
+    height: 720px;
+    margin: 0 10px;
+    
+    box-shadow: 0 0 0 2px #e0e3eb;
+    border-radius: 6px;
+}
+.wrap{
+    padding: 15px;
+}
+span{
+    font-size: 1.3em;
+}
