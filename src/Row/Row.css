@@ -1,0 +1,31 @@
+.row {
+    height: 60px;
+    width: 100%;
+    background-color: rgba(216, 240, 250, 1);
+    border-radius: 6px;
+    border: 1px solid black;
+    display: flex;
+}
+
+.row-wrapper {
+    display: flex;
+}
+
+.section{
+    margin: 0 5px;
+}
+.section span {
+    display: flex;
+    }
+.currency-pair{
+    font-size: 1em;
+}
+.name{
+    font-size: 1em;
+}
+.price{
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}

@@ -49,21 +49,20 @@ const options = {
 export default function Chart({ data }) {
     return (
         <div className="chart">
-            {data && data.length? 
+            {data && data.length ?
 
                 <Line options={options}
                     data={{
                         datasets: [
                             {
                                 backgroundColor: "rgba(216,240,250,1)",
-                                // backgroundColor: "#436b99",
                                 borderColor: "rgba(117,134,150,1)",
-                                // borderColor: "white",
-                                data: data
+                                pointHoverBackgroundColor: "#000000",
+                                data: data,
                             }],
                     }} />
                 :
-                <img src={ghost} alt=""/>
+                <img src={ghost} alt="" />
             }
         </div>
     )
