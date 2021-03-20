@@ -1,0 +1,62 @@
+.row {
+    height: 60px;
+    width: 100%;
+    background-color: rgba(216, 240, 250, .3);;
+    border-radius: 6px;
+    border-top: 2px solid white;
+    display: flex;
+    cursor: pointer;
+}
+.row-active{
+    height: 60px;
+    width: 100%;
+    background-color: rgba(216, 240, 250, 1);
+    border-radius: 6px;
+    border-top: 2px solid white;
+    display: flex;
+    cursor: pointer;
+}
+.row:hover {
+    background-color: rgba(216, 240, 250, 1);
+    transition: .5s;
+    border-radius: 6px;
+}
+
+.row-wrapper {
+    display: flex;
+}
+
+.section {
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* .section img {
+    height: 30px;
+    width: 30px;
+} */
+
+/* .section img {
+    height: 50px;
+    width: 50px;
+} */
+
+.logo-STOCK, .logo-CRYPTO {
+    height: 30px;
+    width: 30px;
+}
+
+.logo-FOREX {
+    height: 50px;
+    width: 50px;
+}
+
+.currency-pair {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.name {
+    font-size: 1em;
+}

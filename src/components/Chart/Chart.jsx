@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "./Chart.css"
 import { Line } from 'react-chartjs-2'
 import numeral from 'numeral'
-import ghost from "../assets/Ghost.gif"
+import ghost from "../../assets/Ghost.gif"
 
 const options = {
     legend: {
@@ -62,7 +62,7 @@ export default function Chart({ data }) {
                             }],
                     }} />
                 :
-                <img src={ghost} alt="" />
+                <img className="preloader" src={ghost} alt="" />
             }
         </div>
     )
