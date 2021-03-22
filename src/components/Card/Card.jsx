@@ -1,7 +1,11 @@
+import React, { useState } from 'react'
+import { requestThunk } from '../../store/stock-reducer';
+import { useSelector } from 'react-redux';
+import Row from '../Row/Row'
 import Chart from './../Chart/Chart';
 import "./Card.css"
-import React, { useState } from 'react'
-import Row from '../Row/Row'
+import TimeFrames from '../TimeFrames/TimeFrames';
+
 import apple from "../../assets/apple.svg"
 import tesla from "../../assets/tesla.svg"
 import spotify from "../../assets/spotify1.svg"
@@ -17,12 +21,10 @@ import litecoin from "../../assets/litecoin.svg"
 import ripple from "../../assets/ripple.svg"
 import etherium from "../../assets/etherium.svg"
 import monero from "../../assets/monero.svg"
-import { useSelector } from 'react-redux';
-
 
 const arrayRow = {
     STOCK: [
-        { pair: "APPL", name: "APPLE INC", img: apple },
+        { pair: "AAPL", name: "APPLE INC", img: apple },
         { pair: "TSLA", name: "TESLA INC", img: tesla },
         { pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A", img: spotify },
         { pair: "INTC", name: "INTEL CORP", img: intel },
@@ -44,12 +46,26 @@ const arrayRow = {
     ],
 }
 
+const initial = {
+    STOCK: "AAPL",
+    FOREX: "USDEUR",
+    CRYPTO: "BTCUSD",
+}
+
 export default function Card({ title, row, type }) {
 
     const [activeItem, setActiveItem] = useState()
-    // console.log(activeItem)
+    const [activeTimeFrames, setActiveTimeFrames] = useState("1D")
     const data = useSelector((state) => state.stock[type])
-    // console.log(STOCK)
+
+    const request = (type, time, pair) => {
+    
+        setActiveItem(pair)
+        setActiveTimeFrames(time)
+        
+        requestThunk(type, time, pair)
+    }
+   
     return (
         <div className="card">
             <div className="wrap">
@@ -57,10 +73,14 @@ export default function Card({ title, row, type }) {
                     {title}
                 </div>
                 <Chart data={data} />
+
+                <TimeFrames active={activeTimeFrames}
+                    onClickItem={(active) => request(type, active, !activeItem ? initial[type] : activeItem)} />
+
                 <div className="rows">
                     {arrayRow[type].map((arr, index) => (
                         < Row key={`${arr.pair}${arr.name}`} pair={arr.pair} name={arr.name} img={arr.img} type={type}
-                            active={activeItem} index={index} onClickItem={i => setActiveItem(i)}
+                            active={activeItem} index={index} onClickItem={(pair) => request(type, activeTimeFrames, pair)}
                         />
                     ))}
                 </div>
