@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import Card from './components/Card/Card';
-import { useEffect, useState } from 'react';
-import apple from "./APPL.json"
 import { startThunk } from './store/stock-reducer';
 import { connect } from 'react-redux';
+import CardContainer from './components/Card/CardContainer';
+
+
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -37,16 +38,16 @@ const alphaVantageKey2 = '9A3WH6UYZEPJ88QM'
 class App extends React.Component {
 
   componentDidUpdate() {
-    // startThunk()
+    this.props.startThunk()
   }
 
   render() {
     return (
       <div className="App">
         <div className="App-wrap">
-          <Card title={"Акции"} type={STOCK} />
-          <Card title={"Валюты"} type={FOREX} />
-          <Card title={"Криптовалюты"} type={CRYPTO} />
+          <CardContainer title={"Акции"} type={STOCK} />
+          <CardContainer title={"Валюты"} type={FOREX} />
+          {/* <CardContainer title={"Криптовалюты"} type={CRYPTO} /> */}
         </div>
       </div>
     );

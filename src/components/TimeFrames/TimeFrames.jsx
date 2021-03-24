@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./TimeFrames.css"
 
 
-export default function TimeFrames({active, onClickItem}) {
+export default function TimeFrames({ active, onClickItem }) {
     const arrTimeFrames = ["1D", "1W", "1M"]
 
     return (
@@ -14,7 +14,6 @@ export default function TimeFrames({active, onClickItem}) {
                         {arr}
                     </li>
                 ))}
-
             </ul>
         </div>
     )

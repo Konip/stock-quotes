@@ -21,12 +21,16 @@ const options = {
     scales: {
         xAxes: [
             {
+                gridLines: {
+                    display: true,
+                },
                 type: "time",
                 time: {
-                    format: "YYYY-MM-DD",
+                    unit: "day",
                     tooltipFormat: "ll",
-                },
 
+                },
+                // distribution: 'series',
             }
         ],
         yAxes: [
@@ -45,13 +49,54 @@ const options = {
     },
 
 }
+const options1Day = {
+    legend: {
+        display: false,
+    },
+    elements: {
+        point: {
+            radius: 0,
+        },
+    },
+    maintainAspectRatio: false,
+    tooltips: {
+        mode: "nearest",
+        intersect: false,
+    },
+    scales: {
+        xAxes: [
+            {
+                type: "time",
+                time: {
+                    format: "YYYY-MM-DD h:mm",
+                    tooltipFormat: "D MMM h:mm a",
+                },
+            }
+        ],
+        yAxes: [
+            {
+                gridLines: {
+                    display: false,
+                },
+                ticks: {
+                    callback: function (value) {
+                        return numeral(value).format("0a")
+                    }
+                }
 
-export default function Chart({ data }) {
+            }
+        ]
+    },
+
+}
+
+export default function Chart({ data, active }) {
+    console.log(active)
     return (
         <div className="chart">
             {data && data.length ?
 
-                <Line options={options}
+                <Line options={active == "1D" ? options1Day : options}
                     data={{
                         datasets: [
                             {

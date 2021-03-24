@@ -1,3 +1,4 @@
+import { buildChartData } from "../store/buildChartData"
 
 const request = {
     STOCK: {
@@ -37,15 +38,16 @@ const BTC = "BTC"
 const URL = "https://www.alphavantage.co/query?function="
 
 export const dataAPI = (type, time, pair) => {
-      return  console.log(type, time, pair)
+    console.log(type, time, pair)
 
-    // (fetch(`${URL}${request[type][time]}&symbol=${pair}&${time === "1D" ? "interval=5min&" : ""}apikey=${alphaVantageKey}`)
-    //     .then(res => {
-    //         return res.json()
-    //     })
-    //     .then(data => {
-    //         // console.log(data)
-    //         console.log(data[response[type][time]])
-    //         return data[response[type][time]]
-    //     }))
+        (fetch(`${URL}${request[type][time]}&symbol=${pair}&${time === "1D" ? "interval=5min&" : ""}apikey=${alphaVantageKey}`)
+            .then(res => {
+                return res.json()
+            })
+            .then(res => {
+                console.log(res)
+                // console.log(buildChartData(res[response[type][time]],type))
+                return buildChartData(res[response[type][time]],type)
+                // return data[response[type][time]]
+            }))
 }
