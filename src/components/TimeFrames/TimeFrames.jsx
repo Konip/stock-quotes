@@ -9,9 +9,9 @@ export default function TimeFrames({ active, onClickItem }) {
         <div className="time">
             <ul>
                 {arrTimeFrames.map((arr, index) => (
-                    <li className={active == arr ? "time-active" : "time"}
+                    <li className={active == arr ? "time active" : "time"}
                         key={index} onClick={() => onClickItem(arr)}>
-                        {arr}
+                        <span>{arr}</span>
                     </li>
                 ))}
             </ul>

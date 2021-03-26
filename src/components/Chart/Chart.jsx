@@ -68,8 +68,8 @@ const options1Day = {
             {
                 type: "time",
                 time: {
-                    format: "YYYY-MM-DD h:mm",
-                    tooltipFormat: "D MMM h:mm a",
+                    format: "YYYY-MM-DD HH:mm",
+                    tooltipFormat: "D MMM HH:mm",
                 },
             }
         ],
@@ -91,7 +91,7 @@ const options1Day = {
 }
 
 export default function Chart({ data, active }) {
-    console.log(active)
+    // console.log(active)
     return (
         <div className="chart">
             {data && data.length ?

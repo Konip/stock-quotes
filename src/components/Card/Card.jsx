@@ -5,7 +5,6 @@ import Chart from './../Chart/Chart';
 import "./Card.css"
 import TimeFrames from '../TimeFrames/TimeFrames';
 
-import { debounce } from "lodash";
 import apple from "../../assets/apple.svg"
 import tesla from "../../assets/tesla.svg"
 import spotify from "../../assets/spotify1.svg"
@@ -71,14 +70,13 @@ function Card({ title, type, request }) {
         request(type, time, pair);
     }
 
-    // const req = debounce(request,3000)
     return (
         <div className="card">
             <div className="wrap">
                 <div className="title">
                     {title}
                 </div>
-                <Chart data={data} active={activeTimeFrames}/>
+                <Chart data={data} active={activeTimeFrames} />
 
                 <TimeFrames active={activeTimeFrames}
                     onClickItem={(active) => req(type, active, !activeItem ? initial[type] : activeItem)} />
