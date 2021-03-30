@@ -51,6 +51,6 @@ export function buildChartData(data, type, time) {
     }
 
     chartData.reverse()
-    console.log(chartData)
+    // console.log(chartData)
     return chartData
 }

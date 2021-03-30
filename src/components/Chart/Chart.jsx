@@ -91,7 +91,7 @@ const options1Day = {
 }
 
 export default function Chart({ data, active }) {
-    // console.log(active)
+    // console.log(data)
     return (
         <div className="chart">
             {data && data.length ?

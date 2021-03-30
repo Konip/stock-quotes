@@ -4,12 +4,16 @@ import { dataAPI, startAPI } from './../API/API';
 const ADD_DATA_STOCK = "ADD_DATA_STOCK"
 const ADD_DATA_FOREX = "ADD_DATA_FOREX"
 const ADD_DATA_CRYPTO = "ADD_DATA_CRYPTO"
-const LOAD_DATA = "LOAD_DATA"
+const ACTIVE = "ACTIVE"
 
 const initialState = {
     STOCK: [],
     FOREX: [],
     CRYPTO: [],
+    ACTIVE: {
+        type: "",
+        time: ""
+    }
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
@@ -32,6 +36,15 @@ export const stockReducer = (state = initialState, { type, payload }) => {
                 CRYPTO: payload
             }
         }
+        case ACTIVE: {
+            return {
+                ...state,
+                ACTIVE: {
+                    type: payload.type,
+                    time: payload.time
+                }
+            }
+        }
 
         default:
             return state
@@ -40,6 +53,7 @@ export const stockReducer = (state = initialState, { type, payload }) => {
 export const addDataStock = (payload) => ({ type: ADD_DATA_STOCK, payload })
 export const addDataForex = (payload) => ({ type: ADD_DATA_FOREX, payload })
 export const addDataCrypto = (payload) => ({ type: ADD_DATA_CRYPTO, payload })
+export const addActive = (payload) => ({ type: ACTIVE, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"

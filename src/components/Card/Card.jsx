@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Row from '../Row/Row'
 import Chart from './../Chart/Chart';
 import "./Card.css"
@@ -20,6 +20,8 @@ import litecoin from "../../assets/litecoin.svg"
 import ripple from "../../assets/ripple.svg"
 import etherium from "../../assets/etherium.svg"
 import monero from "../../assets/monero.svg"
+import BigChart from '../BigChart/BigChart';
+import { addActive } from '../../store/stock-reducer';
 
 const arrayRow = {
     STOCK: [
@@ -61,12 +63,13 @@ function Card({ title, type, request }) {
     const [activeItem, setActiveItem] = useState()
     const [activeTimeFrames, setActiveTimeFrames] = useState("1D")
     const data = useSelector((state) => state.stock[type])
+   const dispatch = useDispatch()
 
     function req(type, time, pair) {
         // console.log(type)
         setActiveItem(pair);
         setActiveTimeFrames(time);
-
+        dispatch(addActive({time,type}))
         request(type, time, pair);
     }
 
@@ -77,6 +80,10 @@ function Card({ title, type, request }) {
                     {title}
                 </div>
                 <Chart data={data} active={activeTimeFrames} />
+
+                {/* <div className="big">
+                    <BigChart data={data} active={activeTimeFrames} />
+                </div> */}
 
                 <TimeFrames active={activeTimeFrames}
                     onClickItem={(active) => req(type, active, !activeItem ? initial[type] : activeItem)} />

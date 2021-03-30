@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import Card from './components/Card/Card';
 import { startThunk } from './store/stock-reducer';
 import { connect } from 'react-redux';
-import CardContainer from './components/Card/CardContainer';
+import Markets from './components/Markets/Markets';
+import { Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import BigChart from './components/BigChart/BigChart';
 
-const STOCK = "STOCK"
-const FOREX = "FOREX"
-const CRYPTO = "CRYPTO"
 
 class App extends React.Component {
 
@@ -18,11 +17,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="App-wrap">
-          <CardContainer title={"Акции"} type={STOCK} />
-          <CardContainer title={"Валюты"} type={FOREX} />
-          <CardContainer title={"Криптовалюты"} type={CRYPTO} />
-        </div>
+
+        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/markets" render={() => <Markets />} />
+        {/* <Route exact path="/markets/:pair" component={BigChart} /> */}
+        <Route exact path="/markets/:pair" render={() => <BigChart />} />
       </div>
     );
   }

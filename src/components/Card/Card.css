@@ -1,21 +1,26 @@
-.card{
+.card {
     /* display: block; */
     width: 480px;
     /* width: 480px; */
     height: 720px;
     margin: 0 10px;
-    
     box-shadow: 0 0 0 2px #e0e3eb;
     border-radius: 6px;
 }
-.wrap{
+
+.wrap {
     padding: 15px;
 }
-.title{
+
+.title {
     font-size: 1.5em;
     font-weight: 600;
 }
-.rows{
+
+.rows {
     margin: 10px 0;
-   
+}
+
+.big {
+    display: none;
 }
