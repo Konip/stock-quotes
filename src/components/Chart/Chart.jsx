@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import "./Chart.css"
 import { Line } from 'react-chartjs-2'
 import numeral from 'numeral'
@@ -17,6 +17,18 @@ const options = {
     tooltips: {
         mode: "nearest",
         intersect: false,
+    },
+    plugins: {
+        crosshair: {
+            line: {
+                enabled: false,
+                color: 'red',  // crosshair line color
+                width: 1        // crosshair line width
+            },
+            zoom: {
+                enabled: false,
+            },
+        }
     },
     scales: {
         xAxes: [
@@ -38,12 +50,6 @@ const options = {
                 gridLines: {
                     display: false,
                 },
-                ticks: {
-                    callback: function (value, index, values) {
-                        return numeral(value).format("0a")
-                    }
-                }
-
             }
         ]
     },
@@ -63,6 +69,18 @@ const options1Day = {
         mode: "nearest",
         intersect: false,
     },
+    plugins: {
+        crosshair: {
+            line: {
+                enabled: false,
+                color: 'red',  // crosshair line color
+                width: 1        // crosshair line width
+            },
+            zoom: {
+                enabled: false,
+            },
+        }
+    },
     scales: {
         xAxes: [
             {
@@ -78,12 +96,6 @@ const options1Day = {
                 gridLines: {
                     display: false,
                 },
-                ticks: {
-                    callback: function (value) {
-                        return numeral(value).format("0a")
-                    }
-                }
-
             }
         ]
     },

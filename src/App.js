@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import Markets from './components/Markets/Markets';
 import { Route } from 'react-router-dom';
 import Home from './components/Home/Home';
-import BigChart from './components/BigChart/BigChart';
+import BigCard from './components/BigCard/BigCard';
+import BigCardContainer from './components/BigCard/BigCardContainer';
 
 
 class App extends React.Component {
@@ -20,8 +21,7 @@ class App extends React.Component {
 
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/markets" render={() => <Markets />} />
-        {/* <Route exact path="/markets/:pair" component={BigChart} /> */}
-        <Route exact path="/markets/:pair" render={() => <BigChart />} />
+        <Route exact path="/markets/:pair" render={() => <BigCardContainer />} />
       </div>
     );
   }

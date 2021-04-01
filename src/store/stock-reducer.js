@@ -5,15 +5,27 @@ const ADD_DATA_STOCK = "ADD_DATA_STOCK"
 const ADD_DATA_FOREX = "ADD_DATA_FOREX"
 const ADD_DATA_CRYPTO = "ADD_DATA_CRYPTO"
 const ACTIVE = "ACTIVE"
+const ACTIVE_TYPE = "ACTIVE_TYPE"
 
 const initialState = {
     STOCK: [],
     FOREX: [],
     CRYPTO: [],
     ACTIVE: {
-        type: "",
-        time: ""
-    }
+        STOCK: {
+            time: "1D",
+            pair: "AAPL"
+        },
+        FOREX: {
+            time: "1D",
+            pair: "USDEUR"
+        },
+        CRYPTO: {
+            time: "1D",
+            pair: "BTCUSD"
+        }
+    },
+    ACTIVE_TYPE: "вв"
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
@@ -40,9 +52,18 @@ export const stockReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 ACTIVE: {
-                    type: payload.type,
-                    time: payload.time
+                    ...state.ACTIVE,
+                    [payload.type]: {
+                        time: payload.time,
+                        pair: payload.pair
+                    }
                 }
+            }
+        }
+        case ACTIVE_TYPE: {
+            return {
+                ...state,
+                ACTIVE_TYPE:payload
             }
         }
 
@@ -54,6 +75,7 @@ export const addDataStock = (payload) => ({ type: ADD_DATA_STOCK, payload })
 export const addDataForex = (payload) => ({ type: ADD_DATA_FOREX, payload })
 export const addDataCrypto = (payload) => ({ type: ADD_DATA_CRYPTO, payload })
 export const addActive = (payload) => ({ type: ACTIVE, payload })
+export const addActiveType = (payload) => ({ type: ACTIVE_TYPE, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -177,7 +199,7 @@ export const startThunk = () => {
 
     return (dispatch) => {
 
-        // ------------------STOCK-------------------------
+        // // ------------------STOCK-------------------------
 
         // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${APPLE}&interval=5min&apikey=${alphaVantageKey1}`)
         //     .then(res => {
@@ -201,7 +223,7 @@ export const startThunk = () => {
         //         return dispatch(addDataForex(data))
         //     })
 
-        // ------------------CRYPTO-------------------------
+        // // ------------------CRYPTO-------------------------
 
         // fetch('https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/latest?period_id=5MIN', headers)
         //     .then(res => {

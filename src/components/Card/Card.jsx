@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import Row from '../Row/Row'
+import RowContainer from '../Row/RowContainer';
 import Chart from './../Chart/Chart';
 import "./Card.css"
 import TimeFrames from '../TimeFrames/TimeFrames';
@@ -10,18 +10,22 @@ import tesla from "../../assets/tesla.svg"
 import spotify from "../../assets/spotify1.svg"
 import intel from "../../assets/intel.svg"
 import amazon from "../../assets/amazon1.svg"
+import microsoft from "../../assets/microsoft.svg"
 import YENGBP from "../../assets/YENGBP.svg"
 import USDEUR from "../../assets/USDEUR.svg"
 import BYNGBP from "../../assets/BYNGBP.svg"
 import USDILS from "../../assets/USDILS.svg"
 import EURINR from "../../assets/EURINR.svg"
+import EURTWD from "../../assets/EURTWD.svg"
 import bitcoin from "../../assets/bitcoin.svg"
 import litecoin from "../../assets/litecoin.svg"
 import ripple from "../../assets/ripple.svg"
 import etherium from "../../assets/etherium.svg"
 import monero from "../../assets/monero.svg"
-import BigChart from '../BigChart/BigChart';
-import { addActive } from '../../store/stock-reducer';
+import zcash from "../../assets/zcash.svg"
+import { addActive, addActiveType } from '../../store/stock-reducer';
+import Row from './../Row/Row';
+
 
 const arrayRow = {
     STOCK: [
@@ -30,6 +34,7 @@ const arrayRow = {
         { pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A", img: spotify },
         { pair: "INTC", name: "INTEL CORP", img: intel },
         { pair: "AMZN", name: "AMAZON COM INC", img: amazon },
+        { pair: "MSFT", name: "MICROSOFT CORPORATION", img: microsoft },
     ],
     FOREX: [
         { pair: "USDEUR", name: "Доллар США / Евро", img: USDEUR },
@@ -37,6 +42,7 @@ const arrayRow = {
         { pair: "EURINR", name: "Евро / Индийская рупия", img: EURINR },
         { pair: "USDILS", name: "Доллар США  / Новый израильский шекель", img: USDILS },
         { pair: "BYNGBP", name: "Белорусский рубль / Британский фунт", img: BYNGBP },
+        { pair: "EURTWD", name: "Евро / Новый тайваньский доллар", img: EURTWD },
     ],
     CRYPTO: [
         { pair: "BTCUSD", name: "Биткоин / Доллар США", img: bitcoin },
@@ -44,32 +50,16 @@ const arrayRow = {
         { pair: "LTCUSD", name: "Лайткоин / Доллар США", img: litecoin },
         { pair: "XRPUSD", name: "Рипл / Доллар США", img: ripple },
         { pair: "XMRUSD", name: "Монеро / Доллар США", img: monero },
+        { pair: "ZECUSD", name: "Zcash / Доллар США", img: zcash },
     ],
 }
 
-const initial = {
-    STOCK: "AAPL",
-    FOREX: "USDEUR",
-    CRYPTO: "BTCUSD",
-}
-
-const STOCK = "STOCK"
-const FOREX = "FOREX"
-const CRYPTO = "CRYPTO"
-const LOAD_DATA = "LOAD_DATA"
-
-function Card({ title, type, request }) {
-
-    const [activeItem, setActiveItem] = useState()
-    const [activeTimeFrames, setActiveTimeFrames] = useState("1D")
-    const data = useSelector((state) => state.stock[type])
-   const dispatch = useDispatch()
+function Card({ title, type, request, activeRow, activeTime, data }) {
+    const dispatch = useDispatch()
 
     function req(type, time, pair) {
-        // console.log(type)
-        setActiveItem(pair);
-        setActiveTimeFrames(time);
-        dispatch(addActive({time,type}))
+        dispatch(addActive({ type, time, pair }))
+        dispatch(addActiveType(type))
         request(type, time, pair);
     }
 
@@ -79,19 +69,15 @@ function Card({ title, type, request }) {
                 <div className="title">
                     {title}
                 </div>
-                <Chart data={data} active={activeTimeFrames} />
+                <Chart data={data} active={activeTime} />
 
-                {/* <div className="big">
-                    <BigChart data={data} active={activeTimeFrames} />
-                </div> */}
-
-                <TimeFrames active={activeTimeFrames}
-                    onClickItem={(active) => req(type, active, !activeItem ? initial[type] : activeItem)} />
+                <TimeFrames active={activeTime}
+                    onClickItem={(active) => req(type, active, activeRow)} />
 
                 <div className="rows">
                     {arrayRow[type].map((arr, index) => (
                         < Row key={`${arr.pair}${arr.name}`} pair={arr.pair} name={arr.name} img={arr.img} type={type}
-                            active={activeItem} index={index} onClickItem={(pair) => req(type, activeTimeFrames, pair)}
+                            active={activeRow} index={index} onClickItem={(pair) => req(type, activeTime, pair)}
                         />
                     ))}
                 </div>

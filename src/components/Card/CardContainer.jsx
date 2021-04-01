@@ -1,24 +1,26 @@
 import React from 'react'
 import Card from './Card'
 import { requestThunk } from "../../store/stock-reducer"
-import { connect } from 'react-redux';
-const STOCK = "STOCK"
-const FOREX = "FOREX"
-const CRYPTO = "CRYPTO"
+import { connect, useDispatch, useSelector } from 'react-redux';
 
-function CardContainer({ title, type }) {
+
+export default function CardContainer({ type, title }) {
+    const dispatch = useDispatch()
+    const stock = useSelector(({ stock }) => stock)
+    
+    const data = stock[type]
+    const activeRow = stock.ACTIVE[type].pair
+    const activeTime = stock.ACTIVE[type].time
+    
+
+    const request = (type, time, pair) => {
+        dispatch(requestThunk(type, time, pair))
+    }
+
     return (
         <div>
-            <Card title={"Акции"} type={STOCK} />
+            <Card title={title} type={type} request={request} data={data} activeTime={activeTime} activeRow={activeRow}/>
         </div>
     )
 }
-let mapToDispatchProps = (dispatch) => {
-    return {
-        request: (type, time, pair) => {
-            dispatch(requestThunk(type, time, pair))
-        }
-    }
-}
 
-export default connect(null, mapToDispatchProps)(Card);
