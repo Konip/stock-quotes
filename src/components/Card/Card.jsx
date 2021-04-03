@@ -23,7 +23,7 @@ import ripple from "../../assets/ripple.svg"
 import etherium from "../../assets/etherium.svg"
 import monero from "../../assets/monero.svg"
 import zcash from "../../assets/zcash.svg"
-import { addActive, addActiveType } from '../../store/stock-reducer';
+import { addActive, addActiveType, addColorTheme } from '../../store/stock-reducer';
 import Row from './../Row/Row';
 
 
@@ -60,6 +60,7 @@ function Card({ title, type, request, activeRow, activeTime, data }) {
     function req(type, time, pair) {
         dispatch(addActive({ type, time, pair }))
         dispatch(addActiveType(type))
+        dispatch(addColorTheme())
         request(type, time, pair);
     }
 

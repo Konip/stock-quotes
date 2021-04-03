@@ -61,5 +61,10 @@
     font-size: 1em;
 }
 .link{
-    /* text-decoration: none; */
+    text-decoration: none;
+    color: black;
+}
+.link:hover{
+    color: rgb(0, 179, 255);
+    transition: .5s;
 }

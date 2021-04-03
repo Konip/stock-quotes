@@ -8,7 +8,7 @@ export default function BigCardContainer() {
     const dispatch = useDispatch()
     const stock = useSelector(({ stock }) => stock)
 
-    const activeType = stock.ACTIVE_TYPE
+    const activeType = stock.active_type
     const data = stock[activeType]
     const activeRow = stock.ACTIVE[activeType].pair
     const activeTime = stock.ACTIVE[activeType].time

@@ -21,9 +21,11 @@ const options = {
     plugins: {
         crosshair: {
             line: {
-                enabled: false,
-                color: 'red',  // crosshair line color
+                color: 'black',  // crosshair line color
                 width: 1        // crosshair line width
+            },
+            sync: {
+                enabled: false,
             },
             zoom: {
                 enabled: false,
@@ -72,9 +74,11 @@ const options1Day = {
     plugins: {
         crosshair: {
             line: {
-                enabled: false,
-                color: 'red',  // crosshair line color
+                color: 'black',  // crosshair line color
                 width: 1        // crosshair line width
+            },
+            sync: {
+                enabled: false,
             },
             zoom: {
                 enabled: false,
@@ -103,12 +107,13 @@ const options1Day = {
 }
 
 export default function Chart({ data, active }) {
-    // console.log(data)
+    console.log(active)
     return (
         <div className="chart">
             {data && data.length ?
 
                 <Line options={active == "1D" ? options1Day : options}
+
                     data={{
                         datasets: [
                             {

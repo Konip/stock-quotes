@@ -6,6 +6,7 @@ const ADD_DATA_FOREX = "ADD_DATA_FOREX"
 const ADD_DATA_CRYPTO = "ADD_DATA_CRYPTO"
 const ACTIVE = "ACTIVE"
 const ACTIVE_TYPE = "ACTIVE_TYPE"
+const COLOR_THEME = "COLOR_THEME"
 
 const initialState = {
     STOCK: [],
@@ -25,7 +26,8 @@ const initialState = {
             pair: "BTCUSD"
         }
     },
-    ACTIVE_TYPE: "вв"
+    active_type: "",
+    colorTheme: true
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
@@ -63,8 +65,12 @@ export const stockReducer = (state = initialState, { type, payload }) => {
         case ACTIVE_TYPE: {
             return {
                 ...state,
-                ACTIVE_TYPE:payload
+                active_type: payload
             }
+        }
+        case COLOR_THEME: {
+            let colorTheme = !state.colorTheme
+            return { ...state, colorTheme, colorTheme }
         }
 
         default:
@@ -76,6 +82,7 @@ export const addDataForex = (payload) => ({ type: ADD_DATA_FOREX, payload })
 export const addDataCrypto = (payload) => ({ type: ADD_DATA_CRYPTO, payload })
 export const addActive = (payload) => ({ type: ACTIVE, payload })
 export const addActiveType = (payload) => ({ type: ACTIVE_TYPE, payload })
+export const addColorTheme = (payload) => ({ type: COLOR_THEME, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"

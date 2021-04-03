@@ -1,6 +1,6 @@
 
 export function buildChartData(data, type, time) {
-    console.log(data)
+    // console.log(data)
     const chartData = []
     let y = ""
     let count = 0
@@ -51,6 +51,6 @@ export function buildChartData(data, type, time) {
     }
 
     chartData.reverse()
-    // console.log(chartData)
+    console.log(chartData)
     return chartData
 }

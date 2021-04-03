@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import BigChart from '../BigChart/BigChart'
 import Footer from '../Footer/Footer'
 import "./BigCard.css"
-import TimeFrames from './../TimeFrames/TimeFrames';
+import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';
 
 export default function BigCard({ type, request, activeRow, activeTime, data }) {
@@ -24,7 +24,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data }) 
                 <div className="low-card">
                     <div className="left-block">
                         <div className="time-frames">
-                            <TimeFrames active={activeTime}
+                            <TimeFramesBig active={activeTime}
                                 onClickItem={(active) => req(type, active, activeRow)} />
                         </div>
                         <div className="text">
@@ -52,7 +52,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data }) 
                         </div>
                     </div>
                 </div>
-                <Footer />
+                {/* <Footer /> */}
             </div>
         </div>
     )

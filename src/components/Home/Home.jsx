@@ -1,14 +1,28 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+import CardContainer from '../Card/CardContainer'
+import Footer from '../Footer/Footer'
+import Navbar from '../Navbar/Navbar'
 import "./Home.css"
-import { Link } from 'react-router-dom';
+
+const STOCK = "STOCK"
+const FOREX = "FOREX"
+const CRYPTO = "CRYPTO"
 
 export default function Home() {
+    const {colorTheme} = useSelector(({ stock }) => stock)
+    
     return (
-        <div className="home">
-            <h1>Home</h1>
-            <Link to="markets">
-                <h1>Markets</h1>
-            </Link>
+        <div className="markets">
+            {/* <div className="nav">
+                <Navbar />
+            </div> */}
+            <div className="cards">
+                <CardContainer title={"Акции"} type={STOCK} />
+                <CardContainer title={"Валюты"} type={FOREX} />
+                <CardContainer title={"Криптовалюты"} type={CRYPTO} />
+            </div>
+            {/* <Footer /> */}
         </div>
     )
 }

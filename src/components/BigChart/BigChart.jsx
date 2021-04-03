@@ -4,6 +4,7 @@ import { Line } from 'react-chartjs-2'
 import * as plugins from "chartjs-plugin-crosshair"
 import ghost from "../../assets/Ghost.gif"
 
+
 const options = {
     legend: {
         display: false,
@@ -72,15 +73,18 @@ const options1Day = {
         axis: 'x'
     },
     plugins: {
-        crosshair: {
-            line: {
-                color: 'black',  // crosshair line color
-                width: 1        // crosshair line width
-            },
-            zoom: {
-                enabled: false,
-            },
+        p1: {
+            crosshair: {
+                line: {
+                    color: 'black',  // crosshair line color
+                    width: 1        // crosshair line width
+                },
+                zoom: {
+                    enabled: false,
+                },
+            }
         }
+
     },
     scales: {
         xAxes: [
@@ -104,42 +108,7 @@ const options1Day = {
     },
 
 }
-// const options1Day = {
-//     legend: {
-//         display: false,
-//     },
-//     elements: {
-//         point: {
-//             radius: 0,
-//         },
-//     },
-//     maintainAspectRatio: false,
-//     tooltips: {
-//         mode: "nearest",
-//         intersect: false,
-//     },
-//     scales: {
-//         xAxes: [
-//             {
-//                 type: "time",
-//                 time: {
-//                     format: "YYYY-MM-DD HH:mm",
-//                     tooltipFormat: "D MMM HH:mm",
-//                 },
-//             }
-//         ],
-//         yAxes: [
-//             {
-//                 type: 'linear',
-//                 position: 'right',
-//                 gridLines: {
-//                     display: false,
-//                 },
-//             }
-//         ]
-//     },
 
-// }
 
 export default function BigChart({ data, active }) {
     return (

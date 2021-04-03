@@ -12,11 +12,16 @@ export default function Row({ pair, name, img, type, active, index, onClickItem 
                     <img className={`logo-${type}`} src={img} alt="" />
                 </div>
                 <div className="section">
-                    <Link className="link" to={`markets/${pair}`}>
+                    <Link className="link" to={`markets`}>
                         <span className="currency-pair">
                             {pair}
                         </span>
                     </Link>
+                    {/* <Link className="link" to={`markets/${pair}`}>
+                        <span className="currency-pair">
+                            {pair}
+                        </span>
+                    </Link> */}
                 </div>
                 <div className="section">
                     <span className="name">
