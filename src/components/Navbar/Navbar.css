@@ -1,6 +1,14 @@
-.navbar {
-    /* background-color: ; */
-    border: 2px solid black;
+.navbar-light{
+    background-color: #f6f6f7;;
+    /* border: 2px solid black; */
+    width: 90px;
+    height: 100%;
+    position: fixed;
+}
+
+.navbar-dark {
+    background-color: #1e1e30!important;
+    /* border: 2px solid black; */
     width: 90px;
     height: 100%;
     position: fixed;
@@ -17,18 +25,21 @@
 .navbar-wrap {
     margin: 15px;
 }
-svg{
+
+svg {
     cursor: pointer;
 }
+
 .active svg {
-    stroke: rgb(195, 216, 13);
+    stroke: rgb(76, 117, 242);
 }
 
 .active svg:hover {
-    stroke: blue;
+    stroke: rgb(76, 117, 242);
     transition: .5s;
 }
- svg:hover {
-    stroke: blue;
+
+.navbar-wrap svg:hover {
+    stroke: rgb(76, 117, 242);
     transition: .5s;
 }

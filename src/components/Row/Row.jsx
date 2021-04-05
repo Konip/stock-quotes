@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import "./Row.css"
 
 
-export default function Row({ pair, name, img, type, active, index, onClickItem }) {
+export default function Row({ pair, name, img, type, active, index, onClickItem, colorTheme }) {
     return (
-        <div className={!active && index == 0 ? "row-active" : active === pair ? "row-active" : "row"}
+        <div className={!active && index == 0 ? "row-light-active" : active === pair && colorTheme ? "row-light-active" :
+            active === pair && !colorTheme ? "row-dark-active" : active !== pair && colorTheme ? "row-light" : "row-dark"}
             onClick={() => onClickItem(pair)}>
             <div className="row-wrapper">
                 <div className="section">
@@ -13,18 +14,13 @@ export default function Row({ pair, name, img, type, active, index, onClickItem 
                 </div>
                 <div className="section">
                     <Link className="link" to={`markets`}>
-                        <span className="currency-pair">
+                        <span className={colorTheme ? "currency-pair-light" : "currency-pair-dark"}>
                             {pair}
                         </span>
                     </Link>
-                    {/* <Link className="link" to={`markets/${pair}`}>
-                        <span className="currency-pair">
-                            {pair}
-                        </span>
-                    </Link> */}
                 </div>
                 <div className="section">
-                    <span className="name">
+                    <span className={colorTheme ? "name-light" : "name-dark"}>
                         {name}
                     </span>
                 </div>

@@ -6,7 +6,7 @@ import "./BigCard.css"
 import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';
 
-export default function BigCard({ type, request, activeRow, activeTime, data }) {
+export default function BigCard({ type, request, activeRow, activeTime, data, colorTheme }) {
 
     const dispatch = useDispatch()
 
@@ -19,15 +19,15 @@ export default function BigCard({ type, request, activeRow, activeTime, data }) 
         <div className="big-card">
             <div className="wrapper">
                 <div className="top-card">
-                    <BigChart data={data} active={activeTime} />
+                    <BigChart data={data} active={activeTime} colorTheme={colorTheme} />
                 </div>
                 <div className="low-card">
                     <div className="left-block">
                         <div className="time-frames">
-                            <TimeFramesBig active={activeTime}
+                            <TimeFramesBig active={activeTime} colorTheme={colorTheme}
                                 onClickItem={(active) => req(type, active, activeRow)} />
                         </div>
-                        <div className="text">
+                        <div className={colorTheme ? "text-light" : "text-dark"}>
                             Baidu, Inc — это поставщик услуг по поиску в интернете на китайском языке.
                             Компания предлагает поисковую платформу на китайском языке на своем веб-сайте
                             Baidu.com, который позволяет пользователям находить информацию в сети, включая
@@ -47,12 +47,11 @@ export default function BigCard({ type, request, activeRow, activeTime, data }) 
                     </div>
 
                     <div className="right-block">
-                        <div className="news">
+                        <div className={colorTheme ? "news-light" : "news-dark"}>
                             <h1>Здесь могла быть ваша реклама</h1>
                         </div>
                     </div>
                 </div>
-                {/* <Footer /> */}
             </div>
         </div>
     )

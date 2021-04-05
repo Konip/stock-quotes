@@ -14,21 +14,26 @@ import Footer from './components/Footer/Footer';
 class App extends React.Component {
 
   componentDidUpdate() {
-    this.props.startThunk()
+    // this.props.startThunk()
   }
 
   render() {
     return (
-      <div className="App">
-        <Navbar className="nav"/>
+      <div className={this.props.colorTheme ? `App` : `App dark`}>
+        <Navbar className="nav" colorTheme={this.props.colorTheme} />
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/markets" render={() => <BigCardContainer />} />
-        {/* <Route exact path="/markets/:pair" render={() => <BigCardContainer />} /> */}
-        <Footer/>
+        <Footer />
         {/* <Route path="*" component={Error} /> */}
       </div>
     );
   }
 }
 
-export default connect(null, startThunk)(App);
+let mapStateToProps = (state) => {
+  return {
+    colorTheme: state.stock.colorTheme
+  }
+}
+
+export default connect(mapStateToProps, startThunk)(App);

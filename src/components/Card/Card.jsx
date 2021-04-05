@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import RowContainer from '../Row/RowContainer';
+import { useDispatch } from 'react-redux';
 import Chart from './../Chart/Chart';
 import "./Card.css"
 import TimeFrames from '../TimeFrames/TimeFrames';
@@ -23,7 +22,7 @@ import ripple from "../../assets/ripple.svg"
 import etherium from "../../assets/etherium.svg"
 import monero from "../../assets/monero.svg"
 import zcash from "../../assets/zcash.svg"
-import { addActive, addActiveType, addColorTheme } from '../../store/stock-reducer';
+import { addActive, addActiveType } from '../../store/stock-reducer';
 import Row from './../Row/Row';
 
 
@@ -54,31 +53,31 @@ const arrayRow = {
     ],
 }
 
-function Card({ title, type, request, activeRow, activeTime, data }) {
+function Card({ title, type, request, activeRow, activeTime, data, colorTheme }) {
     const dispatch = useDispatch()
 
     function req(type, time, pair) {
         dispatch(addActive({ type, time, pair }))
         dispatch(addActiveType(type))
-        dispatch(addColorTheme())
         request(type, time, pair);
     }
-
+    console.log(activeTime)
     return (
-        <div className="card">
+        <div className={colorTheme ? "card-light" : "card-dark"}>
             <div className="wrap">
-                <div className="title">
+                <div className={colorTheme ? "title-light" : "title-dark"}>
                     {title}
                 </div>
-                <Chart data={data} active={activeTime} />
+                <Chart data={data} active={activeTime} colorTheme={colorTheme} />
 
-                <TimeFrames active={activeTime}
+                <TimeFrames active={activeTime} colorTheme={colorTheme}
                     onClickItem={(active) => req(type, active, activeRow)} />
 
                 <div className="rows">
                     {arrayRow[type].map((arr, index) => (
                         < Row key={`${arr.pair}${arr.name}`} pair={arr.pair} name={arr.name} img={arr.img} type={type}
                             active={activeRow} index={index} onClickItem={(pair) => req(type, activeTime, pair)}
+                            colorTheme={colorTheme}
                         />
                     ))}
                 </div>

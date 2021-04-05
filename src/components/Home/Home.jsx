@@ -10,19 +10,13 @@ const FOREX = "FOREX"
 const CRYPTO = "CRYPTO"
 
 export default function Home() {
-    const {colorTheme} = useSelector(({ stock }) => stock)
-    
     return (
         <div className="markets">
-            {/* <div className="nav">
-                <Navbar />
-            </div> */}
             <div className="cards">
                 <CardContainer title={"Акции"} type={STOCK} />
                 <CardContainer title={"Валюты"} type={FOREX} />
                 <CardContainer title={"Криптовалюты"} type={CRYPTO} />
             </div>
-            {/* <Footer /> */}
         </div>
     )
 }

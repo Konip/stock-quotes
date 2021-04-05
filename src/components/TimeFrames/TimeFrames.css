@@ -17,15 +17,34 @@
     cursor: pointer;
     width: 30px;
     border-radius: 4px;
+    display: flex;
     align-items: center;
     justify-content: center;
+    /* padding-top: 3px; */
 }
 
-.time li:hover {
+.time-light.active {
+    background-color: rgba(216, 240, 250, 1);
+}
+
+.time-dark.active {
+    /* background-color: rgb(0, 143, 255, .6); */
+    background-color: rgb(62 121 167 / 60%);
+}
+
+.time-light:hover {
     background-color: rgba(216, 240, 250, .5);
 }
 
-.time .active {
-    background-color: rgba(216, 240, 250, 1);
-    /* width: 30px; */
+.time-dark:hover {
+    /* background-color: rgb(0, 143, 255, .4); */
+    background-color: rgb(62 121 167 / 60%);
+}
+
+.date-light {
+    color: black;
+}
+
+.date-dark {
+    color: #d1d4dc;
 }

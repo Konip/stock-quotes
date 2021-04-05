@@ -69,8 +69,10 @@ export const stockReducer = (state = initialState, { type, payload }) => {
             }
         }
         case COLOR_THEME: {
-            let colorTheme = !state.colorTheme
-            return { ...state, colorTheme, colorTheme }
+            return {
+                ...state,
+                colorTheme: !state.colorTheme
+            }
         }
 
         default:

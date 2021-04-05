@@ -12,6 +12,7 @@ export default function BigCardContainer() {
     const data = stock[activeType]
     const activeRow = stock.ACTIVE[activeType].pair
     const activeTime = stock.ACTIVE[activeType].time
+    const colorTheme = stock.colorTheme
   
     const request = (type, time, pair) => {
         dispatch(requestThunk(type, time, pair))
@@ -19,7 +20,8 @@ export default function BigCardContainer() {
 
     return (
         <div>
-            <BigCard type={activeType} request={request} data={data}  activeRow={activeRow} activeTime={activeTime}/>
+            <BigCard type={activeType} request={request} data={data}  
+            activeRow={activeRow} activeTime={activeTime} colorTheme={colorTheme}/>
         </div>
     )
 }

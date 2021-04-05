@@ -11,7 +11,7 @@ export default function CardContainer({ type, title }) {
     const data = stock[type]
     const activeRow = stock.ACTIVE[type].pair
     const activeTime = stock.ACTIVE[type].time
-    
+    const colorTheme = stock.colorTheme
 
     const request = (type, time, pair) => {
         dispatch(requestThunk(type, time, pair))
@@ -19,7 +19,8 @@ export default function CardContainer({ type, title }) {
 
     return (
         <div>
-            <Card title={title} type={type} request={request} data={data} activeTime={activeTime} activeRow={activeRow}/>
+            <Card title={title} type={type} request={request} data={data} activeTime={activeTime} 
+            activeRow={activeRow} colorTheme={colorTheme}/>
         </div>
     )
 }
