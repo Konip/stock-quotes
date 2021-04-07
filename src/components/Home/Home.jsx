@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import CardContainer from '../Card/CardContainer'
 import Footer from '../Footer/Footer'
 import Navbar from '../Navbar/Navbar'
+import Search from '../Search/Search'
 import "./Home.css"
 
 const STOCK = "STOCK"
@@ -12,6 +13,9 @@ const CRYPTO = "CRYPTO"
 export default function Home() {
     return (
         <div className="markets">
+            <div className="search">
+                <Search />
+            </div>
             <div className="cards">
                 <CardContainer title={"Акции"} type={STOCK} />
                 <CardContainer title={"Валюты"} type={FOREX} />

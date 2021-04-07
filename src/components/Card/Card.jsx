@@ -61,7 +61,7 @@ function Card({ title, type, request, activeRow, activeTime, data, colorTheme })
         dispatch(addActiveType(type))
         request(type, time, pair);
     }
-    console.log(activeTime)
+    // console.log(activeTime)
     return (
         <div className={colorTheme ? "card-light" : "card-dark"}>
             <div className="wrap">

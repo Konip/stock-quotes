@@ -244,3 +244,14 @@ export const startThunk = () => {
         //     })
     }
 }
+export function fetchCompanySearch(s) {
+    return (
+        fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${s}&apikey=${alphaVantageKey2}&datatype=json`)
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                return data
+            })
+    )
+}

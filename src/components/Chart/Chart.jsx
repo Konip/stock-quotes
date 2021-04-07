@@ -234,9 +234,7 @@ const options1DayBlack = {
 }
 
 export default function Chart({ data, active, colorTheme }) {
-    console.log(colorTheme)
-    const chartRef = React.createRef()
-    // console.log(chartRef)
+
     return (
         <div className={colorTheme ? "chart-light" : "chart-dark"}>
             {data && data.length ?
