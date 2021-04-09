@@ -3,126 +3,118 @@ import "./Search.css"
 import { fetchCompanySearch } from '../../store/stock-reducer';
 import { Link } from 'react-router-dom';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import { TypeWriter } from '../../utils/TypeWriter';
 
 const db = [
-    { title: "бургер с сыром" },
-    { title: "бургер с огурцом" },
-    { title: "бургер" },
-    { title: "сыр" },
-    { title: "хлеб" },
-    { title: "молоко" },
-    { title: "яблоко" },
-    { title: "апельсин" },
+    { pair: "AAPL", name: "APPLE INC" },
+    { pair: "AAPL", name: "APPLOLOLOL" },
+    { pair: "AAPL", name: "APPLOLOLOL" },
+    { pair: "AAPL", name: "APPLOLOLOL" },
+    { pair: "AAPL", name: "APPLOLOLOL" },
+    { pair: "TSLA", name: "TESLA INC" },
+    { pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A" },
+    { pair: "INTC", name: "INTEL CORP" },
+    { pair: "AMZN", name: "AMAZON COM INC" },
+    { pair: "MSFT", name: "MICROSOFT CORPORATION" },
+    { pair: "USDEUR", name: "Доллар США / Евро" },
+    { pair: "JPYGBP", name: "Японская иена / Британский фунт" },
+    { pair: "EURINR", name: "Евро / Индийская рупия" },
+    { pair: "USDILS", name: "Доллар США  / Новый израильский шекель" },
+    { pair: "BYNGBP", name: "Белорусский рубль / Британский фунт" },
+    { pair: "EURTWD", name: "Евро / Новый тайваньский доллар" },
+    { pair: "BTCUSD", name: "Биткоин / Доллар США" },
+    { pair: "ETHUSD", name: "Эфириум / Доллар США" },
+    { pair: "LTCUSD", name: "Лайткоин / Доллар США" },
+    { pair: "XRPUSD", name: "Рипл / Доллар США" },
+    { pair: "XMRUSD", name: "Монеро / Доллар США" },
+    { pair: "ZECUSD", name: "Zcash / Доллар США" },
 ]
 
-export default class Search1 extends Component {
+document.addEventListener('DOMContentLoaded', init)
+
+function init() {
+    const txtElement = document.querySelector('.input')
+    const words = JSON.parse(txtElement.getAttribute('data-words'))
+    const wait = txtElement.getAttribute('data-wait')
+
+    new TypeWriter(txtElement, words, wait)
+}
+
+export default class Search extends Component {
 
     constructor() {
         super()
         this.state = {
             searchRequest: "",
-            searchResults: "",
+            result: [],
             show: false,
         }
-
         this.handleChange = this.handleChange.bind(this)
-        this.clearSearch = this.clearSearch.bind(this)
+        this.clear = this.clear.bind(this)
     }
 
     handleChange(e) {
         e.preventDefault()
-        // e.persist();
-        this.setState({ searchRequest: this.textInput.value })
-        let arr = []
 
+        this.setState({ searchRequest: this.textInput.value })
+        let input = document.querySelector(".company-search-results")
+        this.state.show = true
+        if (this.textInput.value.length === 0) { this.state.show = false }
         if (this.textInput.value.length > 1) {
 
+            input.textContent = ""
+
             for (let i = 0; i < db.length; i++) {
-                let searchReqStart = new RegExp('^' + this.textInput.value + '.*')
-                let searchReqMiddle = new RegExp(' ' + this.textInput.value + '.*')
+                let searchReqStart = new RegExp('^' + this.textInput.value + '.*', 'i')
+                let searchReqMiddle = new RegExp(' ' + this.textInput.value + '.*', 'i')
 
-                if (searchReqStart.test(db[i].title) || searchReqStart.test(db[i].title)) {
-                    arr.push(db[i])
-
+                if (searchReqStart.test(db[i].name) || searchReqMiddle.test(db[i].name)
+                    || searchReqStart.test(db[i].pair) || searchReqMiddle.test(db[i].pair)) {
+                    this.state.result.push(db[i])
                 }
-                console.log(arr)
             }
-            // console.log(this.state.searchRequest)
-            let inp = document.querySelector(".company-search-results")
-            let parent = document.createElement('div')
-            parent.classList.add("red")
-            arr.map(a => {
-                console.log(a)
-                inp.append(parent)
-                parent.innerHTML = a.title
-                // console.log(a)
-                // inp.append(parent)
-                // parent.innerHTML = a.title
-            })
+        }
+        else {
+            input.textContent = ""
         }
 
-        // this.setState({ searchRequest: this.textInput.value },
-        //     () => fetchCompanySearch(this.textInput.value)
-        //         .then(data => {
-        //             e.persist();
-        //             this.setState({
-        //                 searchResults: data.bestMatches,
-        //                 show: true
-        //             })
-        //         })
-        // )
-
-
     }
-    clearSearch() {
+    clear() {
         this.setState({ searchRequest: '' });
+        let input = document.querySelector(".company-search-results")
+        input.textContent = ""
+        this.state.show = false
     }
 
     render() {
-        let searchResults = this.state.searchResults;
-        // if (this.state.searchResults) {
-        //     searchResults = searchResults.map((res, index) => (
-        //         <li className="company-search-results-list-item" key={index}>
-        //             <div onClick={() => this.setState({ show: false })}>
-        //                 <div className='company-search-results-list-company-name'>
-        //                     {res['2. name']}
-        //                 </div>
-        //                 < div className='company-search-results-list-company-ticker' >
-        //                     {res['1. symbol']}
-        //                 </div>
-        //             </div>
-        //         </li>
-        //     ))
-        // }
+        let result = this.state.result
         return (
             <div className='company-search'>
-                <div className='company-search-input'>
+                <div className={this.props.colorTheme ? 'company-search-input' : 'company-search-input-dark'}>
                     <form className='company-search-bar-nav'>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" 
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" 
-                        cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                        <input id="input" type="text" placeholder='Search' value={this.state.searchRequest} onChange={this.handleChange}
-                            ref={(input) => (this.textInput = input)}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="rgba(108,117,125,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11"
+                                cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input className='input' type="text" placeholder='Search' value={this.state.searchRequest} onChange={this.handleChange}
+                            ref={(input) => (this.textInput = input)} data-wait="3000" data-words='["Bitcoin","Apple","Tesla","Microsoft"]'
                         />
                     </form>
-                    < HighlightOffIcon onClick={this.clearSearch} />
+                   
+                    {this.state.show &&
+                        < HighlightOffIcon onClick={this.clear} />
+                    }
                 </div>
 
                 <div className='company-search-results'>
-                </div>
-                {/* <div className='company-search-results'>
-                    {this.state.show &&
-                        (<>
-                            <div className='modal' onClick={() => this.setState({
-                                show: false,
-                                searchRequest: ''
-                            })}></div>
-                            <ul className={`company-search-results-list`}>
-                                {searchResults}
-                            </ul>
-                        </>)
+                    {
+                        result.map(res => (
+                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'}  to="/markets" onClick={this.clear}>
+                                <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>{`${res.pair}    ${res.name}`}</div>
+                                {/* <div className="result-item"></div> */}
+                            </Link>
+                        ))
                     }
-                </div> */}
+                </div>
             </div>
         )
     }

@@ -1,12 +1,13 @@
 
 export function buildChartData(data, type, time) {
+    // debugger
     // console.log(data)
     const chartData = []
     let y = ""
     let count = 0
     let toggle = false
 
-    if (time == "1D" && type == "CRYPTO") {
+    if (time === "1D" && type === "CRYPTO") {
 
         for (let d of data) {
 
@@ -21,9 +22,9 @@ export function buildChartData(data, type, time) {
 
     else {
 
-        if (time == "1D") toggle = true
-        else if (time == "1W") count = 7
-        else if (time == "1M") count = 30
+        if (time === "1D") toggle = true
+        else if (time === "1W") count = 7
+        else if (time === "1M") count = 30
 
         switch (type) {
             case "STOCK":
@@ -51,6 +52,6 @@ export function buildChartData(data, type, time) {
     }
 
     chartData.reverse()
-    console.log(chartData)
+    // console.log(chartData)
     return chartData
 }

@@ -224,13 +224,12 @@ const options1DayBlack = {
 
 }
 
-
 export default function BigChart({ data, active, colorTheme }) {
     return (
         <div className="big-chart">
             {data && data.length ?
 
-                <Line options={active == "1D" && colorTheme ? options1DayBlack : active == "1D" && !colorTheme ? options1DayWhite :
+                <Line options={active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite :
                     colorTheme ? optionsBlack : optionsWhite}
 
                     data={

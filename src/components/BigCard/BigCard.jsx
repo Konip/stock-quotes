@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch} from 'react-redux'
 import BigChart from '../BigChart/BigChart'
-import Footer from '../Footer/Footer'
 import "./BigCard.css"
 import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';

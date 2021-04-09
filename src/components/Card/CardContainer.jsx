@@ -1,7 +1,7 @@
 import React from 'react'
 import Card from './Card'
 import { requestThunk } from "../../store/stock-reducer"
-import { connect, useDispatch, useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
 
 
 export default function CardContainer({ type, title }) {

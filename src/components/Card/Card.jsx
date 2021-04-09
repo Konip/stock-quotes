@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import Chart from './../Chart/Chart';
 import "./Card.css"
@@ -53,13 +52,13 @@ const arrayRow = {
     ],
 }
 
-function Card({ title, type, request, activeRow, activeTime, data, colorTheme }) {
+export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme }) {
     const dispatch = useDispatch()
 
     function req(type, time, pair) {
         dispatch(addActive({ type, time, pair }))
         dispatch(addActiveType(type))
-        request(type, time, pair);
+        request(type, time, pair)
     }
     // console.log(activeTime)
     return (
@@ -85,5 +84,3 @@ function Card({ title, type, request, activeRow, activeTime, data, colorTheme })
         </div>
     )
 }
-
-export default Card

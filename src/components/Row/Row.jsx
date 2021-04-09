@@ -5,7 +5,7 @@ import "./Row.css"
 
 export default function Row({ pair, name, img, type, active, index, onClickItem, colorTheme }) {
     return (
-        <div className={!active && index == 0 ? "row-light-active" : active === pair && colorTheme ? "row-light-active" :
+        <div className={!active && index === 0 ? "row-light-active" : active === pair && colorTheme ? "row-light-active" :
             active === pair && !colorTheme ? "row-dark-active" : active !== pair && colorTheme ? "row-light" : "row-dark"}
             onClick={() => onClickItem(pair)}>
             <div className="row-wrapper">

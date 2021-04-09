@@ -219,7 +219,7 @@ const options1DayBlack = {
                 type: "time",
                 time: {
                     format: "YYYY-MM-DD HH:mm",
-                    tooltipFormat: "D MMM HH:mm",
+                    tooltipFormat: "D MMMM HH:mm",
                 },
             }
         ],
@@ -234,18 +234,20 @@ const options1DayBlack = {
 }
 
 export default function Chart({ data, active, colorTheme }) {
-
+    console.log(`${data.length} ${active}`)
+    // console.log(active)
+    // console.log(data.length)
+    // debugger
     return (
         <div className={colorTheme ? "chart-light" : "chart-dark"}>
-            {data && data.length ?
+            {active && data.length > 0 ?
 
-                <Line options={active == "1D" && colorTheme ? options1DayBlack : active == "1D" && !colorTheme ? options1DayWhite :
+                <Line options={active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite :
                     colorTheme ? optionsBlack : optionsWhite}
 
                     data={
                         colorTheme ?
                             {
-                                // backgroundColor: "rgba(117,134,150,.5)",
                                 datasets: [
                                     {
                                         backgroundColor: "rgba(216,240,250,1)",
@@ -261,12 +263,9 @@ export default function Chart({ data, active, colorTheme }) {
                             {
                                 datasets: [
                                     {
-                                        // backgroundColor: "rgba(62, 121, 167, .3)",
                                         backgroundColor: "rgb(30 48 70)",
                                         borderColor: "rgb(33 135 218)",
-                                        // borderColor: "rgb(33 135 218)",
                                         pointHoverBackgroundColor: "#000000",
-                                        // color: "#000000",
                                         data: data,
                                         tension: 0,
                                     }

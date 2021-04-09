@@ -11,6 +11,10 @@
 .dark{
   background-color: #0b101c;
 }
+.search {
+  margin: 20px 0;
+  display: flex;
+}
 /* .nav{
   position: absolute;
   left: 2%;

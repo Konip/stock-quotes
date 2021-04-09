@@ -9,18 +9,21 @@ import BigCardContainer from './components/BigCard/BigCardContainer';
 import Error from './components/404/Error';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
+import Search from './components/Search/Search';
+import SearchContainer from './components/Search/SearchContainer';
 
 
 class App extends React.Component {
 
-  componentDidUpdate() {
-    // this.props.startThunk()
-  }
+  // componentDidUpdate() {
+  //   this.props.startThunk()
+  // }
 
   render() {
     return (
       <div className={this.props.colorTheme ? `App` : `App dark`}>
         <Navbar className="nav" colorTheme={this.props.colorTheme} />
+        <SearchContainer className="search"/>
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/markets" render={() => <BigCardContainer />} />
         <Footer />
@@ -36,4 +39,4 @@ let mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, startThunk)(App);
+export default connect(mapStateToProps, null)(App);

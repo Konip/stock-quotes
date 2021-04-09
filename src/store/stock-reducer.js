@@ -26,7 +26,7 @@ const initialState = {
             pair: "BTCUSD"
         }
     },
-    active_type: "",
+    active_type: "STOCK",
     colorTheme: true
 }
 
@@ -173,7 +173,7 @@ export function requestThunk(type, time, pair) {
                 break
             }
             case CRYPTO: {
-                if (time == DAY) {
+                if (time === DAY) {
                     fetch(`https://rest.coinapi.io/v1/ohlcv/BITFINEX_SPOT_${pair.slice(0, 3)}_${pair.slice(3)}/latest?period_id=5MIN`, headers)
                         .then(res => {
                             return res.json()

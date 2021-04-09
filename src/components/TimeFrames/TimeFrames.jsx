@@ -8,7 +8,7 @@ export default function TimeFrames({ active, onClickItem, colorTheme }) {
         <div className="time">
             <ul>
                 {arrTimeFrames.map((arr, index) => (
-                    <li className={active == arr && colorTheme ? "time-light active" : active == arr && !colorTheme ? "time-dark active" :
+                    <li className={active === arr && colorTheme ? "time-light active" : active === arr && !colorTheme ? "time-dark active" :
                     active !== arr && colorTheme ? "time-light" : "time-dark"}
                         key={index} onClick={() => onClickItem(arr)}>
                         <span className={colorTheme ? "date-light" : "date-dark"}>{arr}</span>
