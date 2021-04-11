@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
 import "./Search.css"
-import { fetchCompanySearch } from '../../store/stock-reducer';
 import { Link } from 'react-router-dom';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { TypeWriter } from '../../utils/TypeWriter';
 
 const db = [
-    { pair: "AAPL", name: "APPLE INC" },
-    { pair: "AAPL", name: "APPLOLOLOL" },
-    { pair: "AAPL", name: "APPLOLOLOL" },
-    { pair: "AAPL", name: "APPLOLOLOL" },
-    { pair: "AAPL", name: "APPLOLOLOL" },
-    { pair: "TSLA", name: "TESLA INC" },
-    { pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A" },
-    { pair: "INTC", name: "INTEL CORP" },
-    { pair: "AMZN", name: "AMAZON COM INC" },
-    { pair: "MSFT", name: "MICROSOFT CORPORATION" },
-    { pair: "USDEUR", name: "Доллар США / Евро" },
-    { pair: "JPYGBP", name: "Японская иена / Британский фунт" },
-    { pair: "EURINR", name: "Евро / Индийская рупия" },
-    { pair: "USDILS", name: "Доллар США  / Новый израильский шекель" },
-    { pair: "BYNGBP", name: "Белорусский рубль / Британский фунт" },
-    { pair: "EURTWD", name: "Евро / Новый тайваньский доллар" },
-    { pair: "BTCUSD", name: "Биткоин / Доллар США" },
-    { pair: "ETHUSD", name: "Эфириум / Доллар США" },
-    { pair: "LTCUSD", name: "Лайткоин / Доллар США" },
-    { pair: "XRPUSD", name: "Рипл / Доллар США" },
-    { pair: "XMRUSD", name: "Монеро / Доллар США" },
-    { pair: "ZECUSD", name: "Zcash / Доллар США" },
+    { type: "STOCK", pair: "AAPL", name: "APPLE INC" },
+    { type: "STOCK", pair: "IBM", name: "IBM INC" },
+    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
+    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
+    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
+    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
+    { type: "STOCK", pair: "TSLA", name: "TESLA INC" },
+    { type: "STOCK", pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A" },
+    { type: "STOCK", pair: "INTC", name: "INTEL CORP" },
+    { type: "STOCK", pair: "AMZN", name: "AMAZON COM INC" },
+    { type: "STOCK", pair: "MSFT", name: "MICROSOFT CORPORATION" },
+    { type: "FOREX", pair: "USDEUR", name: "Доллар США / Евро" },
+    { type: "FOREX", pair: "JPYGBP", name: "Японская иена / Британский фунт" },
+    { type: "FOREX", pair: "EURINR", name: "Евро / Индийская рупия" },
+    { type: "FOREX", pair: "USDILS", name: "Доллар США  / Новый израильский шекель" },
+    { type: "FOREX", pair: "BYNGBP", name: "Белорусский рубль / Британский фунт" },
+    { type: "FOREX", pair: "EURTWD", name: "Евро / Новый тайваньский доллар" },
+    { type: "CRYPTO", pair: "BTCUSD", name: "Биткоин / Доллар США" },
+    { type: "CRYPTO", pair: "ETHUSD", name: "Эфириум / Доллар США" },
+    { type: "CRYPTO", pair: "LTCUSD", name: "Лайткоин / Доллар США" },
+    { type: "CRYPTO", pair: "XRPUSD", name: "Рипл / Доллар США" },
+    { type: "CRYPTO", pair: "XMRUSD", name: "Монеро / Доллар США" },
+    { type: "CRYPTO", pair: "ZECUSD", name: "Zcash / Доллар США" },
 ]
 
 document.addEventListener('DOMContentLoaded', init)
@@ -51,6 +51,7 @@ export default class Search extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.clear = this.clear.bind(this)
+        // this.request = this.request.bind(this)
     }
 
     handleChange(e) {
@@ -79,6 +80,10 @@ export default class Search extends Component {
         }
 
     }
+    request(type, time, pair) {
+        this.props.request(type, time, pair, 'big')
+        this.clear()
+    }
     clear() {
         this.setState({ searchRequest: '' });
         let input = document.querySelector(".company-search-results")
@@ -87,7 +92,9 @@ export default class Search extends Component {
     }
 
     render() {
+        // console.log('render')
         let result = this.state.result
+        let chartTime = this.props.chartTime
         return (
             <div className='company-search'>
                 <div className={this.props.colorTheme ? 'company-search-input' : 'company-search-input-dark'}>
@@ -99,7 +106,7 @@ export default class Search extends Component {
                             ref={(input) => (this.textInput = input)} data-wait="3000" data-words='["Bitcoin","Apple","Tesla","Microsoft"]'
                         />
                     </form>
-                   
+
                     {this.state.show &&
                         < HighlightOffIcon onClick={this.clear} />
                     }
@@ -108,9 +115,9 @@ export default class Search extends Component {
                 <div className='company-search-results'>
                     {
                         result.map(res => (
-                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'}  to="/markets" onClick={this.clear}>
+                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/markets"
+                                onClick={() => (this.request(res.type, chartTime, res.pair))}>
                                 <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>{`${res.pair}    ${res.name}`}</div>
-                                {/* <div className="result-item"></div> */}
                             </Link>
                         ))
                     }

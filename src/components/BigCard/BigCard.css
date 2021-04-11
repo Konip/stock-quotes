@@ -11,17 +11,30 @@
     margin: 0 auto;
 }
 
-.top-card {
+.top-card-light, .top-card-dark {
     width: 100%;
     height: 520px;
     margin-top: 50px;
-    box-shadow: 0 0 0 2px #e0e3eb;
     border-radius: 6px;
 }
 
-.time-frames {
+.top-card-light {
     box-shadow: 0 0 0 2px #e0e3eb;
+}
+
+.top-card-dark {
+    box-shadow: 0 0 0 2px #8b91a3;
+}
+
+.time-frames-light,.time-frames-dark {
+  
     border-radius: 6px;
+}
+.time-frames-light{
+    box-shadow: 0 0 0 2px #e0e3eb;
+}
+.time-frames-dark{
+    box-shadow: 0 0 0 2px #8b91a3;
 }
 
 .low-card {
@@ -39,17 +52,23 @@
     width: 49.5%;
 }
 
-.right-block {
+.right-block-light, .right-block-dark {
     height: 100%;
     width: 49.5%;
-    box-shadow: 0 0 0 2px #e0e3eb;
     border-radius: 6px;
     padding: 15px;
 }
 
+.right-block-light {
+    box-shadow: 0 0 0 2px #e0e3eb;
+}
+
+.right-block-dark {
+    box-shadow: 0 0 0 2px #8b91a3;
+}
+
 .text-light, .text-dark {
     font-size: 1.1em;
-    box-shadow: 0 0 0 2px #e0e3eb;
     border-radius: 6px;
     margin-top: 20px;
     height: 450px;
@@ -58,10 +77,12 @@
 
 .text-light {
     color: black;
+    box-shadow: 0 0 0 2px #e0e3eb;
 }
 
 .text-dark {
-    color: white;
+    color: #d1d4dc;
+    box-shadow: 0 0 0 2px #8b91a3;
 }
 
 .news-light {
@@ -69,5 +90,5 @@
 }
 
 .news-dark {
-    color: white;
+    color: #d1d4dc;
 }

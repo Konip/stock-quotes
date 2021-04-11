@@ -7,6 +7,7 @@ const ADD_DATA_CRYPTO = "ADD_DATA_CRYPTO"
 const ACTIVE = "ACTIVE"
 const ACTIVE_TYPE = "ACTIVE_TYPE"
 const COLOR_THEME = "COLOR_THEME"
+const CHART = "CHART"
 
 const initialState = {
     STOCK: [],
@@ -27,11 +28,20 @@ const initialState = {
         }
     },
     active_type: "STOCK",
+    CHART: [],
+    // chartTime: '1D',
+    chartTime: '1D',
     colorTheme: true
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case CHART: {
+            return {
+                ...state,
+                CHART: payload
+            }
+        }
         case ADD_DATA_STOCK: {
             return {
                 ...state,
@@ -74,7 +84,6 @@ export const stockReducer = (state = initialState, { type, payload }) => {
                 colorTheme: !state.colorTheme
             }
         }
-
         default:
             return state
     }
@@ -85,6 +94,7 @@ export const addDataCrypto = (payload) => ({ type: ADD_DATA_CRYPTO, payload })
 export const addActive = (payload) => ({ type: ACTIVE, payload })
 export const addActiveType = (payload) => ({ type: ACTIVE_TYPE, payload })
 export const addColorTheme = (payload) => ({ type: COLOR_THEME, payload })
+export const addChart = (payload) => ({ type: CHART, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -142,8 +152,8 @@ const response = {
     },
 }
 
-export function requestThunk(type, time, pair) {
-    // console.log(type, time, pair)
+export function requestThunk(type, time, pair, chart) {
+    console.log(type, time, pair, chart)
     return (dispatch) => {
         switch (type) {
             case STOCK: {
@@ -152,15 +162,30 @@ export function requestThunk(type, time, pair) {
                         return res.json()
                     })
                     .then(res => {
-                        // console.log(res)
                         const data = buildChartData(res[response[type][time]], type, time)
-                        return dispatch(addDataStock(data))
+                        // return chart === "small" ? dispatch(addDataStock(data)) && dispatch(addChart(data)) : dispatch(addChart(data))
+                        if (chart === "small") {
+                            console.log('1')
+                            return Promise.all([
+                                dispatch(addChart(data)),
+                                dispatch(addDataStock(data)),
+
+                            ])
+                        }
+                        else {
+                            console.log('2')
+                            return dispatch(addChart(data))
+
+                        }
+
+                        // return Promise.all([
+                        //     dispatch(addChart(data)),
+                        //     dispatch(addDataStock(data))
+                        // ])
                     })
                 break
             }
             case FOREX: {
-                // https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=EUR&to_symbol=USD&interval=5min&apikey=demo
-                // https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=JPY&to_symbol=GBPinterval=5min&apikey=VZLZ58FTEXZW7QZ6
                 fetch(`${URL}${request[type][time]}&from_symbol=${pair.slice(0, 3)}&to_symbol=${pair.slice(3)}${time === "1D" ? "&interval=5min" : ""}&apikey=${alphaVantageKey}`)
                     .then(res => {
                         return res.json()
@@ -168,7 +193,10 @@ export function requestThunk(type, time, pair) {
                     .then(res => {
                         // console.log(res)
                         const data = buildChartData(res[response[type][time]], type, time)
-                        return dispatch(addDataForex(data))
+                        return Promise.all([
+                            dispatch(addChart(data)),
+                            dispatch(addDataForex(data))
+                        ])
                     })
                 break
             }
@@ -181,7 +209,10 @@ export function requestThunk(type, time, pair) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res, type, time)
-                            return dispatch(addDataCrypto(data))
+                            return Promise.all([
+                                dispatch(addChart(data)),
+                                dispatch(addDataCrypto(data))
+                            ])
                         })
                     break
                 }
@@ -193,7 +224,10 @@ export function requestThunk(type, time, pair) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res[response[type][time]], type, time)
-                            return dispatch(addDataCrypto(data))
+                            return Promise.all([
+                                dispatch(addChart(data)),
+                                dispatch(addDataCrypto(data))
+                            ])
                         })
                     break
                 }
@@ -243,15 +277,4 @@ export const startThunk = () => {
         //         dispatch(addDataCrypto(data))
         //     })
     }
-}
-export function fetchCompanySearch(s) {
-    return (
-        fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${s}&apikey=${alphaVantageKey2}&datatype=json`)
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                return data
-            })
-    )
 }

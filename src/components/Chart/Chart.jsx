@@ -1,33 +1,7 @@
 import React from 'react'
 import "./Chart.css"
 import { Line } from 'react-chartjs-2'
-import numeral from 'numeral'
 import ghost from "../../assets/Ghost.gif"
-
-const pluginLight = {
-    id: 'background_color_light',
-    beforeDraw: (chart) => {
-        const ctx = chart.canvas.getContext('2d');
-        // ctx.save();
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, chart.width, chart.height);
-        ctx.save();
-        ctx.restore();
-    }
-};
-const pluginDark = {
-    id: 'background_color_dark',
-    beforeDraw: (chart) => {
-        const ctx = chart.canvas.getContext('2d');
-
-        ctx.globalCompositeOperation = 'destination-over';
-        ctx.fillStyle = 'yellow';
-        ctx.fillRect(0, 0, chart.width, chart.height);
-        ctx.save();
-        ctx.restore();
-    }
-};
 
 const optionsWhite = {
     legend: {
@@ -234,10 +208,7 @@ const options1DayBlack = {
 }
 
 export default function Chart({ data, active, colorTheme }) {
-    console.log(`${data.length} ${active}`)
-    // console.log(active)
-    // console.log(data.length)
-    // debugger
+    // console.log('render')
     return (
         <div className={colorTheme ? "chart-light" : "chart-dark"}>
             {active && data.length > 0 ?

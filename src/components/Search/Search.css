@@ -102,13 +102,14 @@
 }
 
 .result-item:hover {
-    background-color: #f5f5f5;
+    /* background-color: #f7f8fad6; */
+    background-color: #f5f5f5d6;
     /* background-color:#f6f6f7; */
     transition: .5s;
 }
 
-.result-item-dar:hover {
-    background-color: #f5f5f5;
+.result-item-dark:hover {
+    background-color: #1c2742d6;
     /* background-color:#f6f6f7; */
     transition: .5s;
 }

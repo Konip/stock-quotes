@@ -227,7 +227,7 @@ const options1DayBlack = {
 export default function BigChart({ data, active, colorTheme }) {
     return (
         <div className="big-chart">
-            {data && data.length ?
+            {data.length > 0 ?
 
                 <Line options={active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite :
                     colorTheme ? optionsBlack : optionsWhite}
@@ -235,7 +235,6 @@ export default function BigChart({ data, active, colorTheme }) {
                     data={
                         colorTheme ?
                             {
-                                // backgroundColor: "rgba(117,134,150,.5)",
                                 datasets: [
                                     {
                                         backgroundColor: "rgba(216,240,250,1)",
@@ -252,10 +251,8 @@ export default function BigChart({ data, active, colorTheme }) {
                             {
                                 datasets: [
                                     {
-                                        // backgroundColor: "rgba(62, 121, 167, .3)",
                                         backgroundColor: "rgb(30 48 70)",
                                         borderColor: "rgb(33 135 218)",
-                                        // borderColor: "rgb(33 135 218)",
                                         pointHoverBackgroundColor: "#000000",
                                         color: "#000000",
                                         data: data,

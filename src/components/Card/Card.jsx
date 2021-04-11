@@ -24,7 +24,6 @@ import zcash from "../../assets/zcash.svg"
 import { addActive, addActiveType } from '../../store/stock-reducer';
 import Row from './../Row/Row';
 
-
 const arrayRow = {
     STOCK: [
         { pair: "AAPL", name: "APPLE INC", img: apple },
@@ -54,13 +53,13 @@ const arrayRow = {
 
 export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme }) {
     const dispatch = useDispatch()
-
+    
     function req(type, time, pair) {
         dispatch(addActive({ type, time, pair }))
         dispatch(addActiveType(type))
-        request(type, time, pair)
+        request(type, time, pair, 'small')
     }
-    // console.log(activeTime)
+  
     return (
         <div className={colorTheme ? "card-light" : "card-dark"}>
             <div className="wrap">

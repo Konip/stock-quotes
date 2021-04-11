@@ -1,27 +1,28 @@
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import BigChart from '../BigChart/BigChart'
 import "./BigCard.css"
 import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';
 
 export default function BigCard({ type, request, activeRow, activeTime, data, colorTheme }) {
-
+    // console.log(data)
     const dispatch = useDispatch()
 
-    function req(type, time, pair) {
+        function req(type, time, pair) {
         dispatch(addActive({ type, time, pair }))
-        request(type, time, pair);
+        request(type, time, pair, 'big')
     }
 
     return (
         <div className="big-card">
             <div className="wrapper">
-                <div className="top-card">
+
+                <div className={colorTheme ? "top-card-light" : "top-card-dark"}>
                     <BigChart data={data} active={activeTime} colorTheme={colorTheme} />
                 </div>
                 <div className="low-card">
                     <div className="left-block">
-                        <div className="time-frames">
+                        <div className={colorTheme ? "time-frames-light" : "time-frames-dark"}>
                             <TimeFramesBig active={activeTime} colorTheme={colorTheme}
                                 onClickItem={(active) => req(type, active, activeRow)} />
                         </div>
@@ -44,7 +45,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                     </div>
                     </div>
 
-                    <div className="right-block">
+                    <div className={colorTheme ? "right-block-light" : "right-block-dark"}>
                         <div className={colorTheme ? "news-light" : "news-dark"}>
                             <h1>Здесь могла быть ваша реклама</h1>
                         </div>

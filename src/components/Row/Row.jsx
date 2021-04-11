@@ -13,7 +13,7 @@ export default function Row({ pair, name, img, type, active, index, onClickItem,
                     <img className={`logo-${type}`} src={img} alt="" />
                 </div>
                 <div className="section">
-                    <Link className="link" to={`markets`}>
+                    <Link className="link" to={`/markets`}>
                         <span className={colorTheme ? "currency-pair-light" : "currency-pair-dark"}>
                             {pair}
                         </span>
