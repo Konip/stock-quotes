@@ -1,5 +1,5 @@
 .markets {
-  width: 1480px;
+  max-width: 1480px;
   height: 100%;
   display: flex;
   flex-direction: column;

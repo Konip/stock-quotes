@@ -1,5 +1,7 @@
 import { buildChartData } from "./buildChartData"
 import { dataAPI, startAPI } from './../API/API';
+import { initial1 } from '../db/initial'
+import { description } from '../db/description'
 
 const ADD_DATA_STOCK = "ADD_DATA_STOCK"
 const ADD_DATA_FOREX = "ADD_DATA_FOREX"
@@ -8,6 +10,7 @@ const ACTIVE = "ACTIVE"
 const ACTIVE_TYPE = "ACTIVE_TYPE"
 const COLOR_THEME = "COLOR_THEME"
 const CHART = "CHART"
+const DESCRIPTION = "DESCRIPTION"
 
 const initialState = {
     STOCK: [],
@@ -31,7 +34,8 @@ const initialState = {
     CHART: [],
     // chartTime: '1D',
     chartTime: '1D',
-    colorTheme: true
+    colorTheme: true,
+    description: ''
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
@@ -84,6 +88,12 @@ export const stockReducer = (state = initialState, { type, payload }) => {
                 colorTheme: !state.colorTheme
             }
         }
+        case DESCRIPTION: {
+            return {
+                ...state,
+                description: payload
+            }
+        }
         default:
             return state
     }
@@ -95,6 +105,7 @@ export const addActive = (payload) => ({ type: ACTIVE, payload })
 export const addActiveType = (payload) => ({ type: ACTIVE_TYPE, payload })
 export const addColorTheme = (payload) => ({ type: COLOR_THEME, payload })
 export const addChart = (payload) => ({ type: CHART, payload })
+export const addDescription = (payload) => ({ type: DESCRIPTION, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -152,8 +163,8 @@ const response = {
     },
 }
 
-export function requestThunk(type, time, pair, chart) {
-    console.log(type, time, pair, chart)
+export function requestThunk(type, time, pair) {
+    console.log(type, time, pair)
     return (dispatch) => {
         switch (type) {
             case STOCK: {
@@ -163,19 +174,18 @@ export function requestThunk(type, time, pair, chart) {
                     })
                     .then(res => {
                         const data = buildChartData(res[response[type][time]], type, time)
-                        // return chart === "small" ? dispatch(addDataStock(data)) && dispatch(addChart(data)) : dispatch(addChart(data))
-                        if (chart === "small") {
+
+                        if (initial1[type][pair] === pair) {
                             console.log('1')
                             return Promise.all([
                                 dispatch(addChart(data)),
                                 dispatch(addDataStock(data)),
-
+                               dispatch(addDescription(description[type][pair])) 
                             ])
                         }
                         else {
                             console.log('2')
                             return dispatch(addChart(data))
-
                         }
 
                         // return Promise.all([
@@ -193,10 +203,11 @@ export function requestThunk(type, time, pair, chart) {
                     .then(res => {
                         // console.log(res)
                         const data = buildChartData(res[response[type][time]], type, time)
-                        return Promise.all([
-                            dispatch(addChart(data)),
-                            dispatch(addDataForex(data))
-                        ])
+                        return dispatch(addDataForex(data))
+                        // return Promise.all([
+                        //     dispatch(addChart(data)),
+                        //     dispatch(addDataForex(data))
+                        // ])
                     })
                 break
             }
@@ -209,10 +220,11 @@ export function requestThunk(type, time, pair, chart) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res, type, time)
-                            return Promise.all([
-                                dispatch(addChart(data)),
-                                dispatch(addDataCrypto(data))
-                            ])
+                            return dispatch(addDataCrypto(data)) &&  dispatch(addDescription(description[type][pair])) 
+                            // return Promise.all([
+                            //     dispatch(addChart(data)),
+                            //     dispatch(addDataCrypto(data))
+                            // ])
                         })
                     break
                 }
@@ -224,10 +236,11 @@ export function requestThunk(type, time, pair, chart) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res[response[type][time]], type, time)
-                            return Promise.all([
-                                dispatch(addChart(data)),
-                                dispatch(addDataCrypto(data))
-                            ])
+                            return dispatch(addDataCrypto(data)) &&  dispatch(addDescription(description[type][pair])) 
+                            // return Promise.all([
+                            //     dispatch(addChart(data)),
+                            //     dispatch(addDataCrypto(data))
+                            // ])
                         })
                     break
                 }
@@ -237,6 +250,9 @@ export function requestThunk(type, time, pair, chart) {
         }
     }
 }
+
+
+
 
 export const startThunk = () => {
 

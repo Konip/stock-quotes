@@ -1,17 +1,15 @@
-.navbar-light{
-    background-color: #f6f6f7;;
-    /* border: 2px solid black; */
+.navbar-light, .navbar-dark {
     width: 90px;
     height: 100%;
     position: fixed;
 }
 
+.navbar-light {
+    background-color: #f6f6f7;
+}
+
 .navbar-dark {
     background-color: #1e1e30!important;
-    /* border: 2px solid black; */
-    width: 90px;
-    height: 100%;
-    position: fixed;
 }
 
 .navbar-wraper {
@@ -26,8 +24,10 @@
     margin: 15px;
 }
 
-svg {
+.navbar-wraper svg {
     cursor: pointer;
+    height: 30px;
+    width: 30px;
 }
 
 .active svg {

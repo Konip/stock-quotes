@@ -11,7 +11,7 @@ import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import Search from './components/Search/Search';
 import SearchContainer from './components/Search/SearchContainer';
-
+import StockMarketContainer from './components/StockMarket/StockMarketContainer';
 
 class App extends React.Component {
 
@@ -26,6 +26,8 @@ class App extends React.Component {
         <SearchContainer className="search"/>
         <Route exact path="/" render={() => <Home />} />
         <Route exact path="/markets" render={() => <BigCardContainer />} />
+        {/* <Route path="/profile/:userId?" */}
+        <Route path="/stock-market/:type" render={() => <StockMarketContainer />} />
         <Footer />
         {/* <Route path="*" component={Error} /> */}
       </div>

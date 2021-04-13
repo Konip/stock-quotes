@@ -3,32 +3,7 @@ import "./Search.css"
 import { Link } from 'react-router-dom';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { TypeWriter } from '../../utils/TypeWriter';
-
-const db = [
-    { type: "STOCK", pair: "AAPL", name: "APPLE INC" },
-    { type: "STOCK", pair: "IBM", name: "IBM INC" },
-    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
-    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
-    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
-    { type: "STOCK", pair: "AAPL", name: "APPLOLOLOL" },
-    { type: "STOCK", pair: "TSLA", name: "TESLA INC" },
-    { type: "STOCK", pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A" },
-    { type: "STOCK", pair: "INTC", name: "INTEL CORP" },
-    { type: "STOCK", pair: "AMZN", name: "AMAZON COM INC" },
-    { type: "STOCK", pair: "MSFT", name: "MICROSOFT CORPORATION" },
-    { type: "FOREX", pair: "USDEUR", name: "Доллар США / Евро" },
-    { type: "FOREX", pair: "JPYGBP", name: "Японская иена / Британский фунт" },
-    { type: "FOREX", pair: "EURINR", name: "Евро / Индийская рупия" },
-    { type: "FOREX", pair: "USDILS", name: "Доллар США  / Новый израильский шекель" },
-    { type: "FOREX", pair: "BYNGBP", name: "Белорусский рубль / Британский фунт" },
-    { type: "FOREX", pair: "EURTWD", name: "Евро / Новый тайваньский доллар" },
-    { type: "CRYPTO", pair: "BTCUSD", name: "Биткоин / Доллар США" },
-    { type: "CRYPTO", pair: "ETHUSD", name: "Эфириум / Доллар США" },
-    { type: "CRYPTO", pair: "LTCUSD", name: "Лайткоин / Доллар США" },
-    { type: "CRYPTO", pair: "XRPUSD", name: "Рипл / Доллар США" },
-    { type: "CRYPTO", pair: "XMRUSD", name: "Монеро / Доллар США" },
-    { type: "CRYPTO", pair: "ZECUSD", name: "Zcash / Доллар США" },
-]
+import {db} from '../../db/db'
 
 document.addEventListener('DOMContentLoaded', init)
 
@@ -81,7 +56,7 @@ export default class Search extends Component {
 
     }
     request(type, time, pair) {
-        this.props.request(type, time, pair, 'big')
+        this.props.request(type, time, pair)
         this.clear()
     }
     clear() {
@@ -115,7 +90,7 @@ export default class Search extends Component {
                 <div className='company-search-results'>
                     {
                         result.map(res => (
-                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/markets"
+                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/"
                                 onClick={() => (this.request(res.type, chartTime, res.pair))}>
                                 <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>{`${res.pair}    ${res.name}`}</div>
                             </Link>

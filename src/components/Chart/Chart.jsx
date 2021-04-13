@@ -211,7 +211,7 @@ export default function Chart({ data, active, colorTheme }) {
     // console.log('render')
     return (
         <div className={colorTheme ? "chart-light" : "chart-dark"}>
-            {active && data.length > 0 ?
+            {data && data.length > 0 ?
 
                 <Line options={active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite :
                     colorTheme ? optionsBlack : optionsWhite}

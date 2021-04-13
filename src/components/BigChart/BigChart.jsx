@@ -5,229 +5,248 @@ import * as plugins from "chartjs-plugin-crosshair"
 import ghost from "../../assets/Ghost.gif"
 
 
-const optionsWhite = {
-    legend: {
-        display: false,
-    },
-    elements: {
-        point: {
-            radius: 0,
+export default function BigChart({ data, active, colorTheme, currency }) {
+    const optionsWhite = {
+        legend: {
+            display: false,
         },
-    },
-    maintainAspectRatio: false,
-    tooltips: {
-        mode: 'index',
-        intersect: false,
-        axis: 'x'
-    },
-    plugins: {
-        crosshair: {
-            line: {
-                color: 'white',  // crosshair line color
-                width: 1        // crosshair line width
+        elements: {
+            point: {
+                radius: 0,
             },
-            sync: {
-                enabled: false,
-            },
-            zoom: {
-                enabled: false,
-            },
-        }
-    },
-    scales: {
-        xAxes: [
-            {
-                gridLines: {
-                    display: false,
-                },
-                type: "time",
-                time: {
-                    unit: "day",
-                    tooltipFormat: "ll",
-
-                },
-                // distribution: 'series',
-            }
-        ],
-        yAxes: [
-            {
-                position: 'right',
-                gridLines: {
-                    display: false,
-                },
-            }
-        ]
-    },
-
-}
-const optionsBlack = {
-    legend: {
-        display: false,
-    },
-    elements: {
-        point: {
-            radius: 0,
         },
-    },
-    maintainAspectRatio: false,
-    tooltips: {
-        mode: 'index',
-        intersect: false,
-        axis: 'x'
-    },
-    plugins: {
-        crosshair: {
-            line: {
-                color: 'black',  // crosshair line color
-                width: 1        // crosshair line width
-            },
-            sync: {
-                enabled: false,
-            },
-            zoom: {
-                enabled: false,
-            },
-        }
-    },
-    scales: {
-        xAxes: [
-            {
-                gridLines: {
-                    display: false,
-                },
-                type: "time",
-                time: {
-                    unit: "day",
-                    tooltipFormat: "ll",
-
-                },
-                // distribution: 'series',
+        maintainAspectRatio: false,
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+            axis: 'x',
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    return ` ${currency} ${tooltipItem.value}`
+                }
             }
-        ],
-        yAxes: [
-            {
-                position: 'right',
-                gridLines: {
-                    display: false,
-                },
-            }
-        ]
-    },
-
-}
-const options1DayWhite = {
-    legend: {
-        display: false,
-    },
-    elements: {
-        point: {
-            radius: 0,
         },
-    },
-    maintainAspectRatio: false,
-    tooltips: {
-        mode: 'index',
-        intersect: false,
-        axis: 'x'
-    },
-    plugins: {
-        crosshair: {
-            line: {
-                color: 'white',  // crosshair line color
-                width: 1        // crosshair line width
-            },
-            sync: {
-                enabled: false,
-            },
-            zoom: {
-                enabled: false,
-            },
-        }
-    },
-    scales: {
-        xAxes: [
-            {
-                gridLines: {
-                    display: false,
+        plugins: {
+            crosshair: {
+                line: {
+                    color: 'white',  // crosshair line color
+                    width: 1        // crosshair line width
                 },
-                type: "time",
-                time: {
-                    format: "YYYY-MM-DD HH:mm",
-                    tooltipFormat: "D MMM HH:mm",
+                sync: {
+                    enabled: false,
+                },
+                zoom: {
+                    enabled: false,
                 },
             }
-        ],
-        yAxes: [
-            {
-                type: 'linear',
-                position: 'right',
-                gridLines: {
-                    display: false,
-                },
-            }
-        ]
-    },
-
-}
-const options1DayBlack = {
-    legend: {
-        display: false,
-    },
-    elements: {
-        point: {
-            radius: 0,
         },
-    },
-    maintainAspectRatio: false,
-    tooltips: {
-        mode: 'index',
-        intersect: false,
-        axis: 'x'
-    },
-    plugins: {
-        crosshair: {
-            line: {
-                color: 'black',  // crosshair line color
-                width: 1        // crosshair line width
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        display: false,
+                    },
+                    type: "time",
+                    time: {
+                        unit: "day",
+                        tooltipFormat: "ll",
+    
+                    },
+                    // distribution: 'series',
+                }
+            ],
+            yAxes: [
+                {
+                    position: 'right',
+                    gridLines: {
+                        display: false,
+                    },
+                }
+            ]
+        },
+    
+    }
+    const optionsBlack = {
+        legend: {
+            display: false,
+        },
+        elements: {
+            point: {
+                radius: 0,
             },
-            sync: {
-                enabled: false,
-            },
-            zoom: {
-                enabled: false,
-            },
-        }
-    },
-    scales: {
-        xAxes: [
-            {
-                gridLines: {
-                    display: false,
+        },
+        maintainAspectRatio: false,
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+            axis: 'x',
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    return ` ${currency} ${tooltipItem.value}`
+                }
+            }
+        },
+        plugins: {
+            crosshair: {
+                line: {
+                    color: 'black',  // crosshair line color
+                    width: 1        // crosshair line width
                 },
-                type: "time",
-                time: {
-                    format: "YYYY-MM-DD HH:mm",
-                    tooltipFormat: "D MMM HH:mm",
+                sync: {
+                    enabled: false,
+                },
+                zoom: {
+                    enabled: false,
                 },
             }
-        ],
-        yAxes: [
-            {
-                type: 'linear',
-                position: 'right',
-                gridLines: {
-                    display: false,
+        },
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        display: false,
+                    },
+                    type: "time",
+                    time: {
+                        unit: "day",
+                        tooltipFormat: "ll",
+    
+                    },
+                    // distribution: 'series',
+                }
+            ],
+            yAxes: [
+                {
+                    position: 'right',
+                    gridLines: {
+                        display: false,
+                    },
+                }
+            ]
+        },
+    
+    }
+    const options1DayWhite = {
+        legend: {
+            display: false,
+        },
+        elements: {
+            point: {
+                radius: 0,
+            },
+        },
+        maintainAspectRatio: false,
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+            axis: 'x',
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    return ` ${currency} ${tooltipItem.value}`
+                }
+            }
+        },
+        plugins: {
+            crosshair: {
+                line: {
+                    color: 'white',  // crosshair line color
+                    width: 1        // crosshair line width
+                },
+                sync: {
+                    enabled: false,
+                },
+                zoom: {
+                    enabled: false,
                 },
             }
-        ]
-    },
+        },
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        display: false,
+                    },
+                    type: "time",
+                    time: {
+                        format: "YYYY-MM-DD HH:mm",
+                        tooltipFormat: "D MMM HH:mm",
+                    },
+                }
+            ],
+            yAxes: [
+                {
+                    type: 'linear',
+                    position: 'right',
+                    gridLines: {
+                        display: false,
+                    },
+                }
+            ]
+        },
 
-}
+    }
+    const options1DayBlack = {
+        legend: {
+            display: false,
+        },
+        elements: {
+            point: {
+                radius: 0,
+            },
+        },
+        maintainAspectRatio: false,
+        tooltips: {
+            mode: 'index',
+            intersect: false,
+            axis: 'x',
+            callbacks: {
+                label: function (tooltipItem, data) {
+                    return ` ${currency} ${tooltipItem.value}`
+                }
+            }
+        },
+        plugins: {
+            crosshair: {
+                line: {
+                    color: 'black',  // crosshair line color
+                    width: 1        // crosshair line width
+                },
+                sync: {
+                    enabled: false,
+                },
+                zoom: {
+                    enabled: false,
+                },
+            }
+        },
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        display: false,
+                    },
+                    type: "time",
+                    time: {
+                        format: "YYYY-MM-DD HH:mm",
+                        tooltipFormat: "D MMM HH:mm",
+                    },
+                }
+            ],
+            yAxes: [
+                {
+                    type: 'linear',
+                    position: 'right',
+                    gridLines: {
+                        display: false,
+                    },
+                }
+            ]
+        },
 
-export default function BigChart({ data, active, colorTheme }) {
+    }
     return (
         <div className="big-chart">
-            {data.length > 0 ?
+            {data && data.length > 0 ?
 
                 <Line options={active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite :
                     colorTheme ? optionsBlack : optionsWhite}
