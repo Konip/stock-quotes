@@ -30,7 +30,7 @@ export default function Card({ title, type, request, activeRow, activeTime, data
 
                 <div className="rows">
                     {initial[type].map((arr, index) => (
-                        < Row key={`${arr.pair}${arr.name}`} pair={arr.pair} name={arr.name} img={arr.img} type={type}
+                        < Row key={`${arr.pair}${arr.name}`} pair={arr.pair} name={arr.name} img={colorTheme ? arr.img : arr.imgD} type={type}
                             active={activeRow} index={index} onClickItem={(pair) => req(type, activeTime, pair)}
                             colorTheme={colorTheme}
                         />

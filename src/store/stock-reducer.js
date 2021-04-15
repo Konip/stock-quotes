@@ -32,7 +32,6 @@ const initialState = {
     },
     active_type: "STOCK",
     CHART: [],
-    // chartTime: '1D',
     chartTime: '1D',
     colorTheme: true,
     description: ''
@@ -180,7 +179,7 @@ export function requestThunk(type, time, pair) {
                             return Promise.all([
                                 dispatch(addChart(data)),
                                 dispatch(addDataStock(data)),
-                               dispatch(addDescription(description[type][pair])) 
+                                dispatch(addDescription(description[type][pair]))
                             ])
                         }
                         else {
@@ -220,7 +219,7 @@ export function requestThunk(type, time, pair) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res, type, time)
-                            return dispatch(addDataCrypto(data)) &&  dispatch(addDescription(description[type][pair])) 
+                            return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
                             // return Promise.all([
                             //     dispatch(addChart(data)),
                             //     dispatch(addDataCrypto(data))
@@ -236,7 +235,7 @@ export function requestThunk(type, time, pair) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res[response[type][time]], type, time)
-                            return dispatch(addDataCrypto(data)) &&  dispatch(addDescription(description[type][pair])) 
+                            return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
                             // return Promise.all([
                             //     dispatch(addChart(data)),
                             //     dispatch(addDataCrypto(data))

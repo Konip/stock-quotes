@@ -1,5 +1,5 @@
 import React from 'react'
-import { initialStockMarket } from './../../db/initial';
+import { initialTitle } from './../../db/initial';
 import './StockMarket.css'
 import { requestThunk } from '../../store/stock-reducer';
 import StockMarketCard from './StockMarketCard';
@@ -11,19 +11,20 @@ export default function StockMarket({ location }) {
     const stock = useSelector(({ stock }) => stock)
 
     const path = location.pathname.slice(14)
-    const data = initialStockMarket[path]
-
     const colorTheme = stock.colorTheme
+   
+    const data = initialTitle[path]
+
     const request = (type, time, pair) => {
         dispatch(requestThunk(type, time, pair))
     }
-  
+
     return (
         <div className="stock-markets">
             <div className="stock-markets-cards">
-                {data.map(({ title,img }) => (
-                    <StockMarketCard title={title} type={path} request={request} img={img}
-                        colorTheme={colorTheme} />
+                {data.map((i) => (
+                    <StockMarketCard title={i.title} type={path} request={request} img={colorTheme ? i.img : i.imgD}
+                        colorTheme={colorTheme} pair={i.pair} />
                 ))}
             </div>
         </div>

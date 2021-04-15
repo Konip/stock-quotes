@@ -1,9 +1,12 @@
 import React from 'react'
 import './StockMarketCard.css'
-import { initial } from './../../db/initial';
-import Row from '../Row/Row';
+import { initialForex } from './../../db/initial';
+import MarketRow from './MarketRow';
 
-export default function StockMarketCard({ title, type, request, colorTheme, img }) {
+export default function StockMarketCard({ title, type, request, colorTheme, img, pair }) {
+
+    let data = initialForex[type]
+    if (pair) data = data[pair]
 
     function req(type, time, pair) {
         request(type, time, pair)
@@ -16,11 +19,10 @@ export default function StockMarketCard({ title, type, request, colorTheme, img 
                     <span>{title}</span>
                 </div>
 
-                <div className="rows">
-                    {initial[type].map((arr, index) => (
-                        < Row key={`${arr.pair}${arr.name}`} pair={arr.pair} name={arr.name} img={arr.img} type={type}
-                            index={index} onClickItem={(pair) => req(type, '1D', pair)}
-                            colorTheme={colorTheme}
+                <div className="market-rows">
+                    {data.map((i, index) => (
+                        < MarketRow key={`${i.pair}${i.name}`} pair={i.pair} name={i.name} img={colorTheme ? i.img : i.imgD} type={type}
+                            onClickItem={(pair) => req(type, '1W', pair)} colorTheme={colorTheme}
                         />
                     ))}
                 </div>

@@ -1,6 +1,8 @@
 .market-card-light, .market-card-dark {
     width: 31.96%;
-    height: 700px;
+    /* height: 535px; */
+    height: 100%;
+    /* height: 700px; */
     /* height: 720px; */
     margin: 0 10px;
     border-radius: 6px;
@@ -38,8 +40,8 @@
     border-radius: 25px;
 }
 
-.rows {
-    margin: 10px 0;
+.market-rows {
+    margin-top: 10px;
 }
 
 .big {

@@ -74,12 +74,13 @@
     background-color: rgba(216, 240, 250, 1);
     transition: .5s;
 }
+
 .widget-dark:hover {
     background-color: #1c2742d6;
     transition: .5s;
 }
 
-.widget-light svg,.widget-dark svg {
+.widget-light svg, .widget-dark svg {
     width: 20px;
     margin-top: 4px;
 }
