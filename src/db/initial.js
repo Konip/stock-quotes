@@ -8,6 +8,51 @@ import general from "../assets/general.svg"
 import facebook from "../assets/facebook.svg"
 import nike from "../assets/nike.svg"
 import mcdonalds from "../assets/mcdonalds.svg"
+import Mastercard from "../assets/Mastercard.svg"
+import chevron from "../assets/chevron.svg"
+import starbucks from "../assets/starbucks.svg"
+import ford from "../assets/ford.svg"
+import volkswagen from "../assets/volkswagen.svg"
+import allianz from "../assets/allianz.svg"
+import bmw from "../assets/bmw.svg"
+import siemens from "../assets/siemens.svg"
+import krupp from "../assets/krupp.svg"
+import lufthansa from "../assets/lufthansa.svg"
+import adidas from "../assets/adidas.svg"
+import deutsche from "../assets/deutsche.svg"
+import total from "../assets/total.svg"
+import axa from "../assets/axa.svg"
+import Credit_Agricole from "../assets/Credit_Agricole.svg"
+import carrefour from "../assets/carrefour.svg"
+import renault from "../assets/renault.svg"
+import orange from "../assets/orange.svg"
+import michelin from "../assets/michelin.svg"
+import Sanofi from "../assets/Sanofi.svg"
+import bp from "../assets/bp.svg"
+import vodafone from "../assets/vodafone.svg"
+import BT from "../assets/BT.svg"
+import astrazeneca from "../assets/astrazeneca.svg"
+import shell from "../assets/shell.svg"
+import ITBAF from "../assets/ITBA.F.svg"
+import standard from "../assets/standard-chartered1.svg"
+import Reckitt from "../assets/Reckitt.svg"
+import nestle from "../assets/nestle.svg"
+import roche from "../assets/roche.svg"
+import novartis from "../assets/novartis.svg"
+import UBS from "../assets/UBS.svg"
+import abb from "../assets/abb.svg"
+import zurich from "../assets/zurich.svg"
+import coop from "../assets/coop.svg"
+import LafargeHolcimpng from "../assets/LafargeHolcimpng.svg"
+import bankofchina from "../assets/bank-of-china.svg"
+import CICHY from "../assets/CICHY.svg"
+import agriculturalbank from "../assets/agricultural-bank-of-china.svg"
+import chinalife from "../assets/china-life.svg"
+import faw from "../assets/faw.svg"
+import ChinaMinmetals from "../assets/ChinaMinmetals.svg"
+import Sinochem from "../assets/Sinochem.svg"
+import greenland from "../assets/greenland.svg"
+
 
 import YENGBP from "../assets/YENGBP.svg"
 import USDEUR from "../assets/USDEUR.svg"
@@ -60,6 +105,9 @@ import DE from "../assets/DE.svg"
 import US from "../assets/US.svg"
 import FR from "../assets/FR.svg"
 import GB from "../assets/GB.svg"
+import CH from "../assets/CH.svg"
+import CN from "../assets/CN.svg"
+
 // Home
 export const initial = {
     STOCK: [
@@ -124,12 +172,13 @@ export const initial1 = {
 // stock-market
 export const initialTitle = {
     STOCK: [
+        { title: "Китай", pair: 'CN', img: CN, imgD: CN },
         { title: "США", pair: 'US', img: US, imgD: US },
         { title: "Германия", pair: 'DE', img: DE, imgD: DE },
         { title: "Франция", pair: 'FR', img: FR, imgD: FR },
-        // { title: "Великобритания", pair: 'USD', img: GB, imgD: GB },
-        // { title: "AMZN", pair: 'USD', img: amazon },
-        // { title: "MSFT", pair: 'USD', img: microsoft },
+        { title: "Великобритания", pair: 'UK', img: GB, imgD: GB },
+        { title: "Швейцария", pair: 'CH', img: CH, imgD: GB },
+
     ],
     FOREX: [
         { title: "Доллар США", pair: 'USD', img: usd, imgD: usdD },
@@ -152,28 +201,65 @@ export const initialTitle = {
 export const initialForex = {
     STOCK: {
         US: [
-            { pair: "GE", name: "GENERAL ELECTRIC", img: general, imgD: general },
-            { pair: "FB", name: "FACEBOOK INC", img: facebook, imgD: facebook },
-            { pair: "NKE", name: "NIKE INC", img: nike, imgD: nike },
+            { pair: "GE", name: "General electric", img: general, imgD: general },
+            { pair: "FB", name: "Facebook inc", img: facebook, imgD: facebook },
+            { pair: "NKE", name: "Nike inc", img: nike, imgD: nike },
             { pair: "MDNDF", name: "McDonald’s", img: mcdonalds, imgD: mcdonalds },
-            { pair: "AMZN", name: "AMAZON COM INC", img: amazon, imgD: amazon },
-            { pair: "MSFT", name: "MICROSOFT CORPORATION", img: microsoft, imgD: microsoft },
+            { pair: "MA", name: "Mastercard incorporated", img: Mastercard, imgD: Mastercard },
+            { pair: "CVX", name: "Chevron corporation", img: chevron, imgD: chevron },
+            { pair: "SBUX", name: "Starbucks corp", img: starbucks, imgD: starbucks },
+            { pair: "FORD", name: "Ford motor company", img: ford, imgD: ford },
         ],
         DE: [
-            { pair: "AAPL", name: "APPLE INC", img: microsoft, imgD: microsoft },
-            { pair: "TSLA", name: "TESLA INC", img: tesla, imgD: tesla },
-            { pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A", img: spotify, imgD: spotify },
-            { pair: "INTC", name: "INTEL CORP", img: intel, imgD: intel },
-            { pair: "AMZN", name: "AMAZON COM INC", img: amazon, imgD: amazon },
-            { pair: "MSFT", name: "MICROSOFT CORPORATION", img: microsoft, imgD: microsoft },
+            { pair: "VOW3.FRK", name: "Volkswagen AG", img: volkswagen, imgD: volkswagen },
+            { pair: "ALV.FRK", name: "ALLIANZ SE", img: allianz, imgD: allianz },
+            { pair: "BMW.FRK", name: "BAY.MOTOREN WERKE AG", img: bmw, imgD: bmw },
+            { pair: "SIE.FRK", name: "SIEMENS AG", img: siemens, imgD: siemens },
+            { pair: "TKA.FRK", name: "THYSSENKRUPP AG", img: krupp, imgD: krupp },
+            { pair: "LHA.FRK", name: "Deutsche Lufthansa AG", img: lufthansa, imgD: lufthansa },
+            { pair: "ADS.FRK", name: "ADIDAS AG", img: adidas, imgD: adidas },
+            { pair: "DBK.FRK", name: "Deutsche Bank AG", img: deutsche, imgD: deutsche },
+
         ],
         FR: [
-            { pair: "AAPL", name: "APPLE INC", img: microsoft, imgD: microsoft },
-            { pair: "TSLA", name: "TESLA INC", img: tesla, imgD: tesla },
-            { pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A", img: spotify, imgD: spotify },
-            { pair: "INTC", name: "INTEL CORP", img: intel, imgD: intel },
-            { pair: "AMZN", name: "AMAZON COM INC", img: amazon, imgD: amazon },
-            { pair: "MSFT", name: "MICROSOFT CORPORATION", img: microsoft, imgD: microsoft },
+            { pair: "FP.PAR", name: "TOTAL SE", img: total, imgD: total },
+            { pair: "CS.PAR", name: "AXA SA", img: axa, imgD: axa },
+            { pair: "ACA.PAR", name: "Crédit Agricole S.A", img: Credit_Agricole, imgD: Credit_Agricole },
+            { pair: "CA.PAR", name: "Carrefour SA", img: carrefour, imgD: carrefour },
+            { pair: "RNO.PAR", name: "Renault SA", img: renault, imgD: renault },
+            { pair: "ORA.PAR", name: "Orange S.A", img: orange, imgD: orange },
+            { pair: "ML.PAR", name: "Michelin", img: michelin, imgD: michelin },
+            { pair: "SAN.PAR", name: "Sanofi", img: Sanofi, imgD: Sanofi },
+        ],
+        UK: [
+            { pair: "RDSB.LON", name: "Royal Dutch Shell PLC", img: shell, imgD: shell },
+            { pair: "BP.LON", name: "BP PLC", img: bp, imgD: bp },
+            { pair: "VOD.LON", name: "VODAFONE GROUP PLC", img: vodafone, imgD: vodafone },
+            { pair: "BT-A.LON", name: "BT Group PLC", img: BT, imgD: BT },
+            { pair: "AZN.LON", name: "Astra Zeneca PLC", img: astrazeneca, imgD: astrazeneca },
+            { pair: "IMB.LON", name: "Imperial Brands PLC", img: ITBAF, imgD: ITBAF },
+            { pair: "STAN.LON", name: "Standard Chartered PLC", img: standard, imgD: standard },
+            { pair: "RB.LON", name: "Reckitt Benckiser Group PLC", img: Reckitt, imgD: Reckitt },
+        ],
+        CH: [
+            { pair: "NSRGY", name: "Nestle SA", img: nestle, imgD: nestle },
+            { pair: "RHHBY", name: "Roche Holding AG", img: roche, imgD: roche },
+            { pair: "NVS", name: "Novartis AG", img: novartis, imgD: novartis },
+            { pair: "UBS", name: "UBS Group AG", img: UBS, imgD: UBS },
+            { pair: "ABB", name: "ABB Ltd", img: abb, imgD: abb },
+            { pair: "ZFSVF", name: "Zurich Insurance Group AG Ltd", img: zurich, imgD: zurich },
+            { pair: "COOP", name: "Mr. Cooper Group Inc", img: coop, imgD: coop },
+            { pair: "HCMLY", name: "LafargeHolcim Ltd", img: LafargeHolcimpng, imgD: LafargeHolcimpng },
+        ],
+        CN: [
+            { pair: "601988.SHH", name: "Bank of China Ltd", img: bankofchina, imgD: bankofchina },
+            { pair: "601939.SHH", name: "China Construction Bank Corp", img: CICHY, imgD: CICHY },
+            { pair: "601288.SHH", name: "Agricultural Bank of China Ltd", img: agriculturalbank, imgD: agriculturalbank },
+            { pair: "601628.SHH", name: "China Life Insurance Company Ltd", img: chinalife, imgD: chinalife },
+            { pair: "000800.SHZ", name: "Faw Car Company Ltd", img: faw, imgD: faw },
+            { pair: "000831.SHZ", name: "Minmetals Rare Earth Company Ltd", img: ChinaMinmetals, imgD: ChinaMinmetals },
+            { pair: "600500.SHH", name: "Sinochem International Corp", img: Sinochem, imgD: Sinochem },
+            { pair: "600606.SHH", name: "Greenland Holdings Corp Ltd", img: greenland, imgD: greenland },
         ],
     },
     FOREX: {
