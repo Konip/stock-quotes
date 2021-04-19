@@ -160,4 +160,3 @@ export const db = [
     { type: "CRYPTO", pair: "XMRUSD", name: "Монеро / Доллар США" },
     { type: "CRYPTO", pair: "ZECUSD", name: "Zcash / Доллар США" },
 ]
-

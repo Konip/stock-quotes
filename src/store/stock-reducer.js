@@ -202,11 +202,13 @@ export function requestThunk(type, time, pair) {
                     .then(res => {
                         // console.log(res)
                         const data = buildChartData(res[response[type][time]], type, time)
-                        return dispatch(addDataForex(data))
-                        // return Promise.all([
-                        //     dispatch(addChart(data)),
-                        //     dispatch(addDataForex(data))
-                        // ])
+                        // return dispatch(addDataForex(data))
+                        const pair1 = pair.slice(0,3)
+                        return Promise.all([
+                            dispatch(addChart(data)),
+                            dispatch(addDataForex(data)),
+                            dispatch(addDescription(description[type][pair1]))
+                        ])
                     })
                 break
             }

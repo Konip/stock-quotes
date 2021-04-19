@@ -172,13 +172,12 @@ export const initial1 = {
 // stock-market
 export const initialTitle = {
     STOCK: [
-        { title: "Китай", pair: 'CN', img: CN, imgD: CN },
         { title: "США", pair: 'US', img: US, imgD: US },
         { title: "Германия", pair: 'DE', img: DE, imgD: DE },
         { title: "Франция", pair: 'FR', img: FR, imgD: FR },
         { title: "Великобритания", pair: 'UK', img: GB, imgD: GB },
         { title: "Швейцария", pair: 'CH', img: CH, imgD: GB },
-
+        { title: "Китай", pair: 'CN', img: CN, imgD: CN },
     ],
     FOREX: [
         { title: "Доллар США", pair: 'USD', img: usd, imgD: usdD },

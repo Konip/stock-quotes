@@ -24,10 +24,14 @@ export default function Navbar({ colorTheme }) {
                 </div>
                 <div className="navbar-wrap">
                     <NavLink to="/markets" >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bdbdbd"
+                        {/* <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#bdbdbd"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg> */}
+                        <svg className='chart' xmlns="http://www.w3.org/2000/svg" viewBox="-2 0 26 26" fill="#bdbdbd" stroke="none"
+                            stroke-width="0.1" >
+                            <path d="M23 22a1 1 0 01-1 1H2a1 1 0 01-1-1V2a1 1 0 012 0v16.7l6.17-9.25a1 1 0 011.66 0l3.1 4.65 7.2-12.6a1 1 0 011.74 1l-8 14a1 1 0 01-.87.5 1 1 0 01-.86-.45L10 11.8 3.87 21H22a1 1 0 011 1z" />
                         </svg>
                     </NavLink>
                 </div>

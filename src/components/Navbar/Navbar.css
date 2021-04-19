@@ -41,5 +41,10 @@
 
 .navbar-wrap svg:hover {
     stroke: rgb(76, 117, 242);
+    /* fill: rgb(76, 117, 242); */
+    transition: .5s;
+}
+.navbar-wrap .chart:hover{
+    fill: rgb(76, 117, 242);
     transition: .5s;
 }
