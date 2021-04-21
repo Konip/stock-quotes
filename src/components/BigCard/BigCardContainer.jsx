@@ -25,6 +25,7 @@ export default function BigCardContainer() {
     const CEO = stock.description.CEO
     const employees = stock.description.employees
     const paper = stock.description.paper
+    const headquarters = stock.description.headquarters
 
     const request = (type, time, pair) => {
         dispatch(requestThunk(type, time, pair))
@@ -32,9 +33,11 @@ export default function BigCardContainer() {
 
     return (
         <div>
-            <BigCard type={activeType} request={request} data={data} activeRow={activeRow} activeTime={activeTime} colorTheme={colorTheme}
-                description={description} sector={sector} industry={industry} currency={currency} country={country} symbol={symbol}
-                companyName={companyName} exchange={exchange} website={website} CEO={CEO} employees={employees} paper={paper}
+            <BigCard type={activeType} request={request} data={data} activeRow={activeRow}
+                activeTime={activeTime} colorTheme={colorTheme} description={description} sector={sector}
+                industry={industry} currency={currency} country={country} symbol={symbol} companyName={companyName}
+                exchange={exchange} website={website} CEO={CEO} employees={employees} paper={paper} 
+                headquarters={headquarters}
             />
         </div>
     )

@@ -176,7 +176,7 @@ export const initialTitle = {
         { title: "Германия", pair: 'DE', img: DE, imgD: DE },
         { title: "Франция", pair: 'FR', img: FR, imgD: FR },
         { title: "Великобритания", pair: 'UK', img: GB, imgD: GB },
-        { title: "Швейцария", pair: 'CH', img: CH, imgD: GB },
+        { title: "Швейцария", pair: 'CH', img: CH, imgD: CH },
         { title: "Китай", pair: 'CN', img: CN, imgD: CN },
     ],
     FOREX: [
@@ -247,7 +247,7 @@ export const initialForex = {
             { pair: "UBS", name: "UBS Group AG", img: UBS, imgD: UBS },
             { pair: "ABB", name: "ABB Ltd", img: abb, imgD: abb },
             { pair: "ZFSVF", name: "Zurich Insurance Group AG Ltd", img: zurich, imgD: zurich },
-            { pair: "COOP", name: "Mr. Cooper Group Inc", img: coop, imgD: coop },
+            // { pair: "COOP", name: "Mr. Cooper Group Inc", img: coop, imgD: coop },
             { pair: "HCMLY", name: "LafargeHolcim Ltd", img: LafargeHolcimpng, imgD: LafargeHolcimpng },
         ],
         CN: [

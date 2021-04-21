@@ -30,14 +30,17 @@
     width: 30px;
 }
 
-.active svg {
+.navbar-wrap .active svg {
     stroke: rgb(76, 117, 242);
+}
+.navbar-wrap .active .chart {
+    fill: rgb(76, 117, 242);
 }
 
-.active svg:hover {
+/* .active svg:hover {
     stroke: rgb(76, 117, 242);
     transition: .5s;
-}
+} */
 
 .navbar-wrap svg:hover {
     stroke: rgb(76, 117, 242);

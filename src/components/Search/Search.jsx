@@ -92,7 +92,7 @@ export default class Search extends Component {
                         result.map(res => (
                             <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/"
                                 onClick={() => (this.request(res.type, chartTime, res.pair))}>
-                                <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>{`${res.pair}    ${res.name}`}</div>
+                                <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>{`${res.pair}   ${res.name}`}</div>
                             </Link>
                         ))
                     }

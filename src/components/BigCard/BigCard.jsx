@@ -5,7 +5,7 @@ import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';
 
 export default function BigCard({ type, request, activeRow, activeTime, data, colorTheme, description, sector, industry, currency,
-    country, symbol, companyName, exchange, website, CEO, employees, paper }) {
+    country, symbol, companyName, exchange, website, CEO, employees, paper, headquarters }) {
     // console.log(data)
     const dispatch = useDispatch()
 
@@ -29,38 +29,43 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                 <TimeFramesBig active={activeTime} colorTheme={colorTheme}
                                     onClickItem={(active) => req(type, active, activeRow)} />
                             </div>
-                            
-                            <div className={colorTheme ? "description-light" : "description-dark"}>
-                                <div className="description-row">
+
+                            <div className={colorTheme ? "info-light" : "info-dark"}>
+                                <div className="info-row">
                                     <strong>{symbol} </strong>{companyName}
                                 </div>
-                                <div className="description-row">
-                                    <strong>Страна: </strong>
+                                <div className="info-row">
+                                    <strong>Страна: </strong>{country}
                                 </div>
-                                <div className="description-row">
+                                <div className="info-row">
+                                    <strong>Штаб-квартира: </strong>{headquarters}
+                                </div>
+                                <div className="info-row">
                                     <strong>Биржа: </strong>{exchange}
                                 </div>
-                                <div className="description-row">
+                                <div className="info-row">
                                     <strong>Сайт: </strong><a href={website}>{website}</a>
                                 </div>
-                                <div className="description-row">
+                                <div className="info-row">
                                     <strong>Исполнительный директор: </strong>{CEO}
                                 </div>
-                                <div className="description-row">
+                                <div className="info-row">
                                     <strong>Число сотрудников: </strong>{employees}
                                 </div>
                             </div>
                         </div>
 
                         <div className={colorTheme ? "right-block-light" : "right-block-dark"}>
-                            <div className={colorTheme ? "news-light" : "news-dark"}>
-                                <div className="description-row">
+                            <div className={colorTheme ? "description-light" : "description-dark"}>
+                                <div className="info-row">
                                     <strong>Сектор: </strong>{sector}
                                 </div>
-                                <div className="description-row">
+                                <div className="info-row">
                                     <strong>Отрасль: </strong>{industry}
                                 </div>
-                                {description}
+                                <div className="description-row">
+                                    {description}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -72,23 +77,24 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                     <TimeFramesBig active={activeTime} colorTheme={colorTheme}
                                         onClickItem={(active) => req(type, active, activeRow)} />
                                 </div>
-                                <div className={colorTheme ? "description-light" : "description-dark"}>
-                                    <div className="description-row">
+                                <div className={colorTheme ? "info-light" : "info-dark"}>
+                                    <div className="info-row">
                                         <strong>{companyName}</strong> {symbol}
                                     </div>
-                                    <div className="description-row">
+                                    <div className="info-row">
                                         <strong>Сайт: </strong>{website}
                                     </div>
-                                    <div className="description-row">
+                                    <div className="info-row">
                                         <a href={paper}><strong>Белая книга: </strong></a>
-
                                     </div>
                                 </div>
                             </div>
 
                             <div className={colorTheme ? "right-block-light" : "right-block-dark"}>
-                                <div className={colorTheme ? "news-light" : "news-dark"}>
+                                <div className={colorTheme ? "description-light" : "description-dark"}>
+                                <div className="description-row">
                                     {description}
+                                </div>
                                 </div>
                             </div>
                         </div>
@@ -99,7 +105,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                     <TimeFramesBig active={activeTime} colorTheme={colorTheme}
                                         onClickItem={(active) => req(type, active, activeRow)} />
                                 </div>
-                                <div className={colorTheme ? "description-light" : "description-dark"}></div>
+                                <div className={colorTheme ? "info-light" : "info-dark"}></div>
                             </div>
                             <div className={colorTheme ? "right-block-light" : "right-block-dark"}></div>
                         </div>

@@ -174,18 +174,18 @@ export function requestThunk(type, time, pair) {
                     .then(res => {
                         const data = buildChartData(res[response[type][time]], type, time)
 
-                        if (initial1[type][pair] === pair) {
+                        // if (initial1[type][pair] === pair) {
                             console.log('1')
                             return Promise.all([
                                 dispatch(addChart(data)),
                                 dispatch(addDataStock(data)),
                                 dispatch(addDescription(description[type][pair]))
                             ])
-                        }
-                        else {
-                            console.log('2')
-                            return dispatch(addChart(data))
-                        }
+                        // }
+                        // else {
+                        //     console.log('2')
+                        //     return dispatch(addChart(data))
+                        // }
 
                         // return Promise.all([
                         //     dispatch(addChart(data)),

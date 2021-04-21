@@ -6,6 +6,7 @@ import { addActive, addActiveType } from '../../store/stock-reducer';
 import Row from './../Row/Row';
 import { initial } from '../../db/initial'
 import { Link } from 'react-router-dom';
+import { db } from '../../db/db'
 
 
 export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme }) {
@@ -16,7 +17,21 @@ export default function Card({ title, type, request, activeRow, activeTime, data
         dispatch(addActiveType(type))
         request(type, time, pair)
     }
-
+    // db.map(d => {
+    //     console.log(d.name)
+    // })
+    // for (let i = 0; db.length > i; i++) {
+    //     let low = db[i].name.toLowerCase().slice(1)
+    //     let up = db[i].name[0].toUpperCase()
+    //     let nw = up + low
+    //     // for (let j = 0; low.length > j; j++) {
+    //     //     if(j == 0) {
+    //     //         return low[j].toUpperCase
+    //     //     }
+    //     // }
+    //     db[i].name = nw
+    //     console.log(db[i])
+    // }
     return (
         <div className={colorTheme ? "card-light" : "card-dark"}>
             <div className="wrap">
