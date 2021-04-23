@@ -42,7 +42,6 @@ import novartis from "../assets/novartis.svg"
 import UBS from "../assets/UBS.svg"
 import abb from "../assets/abb.svg"
 import zurich from "../assets/zurich.svg"
-import coop from "../assets/coop.svg"
 import LafargeHolcimpng from "../assets/LafargeHolcimpng.svg"
 import bankofchina from "../assets/bank-of-china.svg"
 import CICHY from "../assets/CICHY.svg"
@@ -52,6 +51,7 @@ import faw from "../assets/faw.svg"
 import ChinaMinmetals from "../assets/ChinaMinmetals.svg"
 import Sinochem from "../assets/Sinochem.svg"
 import greenland from "../assets/greenland.svg"
+import logitech from "../assets/logitech.svg"
 
 
 import YENGBP from "../assets/YENGBP.svg"
@@ -203,7 +203,7 @@ export const initialForex = {
             { pair: "GE", name: "General electric", img: general, imgD: general },
             { pair: "FB", name: "Facebook inc", img: facebook, imgD: facebook },
             { pair: "NKE", name: "Nike inc", img: nike, imgD: nike },
-            { pair: "MDNDF", name: "McDonald’s", img: mcdonalds, imgD: mcdonalds },
+            { pair: "MCD", name: "McDonald’s", img: mcdonalds, imgD: mcdonalds },
             { pair: "MA", name: "Mastercard incorporated", img: Mastercard, imgD: Mastercard },
             { pair: "CVX", name: "Chevron corporation", img: chevron, imgD: chevron },
             { pair: "SBUX", name: "Starbucks corp", img: starbucks, imgD: starbucks },
@@ -233,7 +233,7 @@ export const initialForex = {
         UK: [
             { pair: "RDSB.LON", name: "Royal Dutch Shell PLC", img: shell, imgD: shell },
             { pair: "BP.LON", name: "BP PLC", img: bp, imgD: bp },
-            { pair: "VOD.LON", name: "VODAFONE GROUP PLC", img: vodafone, imgD: vodafone },
+            { pair: "VOD.LON", name: "VODAFONE GROUP PLC", img: vodafone, imgD: vodafone },// + 
             { pair: "BT-A.LON", name: "BT Group PLC", img: BT, imgD: BT },
             { pair: "AZN.LON", name: "Astra Zeneca PLC", img: astrazeneca, imgD: astrazeneca },
             { pair: "IMB.LON", name: "Imperial Brands PLC", img: ITBAF, imgD: ITBAF },
@@ -247,7 +247,7 @@ export const initialForex = {
             { pair: "UBS", name: "UBS Group AG", img: UBS, imgD: UBS },
             { pair: "ABB", name: "ABB Ltd", img: abb, imgD: abb },
             { pair: "ZFSVF", name: "Zurich Insurance Group AG Ltd", img: zurich, imgD: zurich },
-            // { pair: "COOP", name: "Mr. Cooper Group Inc", img: coop, imgD: coop },
+            { pair: "LOGI", name: "Logitech International SA", img: logitech, imgD: logitech },
             { pair: "HCMLY", name: "LafargeHolcim Ltd", img: LafargeHolcimpng, imgD: LafargeHolcimpng },
         ],
         CN: [

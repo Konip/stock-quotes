@@ -10,7 +10,7 @@ export const db = [
     { type: "STOCK", pair: "FUBO", name: "Fubotv Inc" },
     { type: "STOCK", pair: "GE", name: "General Electric co" },
     { type: "STOCK", pair: "PLTR", name: "Palantir Tech Inc" },
-    { type: "STOCK", pair: "FORD", name: "Ford Motor Company" },
+    { type: "STOCK", pair: "F", name: "Ford Motor Company" },
     { type: "STOCK", pair: "CCL", name: "Carnival Corp" },
     { type: "STOCK", pair: "AMD", name: "Amd (advanced micro devices Inc.)" },
     { type: "STOCK", pair: "PFE", name: "Pfizer Inc" },
@@ -104,7 +104,7 @@ export const db = [
     { type: "STOCK", pair: "UBS", name: "UBS Group AG" },
     { type: "STOCK", pair: "ABB", name: "ABB Ltd" },
     { type: "STOCK", pair: "ZFSVF", name: "Zurich Insurance Group AG Ltd" },
-    // { type: "STOCK", pair: "COOP", name: "Mr. Cooper Group Inc" },
+    { type: "STOCK", pair: "LOGI", name: "Logitech International SA" },
     { type: "STOCK", pair: "HCMLY", name: "LafargeHolcim Ltd" },
     // Китай CNY ¥
     { type: "STOCK", pair: "601988.SHH", name: "Bank of China Ltd" },
@@ -115,22 +115,68 @@ export const db = [
     { type: "STOCK", pair: "000831.SHZ", name: "Minmetals Rare Earth Company Ltd" },
     { type: "STOCK", pair: "600500.SHH", name: "Sinochem International Corp" },
     { type: "STOCK", pair: "600606.SHH", name: "Greenland Holdings Corp Ltd" },
-    // { type: "STOCK", pair: "RHHBY", name: "RHHBY" },
     //  Швеция
-    { type: "STOCK", pair: "SPOT", name: "Spotify technology s.a" },
+    { type: "STOCK", pair: "SPOT", name: "Spotify technology SA" },
+    { type: "STOCK", pair: "VLVLY", name: "Volvo AB" },
+    { type: "STOCK", pair: "SKBSY", name: "Skanska AB" },
+    // Италия
+    { type: "STOCK", pair: "ENLAY", name: "Enel SPA" },
+    { type: "STOCK", pair: "ARZGF", name: "Assicurazioni Generali SPA" },
+    { type: "STOCK", pair: "ISNPY", name: "Intesa Sanpaolo SPA" },
+    { type: "STOCK", pair: "ISNPY", name: "Intesa" },
+    // { type: "STOCK", pair: "ISNPY", name: "Intesa" },
 
-    // // ---------------FOREX -------------------
-    // { type: "FOREX", pair: "USDEUR", name: "Доллар США / Евро" },
-    // { type: "FOREX", pair: "JPYGBP", name: "Японская иена / Британский фунт" },
-    // { type: "FOREX", pair: "EURINR", name: "Евро / Индийская рупия" },
-    // { type: "FOREX", pair: "USDILS", name: "Доллар США  / Новый израильский шекель" },
-    // { type: "FOREX", pair: "BYNGBP", name: "Белорусский рубль / Британский фунт" },
-    // { type: "FOREX", pair: "EURTWD", name: "Евро / Новый тайваньский доллар" },
-    // //-------------- CRYPTO----------------------
-    // { type: "CRYPTO", pair: "BTCUSD", name: "Биткоин / Доллар США" },
-    // { type: "CRYPTO", pair: "ETHUSD", name: "Эфириум / Доллар США" },
-    // { type: "CRYPTO", pair: "LTCUSD", name: "Лайткоин / Доллар США" },
-    // { type: "CRYPTO", pair: "XRPUSD", name: "Рипл / Доллар США" },
-    // { type: "CRYPTO", pair: "XMRUSD", name: "Монеро / Доллар США" },
-    // { type: "CRYPTO", pair: "ZECUSD", name: "Zcash / Доллар США" },
+    // ---------------FOREX -------------------
+    { type: "FOREX", pair: "USDEUR", name: "Доллар США / Евро" },
+    { type: "FOREX", pair: "JPYGBP", name: "Японская иена / Британский фунт" },
+    { type: "FOREX", pair: "EURINR", name: "Евро / Индийская рупия" },
+    { type: "FOREX", pair: "USDILS", name: "Доллар США  / Новый израильский шекель" },
+    { type: "FOREX", pair: "BYNGBP", name: "Белорусский рубль / Британский фунт" },
+    { type: "FOREX", pair: "EURTWD", name: "Евро / Новый тайваньский доллар" },
+    //-------------- CRYPTO----------------------
+    { type: "CRYPTO", pair: "BTCUSD", name: "Биткоин / Доллар США" },
+    { type: "CRYPTO", pair: "ETHUSD", name: "Эфириум / Доллар США" },
+    { type: "CRYPTO", pair: "LTCUSD", name: "Лайткоин / Доллар США" },
+    { type: "CRYPTO", pair: "XRPUSD", name: "Рипл / Доллар США" },
+    { type: "CRYPTO", pair: "XMRUSD", name: "Монеро / Доллар США" },
+    { type: "CRYPTO", pair: "ZECUSD", name: "Zcash / Доллар США" },
 ]
+// FOREX: {
+//     USD: {
+//         currency: '$',
+//     },
+//     EUR: {
+//         currency: '€',
+//     },
+//     GBP: {
+//         currency: '£',
+//     },
+//     CNY: {
+//         currency: '¥',
+//     },
+//     PLN: {
+//         currency: 'zł',
+//     },
+//     THB: {
+//         currency: '฿',
+//     },
+//     JPY: {
+//         currency: '¥',
+//     },
+//     BYN: {
+//         currency: 'р.',
+//     },
+//     KRW: {
+//         currency: '₩',
+//     },
+//     PHP: {
+//         currency: '₱',
+//     },
+//     INR: {
+//         currency: '₹',
+//     },
+//     CZK: {
+//         currency: 'Kč',
+//     },
+
+// },

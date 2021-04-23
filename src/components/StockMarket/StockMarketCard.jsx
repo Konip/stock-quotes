@@ -22,7 +22,7 @@ export default function StockMarketCard({ title, type, request, colorTheme, img,
                 <div className="market-rows">
                     {data.map((i, index) => (
                         < MarketRow key={`${i.pair}${i.name}`} pair={i.pair} name={i.name} img={colorTheme ? i.img : i.imgD} type={type}
-                            onClickItem={(pair) => req(type, '1W', pair)} colorTheme={colorTheme}
+                            onClickItem={(pair) => req(type, '1D', pair)} colorTheme={colorTheme}
                         />
                     ))}
                 </div>

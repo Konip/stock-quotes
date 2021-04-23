@@ -41,7 +41,9 @@
     /* outline: none; */
     padding: 1rem 1rem 1rem 1rem;
 }
-
+.company-search-input svg{
+    margin-top: 4px;
+}
 .company-search-input {
     box-shadow: 0 10px 35px rgba(0, 0, 0, .1);
     color: #6c757d;

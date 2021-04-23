@@ -11,6 +11,7 @@ const ACTIVE_TYPE = "ACTIVE_TYPE"
 const COLOR_THEME = "COLOR_THEME"
 const CHART = "CHART"
 const DESCRIPTION = "DESCRIPTION"
+const CURRENCY = "CURRENCY"
 
 const initialState = {
     STOCK: [],
@@ -34,7 +35,8 @@ const initialState = {
     CHART: [],
     chartTime: '1D',
     colorTheme: true,
-    description: ''
+    description: '',
+    currency: ''
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
@@ -93,6 +95,12 @@ export const stockReducer = (state = initialState, { type, payload }) => {
                 description: payload
             }
         }
+        case CURRENCY: {
+            return {
+                ...state,
+                currency: payload
+            }
+        }
         default:
             return state
     }
@@ -105,6 +113,7 @@ export const addActiveType = (payload) => ({ type: ACTIVE_TYPE, payload })
 export const addColorTheme = (payload) => ({ type: COLOR_THEME, payload })
 export const addChart = (payload) => ({ type: CHART, payload })
 export const addDescription = (payload) => ({ type: DESCRIPTION, payload })
+export const addCurrency = (payload) => ({ type: CURRENCY, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -163,7 +172,7 @@ const response = {
 }
 
 export function requestThunk(type, time, pair) {
-    console.log(type, time, pair)
+    // console.log(type, time, pair)
     return (dispatch) => {
         switch (type) {
             case STOCK: {
@@ -173,14 +182,14 @@ export function requestThunk(type, time, pair) {
                     })
                     .then(res => {
                         const data = buildChartData(res[response[type][time]], type, time)
-
                         // if (initial1[type][pair] === pair) {
-                            console.log('1')
-                            return Promise.all([
-                                dispatch(addChart(data)),
-                                dispatch(addDataStock(data)),
-                                dispatch(addDescription(description[type][pair]))
-                            ])
+                        console.log('1')
+                        return Promise.all([
+                            dispatch(addActiveType(type)),
+                            dispatch(addChart(data)),
+                            dispatch(addDataStock(data)),
+                            dispatch(addDescription(description[type][pair]))
+                        ])
                         // }
                         // else {
                         //     console.log('2')
@@ -203,8 +212,9 @@ export function requestThunk(type, time, pair) {
                         // console.log(res)
                         const data = buildChartData(res[response[type][time]], type, time)
                         // return dispatch(addDataForex(data))
-                        const pair1 = pair.slice(0,3)
+                        const pair1 = pair.slice(0, 3)
                         return Promise.all([
+                            dispatch(addActiveType(type)),
                             dispatch(addChart(data)),
                             dispatch(addDataForex(data)),
                             dispatch(addDescription(description[type][pair1]))
@@ -221,11 +231,17 @@ export function requestThunk(type, time, pair) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res, type, time)
-                            return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
-                            // return Promise.all([
-                            //     dispatch(addChart(data)),
-                            //     dispatch(addDataCrypto(data))
-                            // ])
+                            // return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
+                            const currency = pair.slice(3)
+                            const symbol = pair.slice(0,3)
+                            console.log(currency,symbol)
+                            return Promise.all([
+                                dispatch(addActiveType(type)),
+                                dispatch(addCurrency(description[FOREX][currency].currency)),
+                                dispatch(addChart(data)),
+                                dispatch(addDataCrypto(data)),
+                                dispatch(addDescription(description[type][symbol]))
+                            ])
                         })
                     break
                 }
@@ -237,11 +253,16 @@ export function requestThunk(type, time, pair) {
                         .then(res => {
                             // console.log(res)
                             const data = buildChartData(res[response[type][time]], type, time)
-                            return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
-                            // return Promise.all([
-                            //     dispatch(addChart(data)),
-                            //     dispatch(addDataCrypto(data))
-                            // ])
+                            // return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
+                            const currency = pair.slice(3)
+                            const symbol = pair.slice(0,3)
+                            return Promise.all([
+                                dispatch(addActiveType(type)),
+                                dispatch(addCurrency(description[FOREX][currency].currency)),
+                                dispatch(addChart(data)),
+                                dispatch(addDataCrypto(data)),
+                                dispatch(addDescription(description[type][symbol]))
+                            ])
                         })
                     break
                 }
@@ -251,9 +272,6 @@ export function requestThunk(type, time, pair) {
         }
     }
 }
-
-
-
 
 export const startThunk = () => {
 
