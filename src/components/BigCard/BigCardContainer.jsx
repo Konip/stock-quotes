@@ -12,15 +12,16 @@ export default function BigCardContainer() {
     const activeRow = stock.ACTIVE[activeType].pair
     const activeTime = stock.ACTIVE[activeType].time
     const colorTheme = stock.colorTheme
-    console.log(activeType)
+    const frame = stock.timeFrames
+
     let currency
     if (activeType === 'CRYPTO') currency = stock.currency
     else currency = stock.description.currency
 
+    // description
     const description = stock.description.description
     const sector = stock.description.sector
     const industry = stock.description.industry
-
     const country = stock.description.country
     const symbol = stock.description.symbol
     const companyName = stock.description.companyName
@@ -32,8 +33,8 @@ export default function BigCardContainer() {
     const headquarters = stock.description.headquarters
     const code = stock.description.code
 
-    const request = (type, time, pair) => {
-        dispatch(requestThunk(type, time, pair))
+    const request = (type, time, pair,frame) => {
+        dispatch(requestThunk(type, time, pair,frame))
     }
 
     return (
@@ -42,7 +43,7 @@ export default function BigCardContainer() {
                 activeTime={activeTime} colorTheme={colorTheme} description={description} sector={sector}
                 industry={industry} currency={currency} country={country} symbol={symbol} companyName={companyName}
                 exchange={exchange} website={website} CEO={CEO} employees={employees} paper={paper}
-                headquarters={headquarters} code={code}
+                headquarters={headquarters} code={code} frame={frame}
             />
         </div>
     )

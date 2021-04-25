@@ -1,9 +1,10 @@
 import "./TimeFrames.css"
 
+const arrTimeFrames = ["1D", "1W", "1M", "6M","1Y","All"]
+// const arrTimeFrames = ["5m", "15m", "1H", "1D", "1W", "1M", "All"]
 
 export default function TimeFrames({ active, onClickItem, colorTheme }) {
-    const arrTimeFrames = ["1D", "1W", "1M"]
-
+   
     return (
         <div className="time">
             <ul>

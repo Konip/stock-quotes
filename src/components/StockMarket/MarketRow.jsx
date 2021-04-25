@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import "./MarketRow.css"
 
 
-export default function MarketRow({ pair, name, img, type, onClickItem, colorTheme }) {
+export default function MarketRow({ pair, name, img, type, onClickItem, colorTheme, frame }) {
+    
     return (
-        <div className={colorTheme ? "row-light" : "row-dark"} onClick={() => onClickItem(pair)}>
+        <div className={colorTheme ? "row-light" : "row-dark"} onClick={() => onClickItem(pair,frame)}>
             <div className="row-wrapper">
                 <div className="section">
                     <img className={`logo-${type}`} src={img} alt="" />

@@ -12,6 +12,7 @@ const COLOR_THEME = "COLOR_THEME"
 const CHART = "CHART"
 const DESCRIPTION = "DESCRIPTION"
 const CURRENCY = "CURRENCY"
+const TIME = "TIME"
 
 const initialState = {
     STOCK: [],
@@ -36,7 +37,8 @@ const initialState = {
     chartTime: '1D',
     colorTheme: true,
     description: '',
-    currency: ''
+    currency: '',
+    timeFrames: ''
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
@@ -101,6 +103,12 @@ export const stockReducer = (state = initialState, { type, payload }) => {
                 currency: payload
             }
         }
+        case TIME: {
+            return {
+                ...state,
+                timeFrames: payload
+            }
+        }
         default:
             return state
     }
@@ -114,6 +122,7 @@ export const addColorTheme = (payload) => ({ type: COLOR_THEME, payload })
 export const addChart = (payload) => ({ type: CHART, payload })
 export const addDescription = (payload) => ({ type: DESCRIPTION, payload })
 export const addCurrency = (payload) => ({ type: CURRENCY, payload })
+export const addTimeFrames = (payload) => ({ type: TIME, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -140,9 +149,19 @@ const headers = {
 
 const request = {
     STOCK: {
-        "1D": "TIME_SERIES_INTRADAY",
-        "1W": "TIME_SERIES_DAILY",
-        "1M": "TIME_SERIES_DAILY"
+        required: {
+            "5m": "TIME_SERIES_INTRADAY",
+            "15m": "TIME_SERIES_INTRADAY",
+            "1H": "TIME_SERIES_INTRADAY",
+            "1D": "TIME_SERIES_INTRADAY",
+            "1W": "TIME_SERIES_DAILY",
+            "1M": "TIME_SERIES_DAILY"
+        },
+        optional: {
+            "5m": "interval=5min",
+            "15m": "interval=15min",
+            "1H": "interval=60min",
+        }
     },
     FOREX: {
         "1D": "FX_INTRADAY",
@@ -156,6 +175,9 @@ const request = {
 }
 const response = {
     STOCK: {
+        "5m": "Time Series (5min)",
+        "15m": "Time Series (15min)",
+        "1H": "Time Series (60min)",
         "1D": "Time Series (5min)",
         "1W": "Time Series (Daily)",
         "1M": "Time Series (Daily)"
@@ -171,12 +193,12 @@ const response = {
     },
 }
 
-export function requestThunk(type, time, pair) {
-    // console.log(type, time, pair)
+export function requestThunk(type, time, pair, frame) {
+    console.log(type, time, pair, frame)
     return (dispatch) => {
         switch (type) {
             case STOCK: {
-                fetch(`${URL}${request[type][time]}&symbol=${pair}&${time === "1D" ? "interval=5min&" : ""}apikey=${alphaVantageKey}`)
+                fetch(`${URL}${request[type].required[time]}&symbol=${pair}&${time === "5m" || "15m" || "1H" ? `${request[type].optional[time]}&` : ""}apikey=${alphaVantageKey}`)
                     .then(res => {
                         return res.json()
                     })
@@ -185,6 +207,7 @@ export function requestThunk(type, time, pair) {
                         // if (initial1[type][pair] === pair) {
                         console.log('1')
                         return Promise.all([
+                            dispatch(addTimeFrames(frame)),
                             dispatch(addActiveType(type)),
                             dispatch(addChart(data)),
                             dispatch(addDataStock(data)),
@@ -233,8 +256,8 @@ export function requestThunk(type, time, pair) {
                             const data = buildChartData(res, type, time)
                             // return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
                             const currency = pair.slice(3)
-                            const symbol = pair.slice(0,3)
-                            console.log(currency,symbol)
+                            const symbol = pair.slice(0, 3)
+                            console.log(currency, symbol)
                             return Promise.all([
                                 dispatch(addActiveType(type)),
                                 dispatch(addCurrency(description[FOREX][currency].currency)),
@@ -255,7 +278,7 @@ export function requestThunk(type, time, pair) {
                             const data = buildChartData(res[response[type][time]], type, time)
                             // return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
                             const currency = pair.slice(3)
-                            const symbol = pair.slice(0,3)
+                            const symbol = pair.slice(0, 3)
                             return Promise.all([
                                 dispatch(addActiveType(type)),
                                 dispatch(addCurrency(description[FOREX][currency].currency)),

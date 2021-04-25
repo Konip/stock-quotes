@@ -15,15 +15,15 @@ export default function StockMarket({ location }) {
    
     const data = initialTitle[path]
 
-    const request = (type, time, pair) => {
-        dispatch(requestThunk(type, time, pair))
+    const request = (type, time, pair,frame) => {
+        dispatch(requestThunk(type, time, pair,frame))
     }
 
     return (
         <div className="stock-markets">
             <div className="stock-markets-cards">
                 {data.map((i) => (
-                    <StockMarketCard title={i.title} type={path} request={request} img={colorTheme ? i.img : i.imgD}
+                    <StockMarketCard key={i.title + i.pair} title={i.title} type={path} request={request} img={colorTheme ? i.img : i.imgD}
                         colorTheme={colorTheme} pair={i.pair} />
                 ))}
             </div>

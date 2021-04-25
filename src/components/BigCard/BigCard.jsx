@@ -5,13 +5,13 @@ import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';
 
 export default function BigCard({ type, request, activeRow, activeTime, data, colorTheme, description, sector, industry, currency,
-    country, symbol, companyName, exchange, website, CEO, employees, paper, headquarters, code }) {
-    console.log(currency)
+    country, symbol, companyName, exchange, website, CEO, employees, paper, headquarters, code, frame }) {
+    // console.log(currency)
     const dispatch = useDispatch()
 
-    function req(type, time, pair) {
+    function req(type, time, pair, frame) {
         dispatch(addActive({ type, time, pair }))
-        request(type, time, pair)
+        request(type, time, pair, frame)
     }
 
     return (
@@ -27,7 +27,8 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                         <div className="left-block">
                             <div className={colorTheme ? "time-frames-light" : "time-frames-dark"}>
                                 <TimeFramesBig active={activeTime} colorTheme={colorTheme}
-                                    onClickItem={(active) => req(type, active, activeRow)} />
+                                    frame={frame}
+                                    onClickItem={(active,frame) => req(type, active, activeRow, frame)} />
                             </div>
 
                             <div className={colorTheme ? "info-light" : "info-dark"}>

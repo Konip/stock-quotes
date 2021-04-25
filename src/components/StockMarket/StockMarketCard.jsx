@@ -1,15 +1,15 @@
 import React from 'react'
 import './StockMarketCard.css'
-import { initialForex } from './../../db/initial';
+import { initialMarket } from './../../db/initial';
 import MarketRow from './MarketRow';
 
 export default function StockMarketCard({ title, type, request, colorTheme, img, pair }) {
 
-    let data = initialForex[type]
+    let data = initialMarket[type]
     if (pair) data = data[pair]
 
-    function req(type, time, pair) {
-        request(type, time, pair)
+    function req(type, time, pair, frame) {
+        request(type, time, pair, frame)
     }
     return (
         <div className={colorTheme ? "market-card-light" : "market-card-dark"}>
@@ -22,7 +22,8 @@ export default function StockMarketCard({ title, type, request, colorTheme, img,
                 <div className="market-rows">
                     {data.map((i, index) => (
                         < MarketRow key={`${i.pair}${i.name}`} pair={i.pair} name={i.name} img={colorTheme ? i.img : i.imgD} type={type}
-                            onClickItem={(pair) => req(type, '1D', pair)} colorTheme={colorTheme}
+                        frame={i.time}
+                            onClickItem={(pair, frame) => req(type, '1W', pair, frame)} colorTheme={colorTheme}
                         />
                     ))}
                 </div>

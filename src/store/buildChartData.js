@@ -7,7 +7,7 @@ export function buildChartData(data, type, time) {
     let count = 0
     let toggle = false
 
-    if (time === "1D" && type === "CRYPTO") {
+    if (time === "1D"  && type === "CRYPTO") {
 
         for (let d of data) {
 
@@ -22,7 +22,7 @@ export function buildChartData(data, type, time) {
 
     else {
 
-        if (time === "1D") toggle = true
+        if (time === "1D" || "5m" || "15m" ||"1H") toggle = true
         else if (time === "1W") count = 7
         else if (time === "1M") count = 30
 
@@ -39,7 +39,7 @@ export function buildChartData(data, type, time) {
         }
 
         for (let d in data) {
-            if (time !== "1D" && count > 0 || toggle === true) {
+            if (time !== "1D" || "5m" || "15m" ||"1H" && count > 0 || toggle === true) {
                 let NewDataPoint = {
                     x: d,
                     y: data[d][y]
@@ -52,6 +52,6 @@ export function buildChartData(data, type, time) {
     }
 
     chartData.reverse()
-    // console.log(chartData)
+    console.log(chartData)
     return chartData
 }
