@@ -2,6 +2,7 @@ import React from 'react'
 import BigCard from './BigCard'
 import { requestThunk } from "../../store/stock-reducer"
 import { useDispatch, useSelector } from 'react-redux'
+import { initialReducer } from '../../db/initial'
 
 export default function BigCardContainer() {
     const dispatch = useDispatch()
@@ -10,9 +11,13 @@ export default function BigCardContainer() {
     const activeType = stock.active_type
     const data = stock.CHART
     const activeRow = stock.ACTIVE[activeType].pair
-    const activeTime = stock.ACTIVE[activeType].time
+    const pair = stock.pair
+    let activeTime
+    if (initialReducer[activeType][pair]) activeTime = stock.ACTIVE[activeType].time
+    else  activeTime = stock.chartTime
     const colorTheme = stock.colorTheme
     const frame = stock.timeFrames
+
 
     let currency
     if (activeType === 'CRYPTO') currency = stock.currency
@@ -33,8 +38,8 @@ export default function BigCardContainer() {
     const headquarters = stock.description.headquarters
     const code = stock.description.code
 
-    const request = (type, time, pair,frame) => {
-        dispatch(requestThunk(type, time, pair,frame))
+    const request = (type, time, pair, frame) => {
+        dispatch(requestThunk(type, time, pair, frame))
     }
 
     return (
@@ -43,7 +48,7 @@ export default function BigCardContainer() {
                 activeTime={activeTime} colorTheme={colorTheme} description={description} sector={sector}
                 industry={industry} currency={currency} country={country} symbol={symbol} companyName={companyName}
                 exchange={exchange} website={website} CEO={CEO} employees={employees} paper={paper}
-                headquarters={headquarters} code={code} frame={frame}
+                headquarters={headquarters} code={code} frame={frame} pair={pair}
             />
         </div>
     )

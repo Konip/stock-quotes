@@ -1,13 +1,51 @@
 
-export function buildChartData(data, type, time) {
+export function buildChartData(data, type, time, pair = '') {
     // debugger
-    // console.log(data)
+    // console.log(type, time, pair)
     const chartData = []
     let y = ""
     let count = 0
     let toggle = false
+    let pair1 = pair.slice(3)
+    
+    const response = {
+        STOCK: {
+            "1D": "4. close",
+            "1W": "5. adjusted close",
+            "1M": "5. adjusted close",
+            "6M": "5. adjusted close",
+            "1Y": "5. adjusted close",
+            "All": "5. adjusted close",
+        },
+        FOREX: "4. close",
+        CRYPTO: `4a. close (${pair1})`,
+        // CRYPTO: "4b. close (USD)"
+    }
+    const amountOfData = {
+        STOCK: {
+            "1W": 5,
+            "1M": 22,
+            "6M": 27,
+            "1Y": 53,
+            "All": 100,
+        },
+        FOREX: {
+            "1W": 7,
+            "1M": 22,
+            "6M": 27,
+            "1Y": 53,
+            "All": 100,
+        },
+        CRYPTO: {
+            "1W": 7,
+            "1M": 30,
+            "6M": 27,
+            "1Y": 53,
+            "All": 100,
+        }
+    }
 
-    if (time === "1D"  && type === "CRYPTO") {
+    if (time === "1D" && type === "CRYPTO") {
 
         for (let d of data) {
 
@@ -22,24 +60,15 @@ export function buildChartData(data, type, time) {
 
     else {
 
-        if (time === "1D" || "5m" || "15m" ||"1H") toggle = true
-        else if (time === "1W") count = 7
-        else if (time === "1M") count = 30
+        if (time === "1D") toggle = true
+        count = amountOfData[type][time]
 
-        switch (type) {
-            case "STOCK":
-            case "FOREX": {
-                y = "4. close"
-                break
-            }
-            case "CRYPTO": {
-                y = "4b. close (USD)"
-                break
-            }
-        }
+        if (type === "STOCK") y = response[type][time]
+        else y = response[type]
+
 
         for (let d in data) {
-            if (time !== "1D" || "5m" || "15m" ||"1H" && count > 0 || toggle === true) {
+            if (time !== "1D" && count > 0 || toggle === true) {
                 let NewDataPoint = {
                     x: d,
                     y: data[d][y]
@@ -52,6 +81,6 @@ export function buildChartData(data, type, time) {
     }
 
     chartData.reverse()
-    console.log(chartData)
+    // console.log(chartData)
     return chartData
 }

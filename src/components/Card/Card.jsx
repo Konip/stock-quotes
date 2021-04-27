@@ -6,32 +6,21 @@ import { addActive, addActiveType } from '../../store/stock-reducer';
 import Row from './../Row/Row';
 import { initial } from '../../db/initial'
 import { Link } from 'react-router-dom';
-import { db } from '../../db/db'
+import { initialReducer } from '../../db/initial'
 
 
-export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme }) {
+export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme, activeType, pair }) {
     const dispatch = useDispatch()
 
-    function req(type, time, pair) {
-        dispatch(addActive({ type, time, pair }))
+    function req(type, time, pair, frame) {
+        if (initialReducer[type][pair]) {
+            dispatch(addActive({ type, time, pair }))
+        }
+            
         dispatch(addActiveType(type))
-        request(type, time, pair)
+        request(type, time, pair, frame)
     }
-    // db.map(d => {
-    //     console.log(d.name)
-    // })
-    // for (let i = 0; db.length > i; i++) {
-    //     let low = db[i].name.toLowerCase().slice(1)
-    //     let up = db[i].name[0].toUpperCase()
-    //     let nw = up + low
-    //     // for (let j = 0; low.length > j; j++) {
-    //     //     if(j == 0) {
-    //     //         return low[j].toUpperCase
-    //     //     }
-    //     // }
-    //     db[i].name = nw
-    //     console.log(db[i])
-    // }
+
     return (
         <div className={colorTheme ? "card-light" : "card-dark"}>
             <div className="wrap">
@@ -41,13 +30,14 @@ export default function Card({ title, type, request, activeRow, activeTime, data
                 <Chart data={data} active={activeTime} colorTheme={colorTheme} />
 
                 <TimeFrames active={activeTime} colorTheme={colorTheme}
-                    onClickItem={(active) => req(type, active, activeRow)} />
+                    // frame={frame}
+                    onClickItem={(active, frame) => req(type, active, activeRow, frame)} />
 
                 <div className="rows">
                     {initial[type].map((arr, index) => (
                         < Row key={`${arr.pair}${arr.name}`} pair={arr.pair} name={arr.name} img={colorTheme ? arr.img : arr.imgD} type={type}
-                            active={activeRow} index={index} onClickItem={(pair) => req(type, activeTime, pair)}
-                            colorTheme={colorTheme}
+                            active={activeRow} index={index} onClickItem={(pair, frame) => req(type, activeTime, pair, frame)}
+                            colorTheme={colorTheme} frame={arr.time}
                         />
                     ))}
                 </div>

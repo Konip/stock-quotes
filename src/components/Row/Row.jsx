@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import "./Row.css"
 
 
-export default function Row({ pair, name, img, type, active, index, onClickItem, colorTheme }) {
+export default function Row({ pair, name, img, type, active, index, onClickItem, colorTheme, frame }) {
     return (
         <div className={!active && index === 0 ? "row-light-active" : active === pair && colorTheme ? "row-light-active" :
             active === pair && !colorTheme ? "row-dark-active" : active !== pair && colorTheme ? "row-light" : "row-dark"}
-            onClick={() => onClickItem(pair)}>
+            onClick={() => onClickItem(pair, frame)}>
             <div className="row-wrapper">
                 <div className="section">
                     <img className={`logo-${type}`} src={img} alt="" />

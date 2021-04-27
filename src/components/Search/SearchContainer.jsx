@@ -11,8 +11,8 @@ export default function SearchContainer() {
     const color = colorTheme
     const chart = chartTime
 
-    const request = (type, time, pair) => {
-        dispatch(requestThunk(type, time, pair))
+    const request = (type, time, pair,frame) => {
+        dispatch(requestThunk(type, time, pair,frame))
     }
 
     return (

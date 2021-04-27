@@ -142,7 +142,7 @@ const options1DayWhite = {
             {
                 type: "time",
                 time: {
-                    format: "YYYY-MM-DD HH:mm",
+                    parser: "YYYY-MM-DD HH:mm",
                     tooltipFormat: "D MMM HH:mm",
                 },
             }
@@ -192,7 +192,7 @@ const options1DayBlack = {
                 },
                 type: "time",
                 time: {
-                    format: "YYYY-MM-DD HH:mm",
+                    parser: "YYYY-MM-DD HH:mm",
                     tooltipFormat: "D MMMM HH:mm",
                 },
             }

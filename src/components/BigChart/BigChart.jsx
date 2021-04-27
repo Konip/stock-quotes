@@ -168,7 +168,7 @@ export default function BigChart({ data, active, colorTheme, currency }) {
                     },
                     type: "time",
                     time: {
-                        format: "YYYY-MM-DD HH:mm",
+                        parser: "YYYY-MM-DD HH:mm",
                         tooltipFormat: "D MMM HH:mm",
                     },
                 }
@@ -227,7 +227,7 @@ export default function BigChart({ data, active, colorTheme, currency }) {
                     },
                     type: "time",
                     time: {
-                        format: "YYYY-MM-DD HH:mm",
+                        parser: "YYYY-MM-DD HH:mm",
                         tooltipFormat: "D MMM HH:mm",
                     },
                 }

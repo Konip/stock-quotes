@@ -21,7 +21,40 @@
 }
 
 .navbar-wrap {
+    position: relative;
     margin: 15px;
+    display: flex;
+}
+
+.popup {
+    position: absolute;
+    visibility: hidden;
+    border-radius: 3px;
+    left: 45px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: .9em;
+    white-space: pre;
+ 
+}
+
+.popup::before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: black;
+  
+    left: -4px;
+    top: 14px;
+    transform: rotate(45deg);
+    border-radius: 1px;
+   
+}
+
+.navbar-wrap:hover .popup {
+    visibility: visible;
 }
 
 .navbar-wraper svg {
@@ -33,6 +66,7 @@
 .navbar-wrap .active svg {
     stroke: rgb(76, 117, 242);
 }
+
 .navbar-wrap .active .chart {
     fill: rgb(76, 117, 242);
 }
@@ -47,7 +81,8 @@
     /* fill: rgb(76, 117, 242); */
     transition: .5s;
 }
-.navbar-wrap .chart:hover{
+
+.navbar-wrap .chart:hover {
     fill: rgb(76, 117, 242);
     transition: .5s;
 }

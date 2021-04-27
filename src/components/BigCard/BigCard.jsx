@@ -3,14 +3,19 @@ import BigChart from '../BigChart/BigChart'
 import "./BigCard.css"
 import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';
+import { initialReducer } from '../../db/initial';
 
 export default function BigCard({ type, request, activeRow, activeTime, data, colorTheme, description, sector, industry, currency,
-    country, symbol, companyName, exchange, website, CEO, employees, paper, headquarters, code, frame }) {
-    // console.log(currency)
+    country, symbol, companyName, exchange, website, CEO, employees, paper, headquarters, code, frame, pair }) {
+
     const dispatch = useDispatch()
+    let initialTime = "1W"
+    if (activeTime !== initialTime) initialTime = activeTime
 
     function req(type, time, pair, frame) {
-        dispatch(addActive({ type, time, pair }))
+        if (initialReducer[type][pair]) {
+            dispatch(addActive({ type, time, pair }))
+        }
         request(type, time, pair, frame)
     }
 
@@ -19,16 +24,15 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
             <div className="wrapper">
 
                 <div className={colorTheme ? "top-card-light" : "top-card-dark"}>
-                    <BigChart data={data} active={activeTime} colorTheme={colorTheme} currency={currency} />
+                    <BigChart data={data} active={initialTime} colorTheme={colorTheme} currency={currency} />
                 </div>
                 {country
                     ?
                     <div className="low-card">
                         <div className="left-block">
                             <div className={colorTheme ? "time-frames-light" : "time-frames-dark"}>
-                                <TimeFramesBig active={activeTime} colorTheme={colorTheme}
-                                    frame={frame}
-                                    onClickItem={(active,frame) => req(type, active, activeRow, frame)} />
+                                <TimeFramesBig active={initialTime} colorTheme={colorTheme} frame={frame}
+                                    onClickItem={(active, frame) => req(type, active, pair, frame)} />
                             </div>
 
                             <div className={colorTheme ? "info-light" : "info-dark"}>
@@ -115,8 +119,8 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                         <div className="low-card">
                             <div className="left-block">
                                 <div className={colorTheme ? "time-frames-light" : "time-frames-dark"}>
-                                    <TimeFramesBig active={activeTime} colorTheme={colorTheme}
-                                        onClickItem={(active) => req(type, active, activeRow)} />
+                                    <TimeFramesBig active={initialTime} colorTheme={colorTheme} frame={frame}
+                                        onClickItem={(active, frame) => req(type, active, pair, frame)} />
                                 </div>
                                 <div className={colorTheme ? "info-light" : "info-dark"}>
                                     <div className="info-row">
@@ -217,8 +221,8 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                         <div className="low-card">
                             <div className="left-block">
                                 <div className={colorTheme ? "time-frames-light" : "time-frames-dark"}>
-                                    <TimeFramesBig active={activeTime} colorTheme={colorTheme}
-                                        onClickItem={(active) => req(type, active, activeRow)} />
+                                    <TimeFramesBig active={initialTime} colorTheme={colorTheme} frame={frame}
+                                        onClickItem={(active, frame) => req(type, active, pair, frame)} />
                                 </div>
                                 <div className={colorTheme ? "info-light" : "info-dark"}></div>
                             </div>

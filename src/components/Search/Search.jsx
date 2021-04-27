@@ -3,7 +3,7 @@ import "./Search.css"
 import { Link } from 'react-router-dom';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import { TypeWriter } from '../../utils/TypeWriter';
-import {db} from '../../db/db'
+import { db } from '../../db/db'
 
 document.addEventListener('DOMContentLoaded', init)
 
@@ -26,7 +26,7 @@ export default class Search extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.clear = this.clear.bind(this)
-        // this.request = this.request.bind(this)
+        this.request = this.request.bind(this)
     }
 
     handleChange(e) {
@@ -55,8 +55,8 @@ export default class Search extends Component {
         }
 
     }
-    request(type, time, pair) {
-        this.props.request(type, time, pair)
+    request(type, time, pair, frame) {
+        this.props.request(type, time, pair, frame)
         this.clear()
     }
     clear() {
@@ -83,15 +83,16 @@ export default class Search extends Component {
                     </form>
 
                     {this.state.show &&
-                        < HighlightOffIcon onClick={this.clear} />
+                        < HighlightOffIcon onClick={this.clear}  />
                     }
+                    
                 </div>
 
                 <div className='company-search-results'>
                     {
-                        result.map(res => (
-                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/"
-                                onClick={() => (this.request(res.type, chartTime, res.pair))}>
+                        result.map((res,index) => (
+                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/" key={res.pair + index}
+                                onClick={() => (this.request(res.type, chartTime, res.pair, res.time))}>
                                 <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>{`${res.pair}   ${res.name}`}</div>
                             </Link>
                         ))

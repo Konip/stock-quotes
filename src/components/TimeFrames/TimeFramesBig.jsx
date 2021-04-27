@@ -1,10 +1,10 @@
 import "./TimeFramesBig.css"
 
 const arrTimeFrames = {
-    full: ["5m", "15m", "1H", "1D", "1W", "1M", "All"],
-    inco: ["1D", "1W", "1M"]
+    full: ["1D", "1W", "1M", "6M", "1Y", "All"],
+    inco: ["1W", "1M", "6M", "1Y", "All"]
 }
-
+let data
 export default function TimeFramesBig({ active, onClickItem, colorTheme, frame }) {
 
     return (
