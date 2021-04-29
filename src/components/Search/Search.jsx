@@ -44,10 +44,13 @@ export default class Search extends Component {
                 let searchReqStart = new RegExp('^' + this.textInput.value + '.*', 'i')
                 let searchReqMiddle = new RegExp(' ' + this.textInput.value + '.*', 'i')
 
-                if (searchReqStart.test(db[i].name) || searchReqMiddle.test(db[i].name)
-                    || searchReqStart.test(db[i].pair) || searchReqMiddle.test(db[i].pair)) {
+                if (searchReqStart.test(db[i].name) || searchReqStart.test(db[i].pair)) {
                     this.state.result.push(db[i])
                 }
+                // if (searchReqStart.test(db[i].name) || searchReqMiddle.test(db[i].name)
+                //     || searchReqStart.test(db[i].pair) || searchReqMiddle.test(db[i].pair)) {
+                //     this.state.result.push(db[i])
+                // }
             }
         }
         else {
@@ -67,7 +70,7 @@ export default class Search extends Component {
     }
 
     render() {
-        // console.log('render')
+      
         let result = this.state.result
         let chartTime = this.props.chartTime
         return (
@@ -79,21 +82,30 @@ export default class Search extends Component {
                                 cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         <input className='input' type="text" placeholder='Search' value={this.state.searchRequest} onChange={this.handleChange}
                             ref={(input) => (this.textInput = input)} data-wait="3000" data-words='["Bitcoin","Apple","Tesla","Microsoft"]'
+                        onBlur={this.clear}
                         />
                     </form>
 
                     {this.state.show &&
-                        < HighlightOffIcon onClick={this.clear}  />
+                        < HighlightOffIcon onClick={this.clear} />
                     }
-                    
                 </div>
 
                 <div className='company-search-results'>
                     {
-                        result.map((res,index) => (
+                        result.map((res, index) => (
                             <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/" key={res.pair + index}
                                 onClick={() => (this.request(res.type, chartTime, res.pair, res.time))}>
-                                <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>{`${res.pair}   ${res.name}`}</div>
+                                { res.type === 'FOREX' || res.type === 'CRYPTO'
+                                    ?
+                                    <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>
+                                        <strong>{`${res.pair.slice(0, 3)} / ${res.pair.slice(3)}`}</strong><p>{res.name}</p>
+                                    </div>
+                                    :
+                                    <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>
+                                        <strong>{res.pair}</strong><p>{res.name}</p>
+                                    </div>
+                                }
                             </Link>
                         ))
                     }

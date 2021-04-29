@@ -55,14 +55,14 @@ import logitech from "../assets/logitech.svg"
 
 import YENGBP from "../assets/YENGBP.svg"
 import USDEUR from "../assets/USDEUR.svg"
-import BYNGBP from "../assets/BYNGBP.svg"
+import TRYGBP from "../assets/TRYGBP.svg"
 import USDILS from "../assets/USDILS.svg"
 import EURINR from "../assets/EURINR.svg"
 import EURTWD from "../assets/EURTWD.svg"
 
 import EURINRd from "../assets/EURINRd.svg"
 import EURTWDd from "../assets/EURTWDd.svg"
-import BYNGBPd from "../assets/BYNGBPd.svg"
+import TRYGBPd from "../assets/TRYGBPd.svg"
 import USDEURd from "../assets/USDEURd.svg"
 import USDILSd from "../assets/USDILSd.svg"
 import YENGBPd from "../assets/YENGBPd.svg"
@@ -110,28 +110,28 @@ import CN from "../assets/CN.svg"
 // Home
 export const initial = {
     STOCK: [
-        {  pair: "AAPL", name: "APPLE INC", img: apple, imgD: apple },
-        {  pair: "TSLA", name: "TESLA INC", img: tesla, imgD: tesla },
-        {  pair: "SPOT", name: "SPOTIFY TECHNOLOGY S.A", img: spotify, imgD: spotify },
-        {  pair: "INTC", name: "INTEL CORP", img: intel, imgD: intel },
-        {  pair: "AMZN", name: "AMAZON COM INC", img: amazon, imgD: amazon },
-        {  pair: "MSFT", name: "MICROSOFT CORPORATION", img: microsoft, imgD: microsoft },
+        { pair: "AAPL", name: "Apple Inc", img: apple, imgD: apple },
+        { pair: "TSLA", name: "Tesla Inc", img: tesla, imgD: tesla },
+        { pair: "SPOT", name: "Spotify technology SA", img: spotify, imgD: spotify },
+        { pair: "INTC", name: "Intel Corp", img: intel, imgD: intel },
+        { pair: "AMZN", name: "Amazon Inc", img: amazon, imgD: amazon },
+        { pair: "MSFT", name: "Microsoft Corporation", img: microsoft, imgD: microsoft },
     ],
     FOREX: [
-        {  pair: "USDEUR", name: "Доллар США / Евро", img: USDEUR, imgD: USDEURd },
-        {  pair: "JPYGBP", name: "Японская иена / Британский фунт", img: YENGBP, imgD: YENGBPd },
-        {  pair: "EURINR", name: "Евро / Индийская рупия", img: EURINR, imgD: EURINRd },
-        {  pair: "USDILS", name: "Доллар США  / Новый израильский шекель", img: USDILS, imgD: USDILSd },
-        {  pair: "BYNGBP", name: "Белорусский рубль / Британский фунт", img: BYNGBP, imgD: BYNGBPd },
-        {  pair: "EURTWD", name: "Евро / Новый тайваньский доллар", img: EURTWD, imgD: EURTWDd },
+        { pair: "UDEUR", name: "Доллар США / Евро", img: USDEUR, imgD: USDEURd },
+        { pair: "JPYGBP", name: "Японская иена / Британский фунт", img: YENGBP, imgD: YENGBPd },
+        { pair: "EURINR", name: "Евро / Индийская рупия", img: EURINR, imgD: EURINRd },
+        { pair: "USDILS", name: "Доллар США  / Новый израильский шекель", img: USDILS, imgD: USDILSd },
+        { pair: "TRYGBP", name: "Турецкая лира / Британский фунт", img: TRYGBP, imgD: TRYGBPd },
+        { pair: "EURTWD", name: "Евро / Новый тайваньский доллар", img: EURTWD, imgD: EURTWDd },
     ],
     CRYPTO: [
-        {  pair: "BTCUSD", name: "Биткоин / Доллар США", img: bitcoin, imgD: bitcoin },
-        {  pair: "ETHUSD", name: "Эфириум / Доллар США", img: etherium, imgD: etherium },
-        {  pair: "LTCUSD", name: "Лайткоин / Доллар США", img: litecoin, imgD: litecoin },
-        {  pair: "XRPUSD", name: "Рипл / Доллар США", img: ripple, imgD: ripple },
-        {  pair: "XMRUSD", name: "Монеро / Доллар США", img: monero, imgD: monero },
-        {  pair: "ZECUSD", name: "Zcash / Доллар США", img: zcash, imgD: zcash },
+        { pair: "BTCUSD", name: "Bitcoin / Доллар США", img: bitcoin, imgD: bitcoin },
+        { pair: "ETHUSD", name: "Ethereum / Доллар США", img: etherium, imgD: etherium },
+        { pair: "LTCUSD", name: "Litecoin / Доллар США", img: litecoin, imgD: litecoin },
+        { pair: "XRPUSD", name: "Ripple / Доллар США", img: ripple, imgD: ripple },
+        { pair: "XMRUSD", name: "Monero / Доллар США", img: monero, imgD: monero },
+        { pair: "ZECUSD", name: "Zcash / Доллар США", img: zcash, imgD: zcash },
     ],
 }
 export const initialReducer = {
@@ -148,7 +148,7 @@ export const initialReducer = {
         "JPYGBP": "JPYGBP",
         "EURINR": "EURINR",
         "USDILS": "USDILS",
-        "BYNGBP": "BYNGBP",
+        "TRYGBP": "TRYGBP",
         "EURTWD": "EURTWD",
     },
     CRYPTO: {
@@ -192,189 +192,189 @@ export const initialTitle = {
 export const initialMarket = {
     STOCK: {
         US: [
-            {  pair: "GE", name: "General electric", img: general, imgD: general },
-            {  pair: "FB", name: "Facebook inc", img: facebook, imgD: facebook },
-            {  pair: "NKE", name: "Nike inc", img: nike, imgD: nike },
-            {  pair: "MCD", name: "McDonald’s", img: mcdonalds, imgD: mcdonalds },
-            {  pair: "MA", name: "Mastercard incorporated", img: Mastercard, imgD: Mastercard },
-            {  pair: "CVX", name: "Chevron corporation", img: chevron, imgD: chevron },
-            {  pair: "SBUX", name: "Starbucks corp", img: starbucks, imgD: starbucks },
-            {  pair: "FORD", name: "Ford motor company", img: ford, imgD: ford },
+            { pair: "GE", name: "General electric", img: general, imgD: general },
+            { pair: "FB", name: "Facebook Inc", img: facebook, imgD: facebook },
+            { pair: "NKE", name: "Nike Inc", img: nike, imgD: nike },
+            { pair: "MCD", name: "McDonald’s", img: mcdonalds, imgD: mcdonalds },
+            { pair: "MA", name: "Mastercard Incorporated", img: Mastercard, imgD: Mastercard },
+            { pair: "CVX", name: "Chevron corporation", img: chevron, imgD: chevron },
+            { pair: "SBUX", name: "Starbucks corp", img: starbucks, imgD: starbucks },
+            { pair: "FORD", name: "Ford motor company", img: ford, imgD: ford },
         ],
         DE: [
-            {  pair: "VOW3.FRK", name: "Volkswagen AG", img: volkswagen, imgD: volkswagen },
-            {  pair: "ALV.FRK", name: "ALLIANZ SE", img: allianz, imgD: allianz },
-            {  pair: "BMW.FRK", name: "BAY.MOTOREN WERKE AG", img: bmw, imgD: bmw },
-            {  pair: "SIE.FRK", name: "SIEMENS AG", img: siemens, imgD: siemens },
-            {  pair: "TKA.FRK", name: "THYSSENKRUPP AG", img: krupp, imgD: krupp },
-            {  pair: "LHA.FRK", name: "Deutsche Lufthansa AG", img: lufthansa, imgD: lufthansa },
-            {  pair: "ADS.FRK", name: "ADIDAS AG", img: adidas, imgD: adidas },
-            {  pair: "DBK.FRK", name: "Deutsche Bank AG", img: deutsche, imgD: deutsche },
+            { pair: "VOW3.FRK", name: "Volkswagen AG", img: volkswagen, imgD: volkswagen },
+            { pair: "ALV.FRK", name: "Allianz SE", img: allianz, imgD: allianz },
+            { pair: "BMW.FRK", name: "Bay.Motoren Werke AG", img: bmw, imgD: bmw },
+            { pair: "SIE.FRK", name: "Siemens AG", img: siemens, imgD: siemens },
+            { pair: "TKA.FRK", name: "Thyssenkrupp AG", img: krupp, imgD: krupp },
+            { pair: "LHA.FRK", name: "Deutsche Lufthansa AG", img: lufthansa, imgD: lufthansa },
+            { pair: "ADS.FRK", name: "Adidas AG", img: adidas, imgD: adidas },
+            { pair: "DBK.FRK", name: "Deutsche Bank AG", img: deutsche, imgD: deutsche },
 
         ],
         FR: [
-            {  pair: "FP.PAR", name: "TOTAL SE", img: total, imgD: total },
-            {  pair: "CS.PAR", name: "AXA SA", img: axa, imgD: axa },
-            {  pair: "ACA.PAR", name: "Crédit Agricole S.A", img: Credit_Agricole, imgD: Credit_Agricole },
-            {  pair: "CA.PAR", name: "Carrefour SA", img: carrefour, imgD: carrefour },
-            {  pair: "RNO.PAR", name: "Renault SA", img: renault, imgD: renault },
-            {  pair: "ORA.PAR", name: "Orange S.A", img: orange, imgD: orange },
-            {  pair: "ML.PAR", name: "Michelin", img: michelin, imgD: michelin },
-            {  pair: "SAN.PAR", name: "Sanofi", img: Sanofi, imgD: Sanofi },
+            { pair: "FP.PAR", name: "Total SE", img: total, imgD: total },
+            { pair: "CS.PAR", name: "Axa SA", img: axa, imgD: axa },
+            { pair: "ACA.PAR", name: "Crédit Agricole S.A", img: Credit_Agricole, imgD: Credit_Agricole },
+            { pair: "CA.PAR", name: "Carrefour SA", img: carrefour, imgD: carrefour },
+            { pair: "RNO.PAR", name: "Renault SA", img: renault, imgD: renault },
+            { pair: "ORA.PAR", name: "Orange S.A", img: orange, imgD: orange },
+            { pair: "ML.PAR", name: "Michelin", img: michelin, imgD: michelin },
+            { pair: "SAN.PAR", name: "Sanofi", img: Sanofi, imgD: Sanofi },
         ],
         UK: [
-            {  pair: "RDSB.LON", name: "Royal Dutch Shell PLC", img: shell, imgD: shell },
-            {  pair: "BP.LON", name: "BP PLC", img: bp, imgD: bp },
-            {  pair: "VOD.LON", name: "VODAFONE GROUP PLC", img: vodafone, imgD: vodafone },// + 
-            {  pair: "BT-A.LON", name: "BT Group PLC", img: BT, imgD: BT },
-            {  pair: "AZN.LON", name: "Astra Zeneca PLC", img: astrazeneca, imgD: astrazeneca },
-            {  pair: "IMB.LON", name: "Imperial Brands PLC", img: ITBAF, imgD: ITBAF },
-            {  pair: "STAN.LON", name: "Standard Chartered PLC", img: standard, imgD: standard },
-            {  pair: "RB.LON", name: "Reckitt Benckiser Group PLC", img: Reckitt, imgD: Reckitt },
+            { pair: "RDSB.LON", name: "Royal Dutch Shell PLC", img: shell, imgD: shell },
+            { pair: "BP.LON", name: "BP PLC", img: bp, imgD: bp },
+            { pair: "VOD.LON", name: "Vodafone Group PLC", img: vodafone, imgD: vodafone },// + 
+            { pair: "BT-A.LON", name: "BT Group PLC", img: BT, imgD: BT },
+            { pair: "AZN.LON", name: "Astra Zeneca PLC", img: astrazeneca, imgD: astrazeneca },
+            { pair: "IMB.LON", name: "Imperial Brands PLC", img: ITBAF, imgD: ITBAF },
+            { pair: "STAN.LON", name: "Standard Chartered PLC", img: standard, imgD: standard },
+            { pair: "RB.LON", name: "Reckitt Benckiser Group PLC", img: Reckitt, imgD: Reckitt },
         ],
         CH: [
-            {  pair: "NSRGY", name: "Nestle SA", img: nestle, imgD: nestle },
-            {  pair: "RHHBY", name: "Roche Holding AG", img: roche, imgD: roche },
-            {  pair: "NVS", name: "Novartis AG", img: novartis, imgD: novartis },
-            {  pair: "UBS", name: "UBS Group AG", img: UBS, imgD: UBS },
-            {  pair: "ABB", name: "ABB Ltd", img: abb, imgD: abb },
-            {  pair: "ZFSVF", name: "Zurich Insurance Group AG Ltd", img: zurich, imgD: zurich },
-            {  pair: "LOGI", name: "Logitech International SA", img: logitech, imgD: logitech },
-            {  pair: "HCMLY", name: "LafargeHolcim Ltd", img: LafargeHolcimpng, imgD: LafargeHolcimpng },
+            { pair: "NSRGY", name: "Nestle SA", img: nestle, imgD: nestle },
+            { pair: "RHHBY", name: "Roche Holding AG", img: roche, imgD: roche },
+            { pair: "NVS", name: "Novartis AG", img: novartis, imgD: novartis },
+            { pair: "UBS", name: "UBS Group AG", img: UBS, imgD: UBS },
+            { pair: "ABB", name: "ABB Ltd", img: abb, imgD: abb },
+            { pair: "ZFSVF", name: "Zurich Insurance Group AG Ltd", img: zurich, imgD: zurich },
+            { pair: "LOGI", name: "Logitech International SA", img: logitech, imgD: logitech },
+            { pair: "HCMLY", name: "LafargeHolcim Ltd", img: LafargeHolcimpng, imgD: LafargeHolcimpng },
         ],
         CN: [
-            {  pair: "601988.SHH", name: "Bank of China Ltd", img: bankofchina, imgD: bankofchina },
-            {  pair: "601939.SHH", name: "China Construction Bank Corp", img: CICHY, imgD: CICHY },
-            {  pair: "601288.SHH", name: "Agricultural Bank of China Ltd", img: agriculturalbank, imgD: agriculturalbank },
-            {  pair: "601628.SHH", name: "China Life Insurance Company Ltd", img: chinalife, imgD: chinalife },
-            {  pair: "000800.SHZ", name: "Faw Car Company Ltd", img: faw, imgD: faw },
-            {  pair: "000831.SHZ", name: "Minmetals Rare Earth Company Ltd", img: ChinaMinmetals, imgD: ChinaMinmetals },
-            {  pair: "600500.SHH", name: "Sinochem International Corp", img: Sinochem, imgD: Sinochem },
-            {  pair: "600606.SHH", name: "Greenland Holdings Corp Ltd", img: greenland, imgD: greenland },
+            { pair: "601988.SHH", name: "Bank of China Ltd", img: bankofchina, imgD: bankofchina },
+            { pair: "601939.SHH", name: "China Construction Bank Corp", img: CICHY, imgD: CICHY },
+            { pair: "601288.SHH", name: "Agricultural Bank of China Ltd", img: agriculturalbank, imgD: agriculturalbank },
+            { pair: "601628.SHH", name: "China Life Insurance Company Ltd", img: chinalife, imgD: chinalife },
+            { pair: "000800.SHZ", name: "Faw Car Company Ltd", img: faw, imgD: faw },
+            { pair: "000831.SHZ", name: "Minmetals Rare Earth Company Ltd", img: ChinaMinmetals, imgD: ChinaMinmetals },
+            { pair: "600500.SHH", name: "Sinochem International Corp", img: Sinochem, imgD: Sinochem },
+            { pair: "600606.SHH", name: "Greenland Holdings Corp Ltd", img: greenland, imgD: greenland },
         ],
     },
     FOREX: {
         USD: [
-            {  pair: "USDEUR", name: "Доллар США / Евро", img: euro, imgD: euroD },// 1D + // 1M +
-            {  pair: "USDKRW", name: "Доллар США / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
-            {  pair: "USDGBP", name: "Доллар США / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
-            {  pair: "USDPLN", name: "Доллар США / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
-            {  pair: "USDCNY", name: "Доллар США / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
-            {  pair: "USDTHB", name: "Доллар США / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
-            {  pair: "USDBRL", name: "Доллар США / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
-            {  pair: "USDINR", name: "Доллар США / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "USDEUR", name: "Доллар США / Евро", img: euro, imgD: euroD },// 1D + // 1M +
+            { pair: "USDKRW", name: "Доллар США / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
+            { pair: "USDGBP", name: "Доллар США / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
+            { pair: "USDPLN", name: "Доллар США / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
+            { pair: "USDCNY", name: "Доллар США / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
+            { pair: "USDTHB", name: "Доллар США / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
+            { pair: "USDBRL", name: "Доллар США / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
+            { pair: "USDINR", name: "Доллар США / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
         ],
         EUR: [
-            {  pair: "EURUSD", name: "Евро / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
-            {  pair: "EURKRW", name: "Евро / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
-            {  pair: "EURGBP", name: "Евро / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
-            {  pair: "EURPLN", name: "Евро / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
-            {  pair: "EURCNY", name: "Евро / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
-            {  pair: "EURTHB", name: "Евро / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
-            {  pair: "EURBRL", name: "Евро / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
-            {  pair: "EURINR", name: "Евро / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "EURUSD", name: "Евро / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
+            { pair: "EURKRW", name: "Евро / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
+            { pair: "EURGBP", name: "Евро / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
+            { pair: "EURPLN", name: "Евро / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
+            { pair: "EURCNY", name: "Евро / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
+            { pair: "EURTHB", name: "Евро / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
+            { pair: "EURBRL", name: "Евро / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
+            { pair: "EURINR", name: "Евро / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
         ],
         GBP: [
-            {  pair: "GBPEUR", name: "Британский фунт / Евро", img: euro, imgD: euroD },// 1D + // 1M +
-            {  pair: "GBPKRW", name: "Британский фунт / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
-            {  pair: "GBPUSD", name: "Британский фунт / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
-            {  pair: "GBPPLN", name: "Британский фунт / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
-            {  pair: "GBPCNY", name: "Британский фунт / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
-            {  pair: "GBPTHB", name: "Британский фунт / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
-            {  pair: "GBPBRL", name: "Британский фунт / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
-            {  pair: "GBPINR", name: "Британский фунт / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "GBPEUR", name: "Британский фунт / Евро", img: euro, imgD: euroD },// 1D + // 1M +
+            { pair: "GBPKRW", name: "Британский фунт / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
+            { pair: "GBPUSD", name: "Британский фунт / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
+            { pair: "GBPPLN", name: "Британский фунт / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
+            { pair: "GBPCNY", name: "Британский фунт / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
+            { pair: "GBPTHB", name: "Британский фунт / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
+            { pair: "GBPBRL", name: "Британский фунт / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
+            { pair: "GBPINR", name: "Британский фунт / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
         ],
         CNY: [
-            {  pair: "CNYEUR", name: "Китайский юань / Евро", img: euro, imgD: euroD },// 1D + // 1M +
-            {  pair: "CNYKRW", name: "Китайский юань / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
-            {  pair: "CNYGBP", name: "Китайский юань / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
-            {  pair: "CNYPLN", name: "Китайский юань / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
-            {  pair: "CNYUSD", name: "Китайский юань / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
-            {  pair: "CNYTHB", name: "Китайский юань / Тайский бат", img: baht, imgD: bahtD },// 1D +  // 1M +
-            {  pair: "CNYBRL", name: "Китайский юань / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
-            {  pair: "CNYINR", name: "Китайский юань / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "CNYEUR", name: "Китайский юань / Евро", img: euro, imgD: euroD },// 1D + // 1M +
+            { pair: "CNYKRW", name: "Китайский юань / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
+            { pair: "CNYGBP", name: "Китайский юань / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
+            { pair: "CNYPLN", name: "Китайский юань / Польский злотый", img: pzloty, imgD: pzlotyD },// 1D + // 1M +
+            { pair: "CNYUSD", name: "Китайский юань / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
+            { pair: "CNYTHB", name: "Китайский юань / Тайский бат", img: baht, imgD: bahtD },// 1D +  // 1M +
+            { pair: "CNYBRL", name: "Китайский юань / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D + // 1M +
+            { pair: "CNYINR", name: "Китайский юань / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
         ],
         PLN: [
-            {  pair: "PLNEUR", name: "Польский злотый / Евро", img: euro, imgD: euroD },// 1D + // 1M +
-            {  pair: "PLNKRW", name: "Польский злотый / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D - // 1M +
-            {  pair: "PLNGBP", name: "Польский злотый / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
-            {  pair: "PLNUSD", name: "Польский злотый / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
-            {  pair: "PLNCNY", name: "Польский злотый / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
-            {  pair: "PLNTHB", name: "Польский злотый / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
-            {  pair: "PLNBRL", name: "Польский злотый / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D - // 1M +
-            {  pair: "PLNINR", name: "Польский злотый / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "PLNEUR", name: "Польский злотый / Евро", img: euro, imgD: euroD },// 1D + // 1M +
+            { pair: "PLNKRW", name: "Польский злотый / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D - // 1M +
+            { pair: "PLNGBP", name: "Польский злотый / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
+            { pair: "PLNUSD", name: "Польский злотый / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
+            { pair: "PLNCNY", name: "Польский злотый / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
+            { pair: "PLNTHB", name: "Польский злотый / Тайский бат", img: baht, imgD: bahtD },// 1D + // 1M +
+            { pair: "PLNBRL", name: "Польский злотый / Бразильский реал", img: brazilianreal, imgD: brazilianrealD },// 1D - // 1M +
+            { pair: "PLNINR", name: "Польский злотый / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
         ],
         THB: [
-            {  pair: "THBEUR", name: "Тайский бат / Евро", img: euro, imgD: euroD }, // 1D + // 1M +
-            {  pair: "THBKRW", name: "Тайский бат / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
-            {  pair: "THBGBP", name: "Тайский бат / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
-            {  pair: "THBPLN", name: "Тайский бат / Польский злотый", img: pzloty, imgD: pzlotyD }, // 1D - // 1M +
-            {  pair: "THBCNY", name: "Тайский бат / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
-            {  pair: "THBUSD", name: "Тайский бат / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
-            {  pair: "THBINR", name: "Тайский бат / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
-            {  pair: "THBPHP", name: "Тайский бат / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
+            { pair: "THBEUR", name: "Тайский бат / Евро", img: euro, imgD: euroD }, // 1D + // 1M +
+            { pair: "THBKRW", name: "Тайский бат / Южнокорейская вона", img: southkoreanwon, imgD: southkoreanwonD },// 1D + // 1M +
+            { pair: "THBGBP", name: "Тайский бат / Британский фунт", img: pound, imgD: poundD },// 1D + // 1M +
+            { pair: "THBPLN", name: "Тайский бат / Польский злотый", img: pzloty, imgD: pzlotyD }, // 1D - // 1M +
+            { pair: "THBCNY", name: "Тайский бат / Китайский юань", img: yuan, imgD: yuanD },// 1D + // 1M +
+            { pair: "THBUSD", name: "Тайский бат / Доллар США", img: usd, imgD: usdD },// 1D + // 1M +
+            { pair: "THBINR", name: "Тайский бат / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "THBPHP", name: "Тайский бат / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
         ],
     },
     CRYPTO: {
         BTC: [
-            {  pair: "BTCUSD", name: "Биткоин / Доллар США", img: usd, imgD: usdD },
-            {  pair: "BTCEUR", name: "Биткоин / Евро", img: euro, imgD: euroD },
-            {  pair: "BTCGBP", name: "Биткоин / Британский фунт", img: pound, imgD: poundD },
-            {  pair: "BTCCNY", name: "Биткоин / Китайский юань", img: yuan, imgD: yuanD },
-            {  pair: "BTCPLN", name: "Биткоин / Польский злотый", img: pzloty, imgD: pzlotyD },
-            {  pair: "BTCCZK", name: "Биткоин / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
-            {  pair: "BTCINR", name: "Биткоин / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
-            {  pair: "BTCPHP", name: "Биткоин / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
+            { pair: "BTCUSD", name: "Bitcoin / Доллар США", img: usd, imgD: usdD },
+            { pair: "BTCEUR", name: "Bitcoin / Евро", img: euro, imgD: euroD },
+            { pair: "BTCGBP", name: "Bitcoin / Британский фунт", img: pound, imgD: poundD },
+            { pair: "BTCCNY", name: "Bitcoin / Китайский юань", img: yuan, imgD: yuanD },
+            { pair: "BTCPLN", name: "Bitcoin / Польский злотый", img: pzloty, imgD: pzlotyD },
+            { pair: "BTCCZK", name: "Bitcoin / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
+            { pair: "BTCINR", name: "Bitcoin / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "BTCPHP", name: "Bitcoin / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
         ],
         ETH: [
-            {  pair: "ETHUSD", name: "Эфириум / Доллар США", img: usd, imgD: usdD },
-            {  pair: "ETHEUR", name: "Эфириум / Евро", img: euro, imgD: euroD },
-            {  pair: "ETHGBP", name: "Эфириум / Британский фунт", img: pound, imgD: poundD },
-            {  pair: "ETHCNY", name: "Эфириум / Китайский юань", img: yuan, imgD: yuanD },
-            {  pair: "ETHPLN", name: "Эфириум / Польский злотый", img: pzloty, imgD: pzlotyD },
-            {  pair: "ETHCZK", name: "Эфириум / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
-            {  pair: "ETHINR", name: "Эфириум / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
-            {  pair: "ETHPHP", name: "Биткоин / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
+            { pair: "ETHUSD", name: "Ethereum / Доллар США", img: usd, imgD: usdD },
+            { pair: "ETHEUR", name: "Ethereum / Евро", img: euro, imgD: euroD },
+            { pair: "ETHGBP", name: "Ethereum / Британский фунт", img: pound, imgD: poundD },
+            { pair: "ETHCNY", name: "Ethereum / Китайский юань", img: yuan, imgD: yuanD },
+            { pair: "ETHPLN", name: "Ethereum / Польский злотый", img: pzloty, imgD: pzlotyD },
+            { pair: "ETHCZK", name: "Ethereum / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
+            { pair: "ETHINR", name: "Ethereum / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "ETHPHP", name: "Ethereum / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
         ],
         EOS: [
-            {  pair: "EOSUSD", name: "EOS / Доллар США", img: usd, imgD: usdD },
-            {  pair: "EOSEUR", name: "EOS / Евро", img: euro, imgD: euroD },
-            {  pair: "EOSGBP", name: "EOS / Британский фунт", img: pound, imgD: poundD },
-            {  pair: "EOSCNY", name: "EOS / Китайский юань", img: yuan, imgD: yuanD },
-            {  pair: "EOSPLN", name: "EOS / Польский злотый", img: pzloty, imgD: pzlotyD },
-            {  pair: "EOSCZK", name: "EOS / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
-            {  pair: "EOSINR", name: "EOS / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
-            {  pair: "EOSPHP", name: "EOS / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
+            { pair: "EOSUSD", name: "EOS / Доллар США", img: usd, imgD: usdD },
+            { pair: "EOSEUR", name: "EOS / Евро", img: euro, imgD: euroD },
+            { pair: "EOSGBP", name: "EOS / Британский фунт", img: pound, imgD: poundD },
+            { pair: "EOSCNY", name: "EOS / Китайский юань", img: yuan, imgD: yuanD },
+            { pair: "EOSPLN", name: "EOS / Польский злотый", img: pzloty, imgD: pzlotyD },
+            { pair: "EOSCZK", name: "EOS / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
+            { pair: "EOSINR", name: "EOS / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "EOSPHP", name: "EOS / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
         ],
         LTC: [
-            {  pair: "LTCUSD", name: "Лайткоин / Доллар США", img: usd, imgD: usdD },
-            {  pair: "LTCEUR", name: "Лайткоин / Евро", img: euro, imgD: euroD },
-            {  pair: "LTCGBP", name: "Лайткоин / Британский фунт", img: pound, imgD: poundD },
-            {  pair: "LTCCNY", name: "Лайткоин / Китайский юань", img: yuan, imgD: yuanD },
-            {  pair: "LTCPLN", name: "Лайткоин / Польский злотый", img: pzloty, imgD: pzlotyD },
-            {  pair: "LTCCZK", name: "Лайткоин / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
-            {  pair: "LTCINR", name: "Лайткоин / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
-            {  pair: "LTCPHP", name: "Лайткоин / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
+            { pair: "LTCUSD", name: "Litecoin / Доллар США", img: usd, imgD: usdD },
+            { pair: "LTCEUR", name: "Litecoin / Евро", img: euro, imgD: euroD },
+            { pair: "LTCGBP", name: "Litecoin / Британский фунт", img: pound, imgD: poundD },
+            { pair: "LTCCNY", name: "Litecoin / Китайский юань", img: yuan, imgD: yuanD },
+            { pair: "LTCPLN", name: "Litecoin / Польский злотый", img: pzloty, imgD: pzlotyD },
+            { pair: "LTCCZK", name: "Litecoin / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
+            { pair: "LTCINR", name: "Litecoin / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "LTCPHP", name: "Litecoin / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
         ],
         XLM: [
-            {  pair: "XLMUSD", name: "Стеллар / Доллар США", img: usd, imgD: usdD },
-            {  pair: "XLMEUR", name: "Стеллар / Евро", img: euro, imgD: euroD },
-            {  pair: "XLMGBP", name: "Стеллар / Британский фунт", img: pound, imgD: poundD },
-            {  pair: "XLMCNY", name: "Стеллар / Китайский юань", img: yuan, imgD: yuanD },
-            {  pair: "XLMPLN", name: "Стеллар / Польский злотый", img: pzloty, imgD: pzlotyD },
-            {  pair: "XLMCZK", name: "Стеллар / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
-            {  pair: "XLMINR", name: "Стеллар / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
-            {  pair: "XLMPHP", name: "Стеллар / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
+            { pair: "XLMUSD", name: "Stellar / Доллар США", img: usd, imgD: usdD },
+            { pair: "XLMEUR", name: "Stellar / Евро", img: euro, imgD: euroD },
+            { pair: "XLMGBP", name: "Stellar / Британский фунт", img: pound, imgD: poundD },
+            { pair: "XLMCNY", name: "Stellar / Китайский юань", img: yuan, imgD: yuanD },
+            { pair: "XLMPLN", name: "Stellar / Польский злотый", img: pzloty, imgD: pzlotyD },
+            { pair: "XLMCZK", name: "Stellar / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
+            { pair: "XLMINR", name: "Stellar / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "XLMPHP", name: "Stellar / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
         ],
         XMR: [
-            {  pair: "XMRUSD", name: "Монеро / Доллар США", img: usd, imgD: usdD },
-            {  pair: "XMREUR", name: "Монеро / Евро", img: euro, imgD: euroD },
-            {  pair: "XMRGBP", name: "Монеро / Британский фунт", img: pound, imgD: poundD },
-            {  pair: "XMRCNY", name: "Монеро / Китайский юань", img: yuan, imgD: yuanD },
-            {  pair: "XMRPLN", name: "Монеро / Польский злотый", img: pzloty, imgD: pzlotyD },
-            {  pair: "XMRCZK", name: "Монеро / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
-            {  pair: "XMRINR", name: "Монеро / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
-            {  pair: "XMRPHP", name: "Монеро / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
+            { pair: "XMRUSD", name: "Monero / Доллар США", img: usd, imgD: usdD },
+            { pair: "XMREUR", name: "Monero / Евро", img: euro, imgD: euroD },
+            { pair: "XMRGBP", name: "Monero / Британский фунт", img: pound, imgD: poundD },
+            { pair: "XMRCNY", name: "Monero / Китайский юань", img: yuan, imgD: yuanD },
+            { pair: "XMRPLN", name: "Monero / Польский злотый", img: pzloty, imgD: pzlotyD },
+            { pair: "XMRCZK", name: "Monero / Чешская крона", img: czechkoruna, imgD: czechkorunaD },
+            { pair: "XMRINR", name: "Monero / Индийская рупия", img: indianrupee, imgD: indianrupeeD },
+            { pair: "XMRPHP", name: "Monero / Филиппинское песо", img: philippinepeso, imgD: philippinepesoD },
         ],
     }
 }

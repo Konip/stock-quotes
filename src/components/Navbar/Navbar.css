@@ -55,6 +55,7 @@
 
 .navbar-wrap:hover .popup {
     visibility: visible;
+    transition-delay: .5s;
 }
 
 .navbar-wraper svg {

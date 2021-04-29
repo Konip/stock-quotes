@@ -1419,22 +1419,20 @@ const response = {
 }
 
 export function requestThunk(type, time, pair, frame) {
-    // console.log(type, time, pair, frame)
-       let dbPair
+    console.log(type, time, pair, frame)
+
+    let dbPair
     for (let i = 0; db.length > i; i++) {
         if (db[i].pair === pair) {
             dbPair = db[i].time
         }
     }
-    // console.log(dbPair)
 
     return (dispatch) => {
         switch (type) {
             case STOCK: {
                 fetch(`${URL}${request[type][time]}&symbol=${pair}&${time === "1D" ? "interval=5min&" : ""}apikey=${alphaVantageKey}`)
-                    .then(res => {
-                        return res.json()
-                    })
+                    .then(res => res.json())
                     .then(res => {
                         const data = buildChartData(res[response[type][time]], type, time)
 
@@ -1444,7 +1442,6 @@ export function requestThunk(type, time, pair, frame) {
                                 dispatch(addChartTimer(time)),
                                 dispatch(addPair(pair)),
                                 dispatch(addTimeFrames(dbPair)),
-                                // dispatch(addTimeFrames(frame)),
                                 dispatch(addActiveType(type)),
                                 dispatch(addChart(data)),
                                 dispatch(addDataStock(data)),
@@ -1457,7 +1454,6 @@ export function requestThunk(type, time, pair, frame) {
                                 dispatch(addChartTimer(time)),
                                 dispatch(addPair(pair)),
                                 dispatch(addTimeFrames(dbPair)),
-                                // dispatch(addTimeFrames(frame)),
                                 dispatch(addActiveType(type)),
                                 dispatch(addChart(data)),
                                 dispatch(addDescription(description[type][pair]))
@@ -1468,15 +1464,14 @@ export function requestThunk(type, time, pair, frame) {
             }
             case FOREX: {
                 fetch(`${URL}${request[type][time]}&from_symbol=${pair.slice(0, 3)}&to_symbol=${pair.slice(3)}${time === "1D" ? "&interval=5min" : ""}&apikey=${alphaVantageKey}`)
-                    .then(res => {
-                        return res.json()
-                    })
+                    .then(res => res.json())
+                    // .then(res => res['Error Message'] ? Promise.reject(res) : res )
                     .then(res => {
                         // console.log(res)
                         const data = buildChartData(res[response[type][time]], type, time)
                         // return dispatch(addDataForex(data))
-                        const pair1 = pair.slice(3)
-                        console.log(pair1)
+                        const endStr = pair.slice(3)
+                        const startStr = pair.slice(0, 3)
                         return Promise.all([
                             dispatch(addChartTimer(time)),
                             dispatch(addPair(pair)),
@@ -1484,57 +1479,56 @@ export function requestThunk(type, time, pair, frame) {
                             dispatch(addActiveType(type)),
                             dispatch(addChart(data)),
                             dispatch(addDataForex(data)),
-                            dispatch(addDescription(description[type][pair1]))
+                            dispatch(addDescription(description[type][startStr])),
+                            dispatch(addCurrency(description[type][endStr]))
                         ])
                     })
+                    .catch(() => console.log('что-то пошло'))
                 break
             }
             case CRYPTO: {
                 if (time === DAY) {
                     fetch(`https://rest.coinapi.io/v1/ohlcv/BITFINEX_SPOT_${pair.slice(0, 3)}_${pair.slice(3)}/latest?period_id=5MIN`, headers)
-                        .then(res => {
-                            return res.json()
-                        })
+                        .then(res => res.json())
                         .then(res => {
                             // console.log(res)
-                            const data = buildChartData(res, type, time,pair)
+                            const data = buildChartData(res, type, time, pair)
                             // return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
-                            const currency = pair.slice(3)
-                            const symbol = pair.slice(0, 3)
-                            // console.log(currency, symbol)
+                            const endStr = pair.slice(3)
+                            const startStr = pair.slice(0, 3)
+
                             return Promise.all([
                                 dispatch(addChartTimer(time)),
                                 dispatch(addPair(pair)),
                                 dispatch(addTimeFrames(dbPair)),
                                 dispatch(addActiveType(type)),
-                                dispatch(addCurrency(description[FOREX][currency].currency)),
+                                dispatch(addCurrency(description[FOREX][endStr])),
                                 dispatch(addChart(data)),
                                 dispatch(addDataCrypto(data)),
-                                dispatch(addDescription(description[type][symbol]))
+                                dispatch(addDescription(description[type][startStr]))
                             ])
                         })
                     break
                 }
                 else {
                     fetch(`${URL}${request[type][time]}&symbol=${pair.slice(0, 3)}&market=${pair.slice(3)}&apikey=${alphaVantageKey}`)
-                        .then(res => {
-                            return res.json()
-                        })
+                        .then(res => res.json())
                         .then(res => {
                             // console.log(res)
-                            const data = buildChartData(res[response[type][time]], type, time,pair)
+                            const data = buildChartData(res[response[type][time]], type, time, pair)
                             // return dispatch(addDataCrypto(data)) && dispatch(addDescription(description[type][pair]))
-                            const currency = pair.slice(3)
-                            const symbol = pair.slice(0, 3)
+                            const endStr = pair.slice(3)
+                            const startStr = pair.slice(0, 3)
+
                             return Promise.all([
                                 dispatch(addChartTimer(time)),
                                 dispatch(addPair(pair)),
                                 dispatch(addTimeFrames(dbPair)),
                                 dispatch(addActiveType(type)),
-                                dispatch(addCurrency(description[FOREX][currency].currency)),
+                                dispatch(addCurrency(description[FOREX][endStr])),
                                 dispatch(addChart(data)),
                                 dispatch(addDataCrypto(data)),
-                                dispatch(addDescription(description[type][symbol]))
+                                dispatch(addDescription(description[type][startStr]))
                             ])
                         })
                     break
@@ -1553,9 +1547,7 @@ export const startThunk = () => {
         // // ------------------STOCK-------------------------
 
         // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${APPLE}&interval=5min&apikey=${alphaVantageKey1}`)
-        //     .then(res => {
-        //         return res.json()
-        //     })
+        //      .then(res => res.json())
         //     .then(res => {
         //         const data = buildChartData(res["Time Series (5min)"], STOCK, DAY)
         //         // console.log(data)
@@ -1565,9 +1557,7 @@ export const startThunk = () => {
         // // ------------------FOREX-------------------------
 
         // fetch(`https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${USD}&to_symbol=${EUR}&interval=5min&apikey=${alphaVantageKey1}`)
-        //     .then(res => {
-        //         return res.json()
-        //     })
+        //     .then(res => res.json())
         //     .then(res => {
         //         const data = buildChartData(res["Time Series FX (5min)"], FOREX, DAY)
         //         // console.log(data)
@@ -1577,9 +1567,7 @@ export const startThunk = () => {
         // // ------------------CRYPTO-------------------------
 
         // fetch('https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/latest?period_id=5MIN', headers)
-        //     .then(res => {
-        //         return res.json()
-        //     })
+        //      .then(res => res.json())
         //     .then(res => {
         //         const data = buildChartData(res, CRYPTO, DAY)
         //         dispatch(addDataCrypto(data))

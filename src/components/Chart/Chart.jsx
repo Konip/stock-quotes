@@ -44,6 +44,9 @@ const optionsWhite = {
 
                 },
                 // distribution: 'series',
+                ticks: {
+                    display: true
+                }
             }
         ],
         yAxes: [
@@ -97,6 +100,9 @@ const optionsBlack = {
 
                 },
                 // distribution: 'series',
+                ticks: {
+                    display: true
+                }
             }
         ],
         yAxes: [
@@ -145,6 +151,9 @@ const options1DayWhite = {
                     parser: "YYYY-MM-DD HH:mm",
                     tooltipFormat: "D MMM HH:mm",
                 },
+                ticks: {
+                    display: true
+                }
             }
         ],
         yAxes: [
@@ -195,6 +204,9 @@ const options1DayBlack = {
                     parser: "YYYY-MM-DD HH:mm",
                     tooltipFormat: "D MMMM HH:mm",
                 },
+                ticks: {
+                    display: true
+                }
             }
         ],
         yAxes: [
@@ -209,12 +221,12 @@ const options1DayBlack = {
 
 export default function Chart({ data, active, colorTheme }) {
     // console.log('render')
+    let options = active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite : colorTheme ? optionsBlack : optionsWhite
     return (
         <div className={colorTheme ? "chart-light" : "chart-dark"}>
             {data && data.length > 0 ?
 
-                <Line options={active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite :
-                    colorTheme ? optionsBlack : optionsWhite}
+                <Line options={options}
 
                     data={
                         colorTheme ?

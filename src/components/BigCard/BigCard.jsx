@@ -6,7 +6,9 @@ import { addActive } from '../../store/stock-reducer';
 import { initialReducer } from '../../db/initial';
 
 export default function BigCard({ type, request, activeRow, activeTime, data, colorTheme, description, sector, industry, currency,
-    country, symbol, companyName, exchange, website, CEO, employees, paper, headquarters, code, frame, pair }) {
+    country, symbol, name, exchange, website, CEO, employees, paper, headquarters, code, frame, pair, secCurrency,
+    demographics
+}) {
 
     const dispatch = useDispatch()
     let initialTime = "1W"
@@ -27,6 +29,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                     <BigChart data={data} active={initialTime} colorTheme={colorTheme} currency={currency} />
                 </div>
                 {country
+                    //----------STOCK----------
                     ?
                     <div className="low-card">
                         <div className="left-block">
@@ -37,7 +40,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
 
                             <div className={colorTheme ? "info-light" : "info-dark"}>
                                 <div className="info-row">
-                                    <strong>{symbol} </strong>{companyName}
+                                    <strong>{symbol} </strong>{name}
                                 </div>
                                 <div className="info-row">
                                     <strong>Страна: </strong>{country}
@@ -115,6 +118,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                         </div>
                     </div>
                     :
+                    //----------CRYPTO----------
                     paper ?
                         <div className="low-card">
                             <div className="left-block">
@@ -124,7 +128,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                 </div>
                                 <div className={colorTheme ? "info-light" : "info-dark"}>
                                     <div className="info-row">
-                                        <strong>{companyName}</strong> {symbol}
+                                        <strong>{name}</strong> {symbol}
                                     </div>
                                     <div className="info-row">
                                         <div className={colorTheme ? "link" : "link-dark"}>
@@ -212,11 +216,12 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                             <div className={colorTheme ? "right-block-light" : "right-block-dark"}>
                                 <div className={colorTheme ? "description-light" : "description-dark"}>
                                     <div className="description-row">
-                                        <strong>{companyName} </strong>{description}
+                                        <strong>{name} </strong>{description}
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        //----------FOREX----------
                         :
                         <div className="low-card">
                             <div className="left-block">
@@ -224,9 +229,22 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                     <TimeFramesBig active={initialTime} colorTheme={colorTheme} frame={frame}
                                         onClickItem={(active, frame) => req(type, active, pair, frame)} />
                                 </div>
-                                <div className={colorTheme ? "info-light" : "info-dark"}></div>
+                                <div className={colorTheme ? "info-light" : "info-dark"}>
+                                    <div className="info-row">
+                                        {name && `1 ${name} равен ${data[data.length - 1].y} ${secCurrency}`}
+                                    </div>
+                                </div>
                             </div>
-                            <div className={colorTheme ? "right-block-light" : "right-block-dark"}></div>
+                            <div className={colorTheme ? "right-block-light" : "right-block-dark"}>
+                                {description &&
+                                    <div className="info-row">
+                                        <strong>Страны обращения:</strong> {demographics}
+                                    </div>
+                                }
+                                <div className="info-row">
+                                    <strong>{name} </strong>{description}
+                                </div>
+                            </div>
                         </div>
                 }
             </div>
