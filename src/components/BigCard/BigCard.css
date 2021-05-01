@@ -12,6 +12,9 @@
 }
 
 .top-card-light, .top-card-dark {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 520px;
     margin-top: 50px;
@@ -41,8 +44,9 @@
 .low-card {
     margin: 20px 0;
     width: 100%;
-    height: 380px;
-    /* height: 480px; */
+    /* height: 100%; */
+    /* height: 380px; */
+    height: 480px;
     display: flex;
     justify-content: space-between;
 }

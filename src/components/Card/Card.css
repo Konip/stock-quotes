@@ -25,6 +25,7 @@
 .title-light, .title-dark {
     font-size: 1.5em;
     font-weight: 600;
+    margin-bottom: 30px;
 }
 
 /* .title-dark {
@@ -83,4 +84,18 @@
 .widget-light svg, .widget-dark svg {
     width: 20px;
     margin-top: 4px;
+}
+
+.wrap-preloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 142px;
+    background-size: auto;
+}
+
+.preloader-spinner {
+    height: 30px;
+    width: 30px;
+    /* background-size: auto; */
 }

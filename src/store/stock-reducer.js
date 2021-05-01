@@ -16,6 +16,9 @@ const CURRENCY = "CURRENCY"
 const TIME_FRAMES = "TIME_FRAMES"
 const PAIR = "PAIR"
 const CHART_TIMER = "CHART_TIMER"
+const SHOW_LOADER = "SHOW_LOADER"
+const HIDE_LOADER = "HIDE_LOADER"
+const ERROR = "ERROR"
 
 const initialState = {
     STOCK: [
@@ -1244,34 +1247,24 @@ const initialState = {
     colorTheme: true,
     description: '',
     currency: '',
-    timeFrames: ''
+    timeFrames: '',
+    loading: false,
+    error: false
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case CHART: {
-            return {
-                ...state,
-                CHART: payload
-            }
+            return { ...state, CHART: payload }
         }
         case ADD_DATA_STOCK: {
-            return {
-                ...state,
-                STOCK: payload
-            }
+            return { ...state, STOCK: payload }
         }
         case ADD_DATA_FOREX: {
-            return {
-                ...state,
-                FOREX: payload
-            }
+            return { ...state, FOREX: payload }
         }
         case ADD_DATA_CRYPTO: {
-            return {
-                ...state,
-                CRYPTO: payload
-            }
+            return { ...state, CRYPTO: payload }
         }
         case ACTIVE: {
             return {
@@ -1286,47 +1279,36 @@ export const stockReducer = (state = initialState, { type, payload }) => {
             }
         }
         case ACTIVE_TYPE: {
-            return {
-                ...state,
-                active_type: payload
-            }
+            return { ...state, active_type: payload }
         }
         case COLOR_THEME: {
-            return {
-                ...state,
-                colorTheme: !state.colorTheme
-            }
+            return { ...state, colorTheme: !state.colorTheme }
         }
         case DESCRIPTION: {
-            return {
-                ...state,
-                description: payload
-            }
+            return { ...state, description: payload }
         }
         case CURRENCY: {
-            return {
-                ...state,
-                currency: payload
-            }
+            return { ...state, currency: payload }
         }
         case TIME_FRAMES: {
-            return {
-                ...state,
-                timeFrames: payload
-            }
+            return { ...state, timeFrames: payload }
         }
         case PAIR: {
-            return {
-                ...state,
-                pair: payload
-            }
+            return { ...state, pair: payload }
         }
         case CHART_TIMER: {
-            return {
-                ...state,
-                chartTime: payload
-            }
+            return { ...state, chartTime: payload }
         }
+        case SHOW_LOADER: {
+            return { ...state, loading: true }
+        }
+        case HIDE_LOADER: {
+            return { ...state, loading: false }
+        }
+        case ERROR: {
+            return { ...state, error: payload }
+        }
+
         default:
             return state
     }
@@ -1343,6 +1325,9 @@ export const addCurrency = (payload) => ({ type: CURRENCY, payload })
 export const addTimeFrames = (payload) => ({ type: TIME_FRAMES, payload })
 export const addPair = (payload) => ({ type: PAIR, payload })
 export const addChartTimer = (payload) => ({ type: CHART_TIMER, payload })
+export const showLoader = () => ({ type: SHOW_LOADER })
+export const hideLoader = () => ({ type: HIDE_LOADER })
+export const error = (payload) => ({ type: ERROR, payload })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -1419,7 +1404,7 @@ const response = {
 }
 
 export function requestThunk(type, time, pair, frame) {
-    console.log(type, time, pair, frame)
+    // console.log(type, time, pair, frame)
 
     let dbPair
     for (let i = 0; db.length > i; i++) {
@@ -1431,6 +1416,7 @@ export function requestThunk(type, time, pair, frame) {
     return (dispatch) => {
         switch (type) {
             case STOCK: {
+                dispatch(showLoader())
                 fetch(`${URL}${request[type][time]}&symbol=${pair}&${time === "1D" ? "interval=5min&" : ""}apikey=${alphaVantageKey}`)
                     .then(res => res.json())
                     .then(res => {
@@ -1445,7 +1431,8 @@ export function requestThunk(type, time, pair, frame) {
                                 dispatch(addActiveType(type)),
                                 dispatch(addChart(data)),
                                 dispatch(addDataStock(data)),
-                                dispatch(addDescription(description[type][pair]))
+                                dispatch(addDescription(description[type][pair])),
+                                dispatch(hideLoader())
                             ])
                         }
                         else {
@@ -1456,16 +1443,23 @@ export function requestThunk(type, time, pair, frame) {
                                 dispatch(addTimeFrames(dbPair)),
                                 dispatch(addActiveType(type)),
                                 dispatch(addChart(data)),
-                                dispatch(addDescription(description[type][pair]))
+                                dispatch(addDescription(description[type][pair])),
+                                dispatch(hideLoader())
                             ])
                         }
                     })
                 break
             }
             case FOREX: {
+                dispatch(showLoader())
                 fetch(`${URL}${request[type][time]}&from_symbol=${pair.slice(0, 3)}&to_symbol=${pair.slice(3)}${time === "1D" ? "&interval=5min" : ""}&apikey=${alphaVantageKey}`)
                     .then(res => res.json())
-                    // .then(res => res['Error Message'] ? Promise.reject(res) : res )
+                    // .then(res => {
+                    //     debugger
+                    //     if (res.json()) return res.json()
+                    //     else return Promise.reject()
+                    // })
+                    // .then(res => res.json() ? res.json() : Promise.reject())
                     .then(res => {
                         // console.log(res)
                         const data = buildChartData(res[response[type][time]], type, time)
@@ -1480,13 +1474,20 @@ export function requestThunk(type, time, pair, frame) {
                             dispatch(addChart(data)),
                             dispatch(addDataForex(data)),
                             dispatch(addDescription(description[type][startStr])),
-                            dispatch(addCurrency(description[type][endStr]))
+                            dispatch(addCurrency(description[type][endStr])),
+                            dispatch(hideLoader())
                         ])
                     })
-                    .catch(() => console.log('что-то пошло'))
+                    .catch(() => {
+                        dispatch(error(true))
+                        setTimeout(() => {
+                            dispatch(error(false))
+                        }, 6000)
+                    })
                 break
             }
             case CRYPTO: {
+                dispatch(showLoader())
                 if (time === DAY) {
                     fetch(`https://rest.coinapi.io/v1/ohlcv/BITFINEX_SPOT_${pair.slice(0, 3)}_${pair.slice(3)}/latest?period_id=5MIN`, headers)
                         .then(res => res.json())
@@ -1505,7 +1506,8 @@ export function requestThunk(type, time, pair, frame) {
                                 dispatch(addCurrency(description[FOREX][endStr])),
                                 dispatch(addChart(data)),
                                 dispatch(addDataCrypto(data)),
-                                dispatch(addDescription(description[type][startStr]))
+                                dispatch(addDescription(description[type][startStr])),
+                                dispatch(hideLoader())
                             ])
                         })
                     break
@@ -1528,7 +1530,8 @@ export function requestThunk(type, time, pair, frame) {
                                 dispatch(addCurrency(description[FOREX][endStr])),
                                 dispatch(addChart(data)),
                                 dispatch(addDataCrypto(data)),
-                                dispatch(addDescription(description[type][startStr]))
+                                dispatch(addDescription(description[type][startStr])),
+                                dispatch(hideLoader())
                             ])
                         })
                     break

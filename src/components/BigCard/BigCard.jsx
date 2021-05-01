@@ -4,10 +4,11 @@ import "./BigCard.css"
 import TimeFramesBig from './../TimeFrames/TimeFramesBig';
 import { addActive } from '../../store/stock-reducer';
 import { initialReducer } from '../../db/initial';
+import preloader from '../../assets/preloader.svg'
 
 export default function BigCard({ type, request, activeRow, activeTime, data, colorTheme, description, sector, industry, currency,
     country, symbol, name, exchange, website, CEO, employees, paper, headquarters, code, frame, pair, secCurrency,
-    demographics
+    demographics, loading
 }) {
 
     const dispatch = useDispatch()
@@ -24,9 +25,13 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
     return (
         <div className="big-card">
             <div className="wrapper">
-
                 <div className={colorTheme ? "top-card-light" : "top-card-dark"}>
-                    <BigChart data={data} active={initialTime} colorTheme={colorTheme} currency={currency} />
+                    {loading
+                        ?
+                        <img className="preloader-spinner" src={preloader} alt="" />
+                        :
+                        <BigChart data={data} active={initialTime} colorTheme={colorTheme} currency={currency} />
+                    }
                 </div>
                 {country
                     //----------STOCK----------

@@ -1,0 +1,33 @@
+.MuiAlert-icon {
+    display: flex;
+    align-items: center;
+    opacity: 0.9;
+    padding: 7px 0;
+    font-size: 22px;
+    margin-right: 12px;
+}
+
+.MuiAlert-action {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: -8px;
+    padding-left: 16px;
+}
+
+.MuiSnackbar-root {
+    position: unset !important;
+    justify-content: unset !important;
+    /* align-items:unset !important; */
+    top: 0%!important;
+    position: absolute!important;
+}
+
+.MuiSnackbar-root.MuiSnackbar-anchorOriginBottomCenter {
+    left: 2% !important;
+    top:5%!important;
+    transform: translateX(0%)!important;
+    right: unset!important;
+    margin-left: 5%;
+    bottom: unset!important;
+}

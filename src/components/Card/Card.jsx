@@ -7,16 +7,19 @@ import Row from './../Row/Row';
 import { initial } from '../../db/initial'
 import { Link } from 'react-router-dom';
 import { initialReducer } from '../../db/initial'
+import preloader from '../../assets/preloader.svg'
 
 
-export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme, activeType, pair }) {
+export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme,
+    activeType, pair, loading }) {
+
     const dispatch = useDispatch()
 
     function req(type, time, pair, frame) {
         if (initialReducer[type][pair]) {
             dispatch(addActive({ type, time, pair }))
         }
-            
+
         dispatch(addActiveType(type))
         request(type, time, pair, frame)
     }
@@ -27,7 +30,14 @@ export default function Card({ title, type, request, activeRow, activeTime, data
                 <div className={colorTheme ? "title-light" : "title-dark"}>
                     {title}
                 </div>
-                <Chart data={data} active={activeTime} colorTheme={colorTheme} />
+                {loading
+                    ?
+                    <div className="wrap-preloader">
+                        <img className="preloader-spinner" src={preloader} alt="" />
+                    </div>
+                    :
+                    <Chart data={data} active={activeTime} colorTheme={colorTheme} />
+                }
 
                 <TimeFrames active={activeTime} colorTheme={colorTheme}
                     // frame={frame}

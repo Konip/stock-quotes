@@ -15,16 +15,20 @@ export default function CardContainer({ type, title }) {
 
     const activeType = stock.active_type
     const pair = stock.pair
+    let loading
 
-    const request = (type, time, pair,frame) => {
-        dispatch(requestThunk(type, time, pair,frame))
+    if (type === activeType) loading = stock.loading
+
+    const request = (type, time, pair, frame) => {
+        dispatch(requestThunk(type, time, pair, frame))
     }
-
+    
     return (
         <div>
             <Card title={title} type={type} request={request} data={data} activeTime={activeTime}
                 activeRow={activeRow} colorTheme={colorTheme} activeType={activeType} pair={pair}
-                />
+                loading={loading}
+            />
         </div>
     )
 }

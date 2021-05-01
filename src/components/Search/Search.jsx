@@ -82,7 +82,7 @@ export default class Search extends Component {
                                 cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         <input className='input' type="text" placeholder='Search' value={this.state.searchRequest} onChange={this.handleChange}
                             ref={(input) => (this.textInput = input)} data-wait="3000" data-words='["Bitcoin","Apple","Tesla","Microsoft"]'
-                        onBlur={this.clear}
+                        // onBlur={this.clear}
                         />
                     </form>
 

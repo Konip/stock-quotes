@@ -41,7 +41,7 @@
     /* outline: none; */
     padding: 1rem 1rem 1rem 1rem;
 }
-.company-search-input svg{
+.company-search-input svg,.company-search-input-dark svg{
     margin-top: 4px;
 }
 .company-search-input {

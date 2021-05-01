@@ -18,6 +18,7 @@ export default function BigCardContainer() {
     else activeTime = stock.chartTime
     const colorTheme = stock.colorTheme
     const frame = stock.timeFrames
+    const loading = stock.loading
 
 
     let currency
@@ -46,14 +47,12 @@ export default function BigCardContainer() {
     }
 
     return (
-        <div>
-            <BigCard type={activeType} request={request} data={data} activeRow={activeRow}
-                activeTime={activeTime} colorTheme={colorTheme} description={description} sector={sector}
-                industry={industry} currency={currency} country={country} symbol={symbol} name={name}
-                exchange={exchange} website={website} CEO={CEO} employees={employees} paper={paper}
-                headquarters={headquarters} code={code} frame={frame} pair={pair} secCurrency={secCurrency}
-                demographics={demographics}
-            />
-        </div>
+        <BigCard type={activeType} request={request} data={data} activeRow={activeRow}
+            activeTime={activeTime} colorTheme={colorTheme} description={description} sector={sector}
+            industry={industry} currency={currency} country={country} symbol={symbol} name={name}
+            exchange={exchange} website={website} CEO={CEO} employees={employees} paper={paper}
+            headquarters={headquarters} code={code} frame={frame} pair={pair} secCurrency={secCurrency}
+            demographics={demographics} loading={loading}
+        />
     )
 }
