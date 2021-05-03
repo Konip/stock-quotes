@@ -61,7 +61,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                         <strong>Сайт: </strong>
                                         <a href={website}>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="16px" width="16px"
-                                                viewBox="0 0 24 24" class="sc-16r8icm-0 kyoBCp"><path d="M11.877 15.9787C11.8146 16.8242 
+                                                viewBox="0 0 24 24" className="sc-16r8icm-0 kyoBCp"><path d="M11.877 15.9787C11.8146 16.8242 
                                             11.4524 17.6196 10.8555 18.2217L9.94675 19.1305C9.27191 19.7958 8.36141 20.1672 7.41381 
                                             20.1638C6.46621 20.1604 5.5584 19.7825 4.88834 19.1124C4.21828 18.4423 3.84034 17.5345 
                                             3.83695 16.5868C3.83355 15.6392 4.20497 14.7287 4.87021 14.0538L5.779 13.145C6.38116 
@@ -91,11 +91,11 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                             </svg>
                                             <strong>{website}</strong>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="16px" width="16px"
-                                                viewBox="0 0 24 24" class="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
+                                                viewBox="0 0 24 24" className="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
                                             4L19.9999 9.81802M9.81819 6.90946H5.77777C4.79594 6.90946 4 7.70537 4 8.68718V18.2223C4 19.2041 
                                             4.79594 20 5.77778 20H15.3131C16.295 20 17.0909 19.2041 17.0909 18.2223V14.182"
-                                                    stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
-                                                    stroke-linejoin="round"></path></svg>
+                                                    stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"
+                                                    strokeLinejoin="round"></path></svg>
                                         </a>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                         <div className={colorTheme ? "link" : "link-dark"}>
                                             <a href={website}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" height="16px" width="16px"
-                                                    viewBox="0 0 24 24" class="sc-16r8icm-0 kyoBCp"><path d="M11.877 15.9787C11.8146 16.8242 
+                                                    viewBox="0 0 24 24" className="sc-16r8icm-0 kyoBCp"><path d="M11.877 15.9787C11.8146 16.8242 
                                             11.4524 17.6196 10.8555 18.2217L9.94675 19.1305C9.27191 19.7958 8.36141 20.1672 7.41381 
                                             20.1638C6.46621 20.1604 5.5584 19.7825 4.88834 19.1124C4.21828 18.4423 3.84034 17.5345 
                                             3.83695 16.5868C3.83355 15.6392 4.20497 14.7287 4.87021 14.0538L5.779 13.145C6.38116 
@@ -169,11 +169,11 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                                 </svg>
                                                 <strong>{website}</strong>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="16px" width="16px"
-                                                    viewBox="0 0 24 24" class="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
+                                                    viewBox="0 0 24 24" className="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
                                             4L19.9999 9.81802M9.81819 6.90946H5.77777C4.79594 6.90946 4 7.70537 4 8.68718V18.2223C4 19.2041 
                                             4.79594 20 5.77778 20H15.3131C16.295 20 17.0909 19.2041 17.0909 18.2223V14.182"
-                                                        stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
-                                                        stroke-linejoin="round"></path></svg>
+                                                        stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"
+                                                        strokeLinejoin="round"></path></svg>
                                             </a>
                                         </div>
                                     </div>
@@ -181,17 +181,17 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                         <div className={colorTheme ? "link" : "link-dark"}>
                                             <a href={code}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="16px" width="16px" viewBox="0 0 24 24"
-                                                    class="sc-16r8icm-0 kyoBCp"><path d="M7 8L3 12L7 16M17 8L21 12L17 16" stroke="currentColor"
-                                                        stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                    <path d="M10 19L14 5" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
-                                                        stroke-linejoin="round"></path></svg>
+                                                    className="sc-16r8icm-0 kyoBCp"><path d="M7 8L3 12L7 16M17 8L21 12L17 16" stroke="currentColor"
+                                                        strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"></path>
+                                                    <path d="M10 19L14 5" stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"
+                                                        strokeLinejoin="round"></path></svg>
                                                 <strong>Исходный код</strong>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="16px" width="16px"
-                                                    viewBox="0 0 24 24" class="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
+                                                    viewBox="0 0 24 24" className="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
                                             4L19.9999 9.81802M9.81819 6.90946H5.77777C4.79594 6.90946 4 7.70537 4 8.68718V18.2223C4 19.2041 
                                             4.79594 20 5.77778 20H15.3131C16.295 20 17.0909 19.2041 17.0909 18.2223V14.182"
-                                                        stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
-                                                        stroke-linejoin="round"></path></svg>
+                                                        stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"
+                                                        strokeLinejoin="round"></path></svg>
                                             </a>
                                         </div>
                                     </div>
@@ -199,19 +199,19 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                         <div className={colorTheme ? "link" : "link-dark"}>
                                             <a href={paper}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="16px" width="16px"
-                                                    viewBox="0 0 24 24" class="sc-16r8icm-0 kyoBCp"><path d="M13.75 3H6.75C6.28587 
+                                                    viewBox="0 0 24 24" className="sc-16r8icm-0 kyoBCp"><path d="M13.75 3H6.75C6.28587 
                                             3 5.84075 3.18964 5.51256 3.52721C5.18437 3.86477 5 4.32261 5 4.8V19.2C5 19.6774 
                                             5.18437 20.1352 5.51256 20.4728C5.84075 20.8104 6.28587 21 6.75 21H17.25C17.7141 
                                             21 18.1592 20.8104 18.4874 20.4728C18.8156 20.1352 19 19.6774 19 19.2V8.4M13.75 3L19 
                                             8.4M13.75 3V8.4H19M15.5 12.9H8.5M15.5 16.5H8.5M10.25 9.3H8.5" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                                                        strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path></svg>
                                                 <strong>Белая книга</strong>
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" height="16px" width="16px"
-                                                    viewBox="0 0 24 24" class="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
+                                                    viewBox="0 0 24 24" className="sc-16r8icm-0 kyoBCp"><path d="M12 11.9998L20 4M20 4H14.1817M20 
                                             4L19.9999 9.81802M9.81819 6.90946H5.77777C4.79594 6.90946 4 7.70537 4 8.68718V18.2223C4 19.2041 
                                             4.79594 20 5.77778 20H15.3131C16.295 20 17.0909 19.2041 17.0909 18.2223V14.182"
-                                                        stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round"
-                                                        stroke-linejoin="round"></path></svg>
+                                                        stroke="currentColor" strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"
+                                                        strokeLinejoin="round"></path></svg>
                                             </a>
                                         </div>
                                     </div>

@@ -63,12 +63,17 @@
 
 .row-wrapper {
     display: flex;
+    width: 100%;
 }
 
-.section {
+.section1,.section2,.section3 {
     margin: 0 15px;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+.section3{
+    width: 50%;
 }
 
 .logo-STOCK, .logo-CRYPTO {

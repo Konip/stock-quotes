@@ -22,9 +22,10 @@ export default function CardContainer({ type, title }) {
     const request = (type, time, pair, frame) => {
         dispatch(requestThunk(type, time, pair, frame))
     }
-    
+
     return (
         <div>
+     
             <Card title={title} type={type} request={request} data={data} activeTime={activeTime}
                 activeRow={activeRow} colorTheme={colorTheme} activeType={activeType} pair={pair}
                 loading={loading}

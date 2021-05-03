@@ -2,11 +2,6 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from "redux-thunk";
 import { requestThunk, stockReducer } from './stock-reducer';
 
-// const arr = (store) => (next) => (action) => {
-//     console.log("hello")
-//     return next(action)
-// }
-
 let reducers = combineReducers(
     {
         stock: stockReducer,

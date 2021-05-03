@@ -9,17 +9,17 @@ export default function Row({ pair, name, img, type, active, index, onClickItem,
             active === pair && !colorTheme ? "row-dark-active" : active !== pair && colorTheme ? "row-light" : "row-dark"}
             onClick={() => onClickItem(pair, frame)}>
             <div className="row-wrapper">
-                <div className="section">
+                <div className="section1">
                     <img className={`logo-${type}`} src={img} alt="" />
                 </div>
-                <div className="section">
+                <div className="section2">
                     <Link className="link" to={`/markets`}>
                         <span className={colorTheme ? "currency-pair-light" : "currency-pair-dark"}>
                             {pair}
                         </span>
                     </Link>
                 </div>
-                <div className="section">
+                <div className="section3">
                     <span className={colorTheme ? "name-light" : "name-dark"}>
                         {name}
                     </span>

@@ -9,11 +9,21 @@ document.addEventListener('DOMContentLoaded', init)
 
 function init() {
     const txtElement = document.querySelector('.input')
-    const words = JSON.parse(txtElement.getAttribute('data-words'))
-    const wait = txtElement.getAttribute('data-wait')
+    const words = ["Bitcoin", "Apple", "Tesla", "Microsoft"]
+    const wait = 3000
+    // const txtElement = document.querySelector('.input')
+    // const words = JSON.parse(txtElement.getAttribute('data-words'))
+    // const wait = txtElement.getAttribute('data-wait')
 
     new TypeWriter(txtElement, words, wait)
 }
+
+// document.addEventListener('click', (event) => {
+//     const doc = document.querySelector('input')
+//     console.log(doc.contains(event.target))
+//     // console.log(doc.contains(event.target))
+//     if(!doc.contains(event.target)) this.clear()
+// })
 
 export default class Search extends Component {
 
@@ -63,26 +73,39 @@ export default class Search extends Component {
         this.clear()
     }
     clear() {
-        this.setState({ searchRequest: '' });
+        this.setState({ searchRequest: '' })
         let input = document.querySelector(".company-search-results")
         input.textContent = ""
         this.state.show = false
     }
 
     render() {
-      
+
+        const clear = this.clear
+
+        function hide(event) {
+            const doc = document.querySelector('input')
+            if (!doc.contains(event.target)) {
+                clear()
+            }
+            this.removeEventListener('click', hide)
+        }
+        document.addEventListener('click', hide)
+
         let result = this.state.result
+        let show = this.state.show
         let chartTime = this.props.chartTime
+
         return (
             <div className='company-search'>
                 <div className={this.props.colorTheme ? 'company-search-input' : 'company-search-input-dark'}>
                     <form className='company-search-bar-nav'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="rgba(108,117,125,.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11"
+                            stroke="rgba(108,117,125,.6)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11"
                                 cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                         <input className='input' type="text" placeholder='Search' value={this.state.searchRequest} onChange={this.handleChange}
-                            ref={(input) => (this.textInput = input)} data-wait="3000" data-words='["Bitcoin","Apple","Tesla","Microsoft"]'
-                        // onBlur={this.clear}
+                            ref={(input) => (this.textInput = input)} 
+                        // ref={(input) => (this.textInput = input)} data-wait="3000" data-words='["Bitcoin","Apple","Tesla","Microsoft"]'
                         />
                     </form>
 
@@ -95,7 +118,8 @@ export default class Search extends Component {
                     {
                         result.map((res, index) => (
                             <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/" key={res.pair + index}
-                                onClick={() => (this.request(res.type, chartTime, res.pair, res.time))}>
+                                onClick={() => (this.request(res.type, chartTime, res.pair, res.time))}
+                            >
                                 { res.type === 'FOREX' || res.type === 'CRYPTO'
                                     ?
                                     <div className={this.props.colorTheme ? 'result-item' : 'result-item-dark'}>

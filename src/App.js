@@ -46,4 +46,5 @@ let mapStateToProps = (state) => {
   }
 }
 
+// export default connect(mapStateToProps, startThunk)(App);
 export default connect(mapStateToProps, null)(App);

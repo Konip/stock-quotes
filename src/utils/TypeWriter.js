@@ -13,7 +13,6 @@ export class TypeWriter {
         const current = this.wordIndex % this.words.length
         //    Получить полный текст слова
         const fullTxt = this.words[current]
-        // console.log(fullTxt)
 
         if (this.isDeleting) {
             // Удаление символа
@@ -25,7 +24,6 @@ export class TypeWriter {
         }
         // вставить текст в элемент
         this.txtElement.setAttribute('placeholder', this.txt)
-        // this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`
         // тип скорости
         let typeSpeed = 300
         if (this.isDeleting) {
@@ -47,13 +45,3 @@ export class TypeWriter {
         setTimeout(() => this.type(), typeSpeed)
     }
 }
-
-// document.addEventListener('DOMContentLoaded', init)
-
-// function init() {
-//     const txtElement = document.querySelector('#input')
-//     const words = JSON.parse(txtElement.getAttribute('data-words'))
-//     const wait = txtElement.getAttribute('data-wait')
-
-//     new TypeWriter(txtElement, words, wait)
-// }

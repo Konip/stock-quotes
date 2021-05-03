@@ -41,14 +41,28 @@
     border-radius: 6px;
 }
 
-.row-wrapper {
+.market-row-wrapper {
     display: flex;
+    width: 100%;
 }
 
-.section {
+.market-section1, .market-section2, .market-section3 {
     margin: 0 15px;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+/* .market-section1,.market-section2{
+    flex-grow: 1;
+} */
+
+/* .market-section2{
+    flex-grow: 1;
+} */
+
+.market-section3 {
+    width: 50%;
 }
 
 .logo-STOCK, .logo-CRYPTO {
@@ -101,8 +115,3 @@
     text-decoration: none;
     color: black;
 }
-
-/* .link:hover {
-    color: rgb(0, 179, 255);
-    transition: .5s;
-} */

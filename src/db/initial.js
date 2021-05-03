@@ -118,7 +118,7 @@ export const initial = {
         { pair: "MSFT", name: "Microsoft Corporation", img: microsoft, imgD: microsoft },
     ],
     FOREX: [
-        { pair: "UDEUR", name: "Доллар США / Евро", img: USDEUR, imgD: USDEURd },
+        { pair: "USDEUR", name: "Доллар США / Евро", img: USDEUR, imgD: USDEURd },
         { pair: "JPYGBP", name: "Японская иена / Британский фунт", img: YENGBP, imgD: YENGBPd },
         { pair: "EURINR", name: "Евро / Индийская рупия", img: EURINR, imgD: EURINRd },
         { pair: "USDILS", name: "Доллар США  / Новый израильский шекель", img: USDILS, imgD: USDILSd },

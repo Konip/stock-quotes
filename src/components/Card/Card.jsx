@@ -26,6 +26,7 @@ export default function Card({ title, type, request, activeRow, activeTime, data
 
     return (
         <div className={colorTheme ? "card-light" : "card-dark"}>
+          
             <div className="wrap">
                 <div className={colorTheme ? "title-light" : "title-dark"}>
                     {title}
@@ -54,8 +55,8 @@ export default function Card({ title, type, request, activeRow, activeTime, data
                 <div className='wrap-widget'>
                     <Link to={`/stock-market/${type}`} className={colorTheme ? "widget-light" : "widget-dark"}>
                         Больше акций
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" width="8" height="14"><path fill="none" fill-rule="evenodd"
-                            stroke="currentColor" stroke-linecap="square" stroke-width="2" d="M2 2l4 5-4 5"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 8 14" width="8" height="14"><path fill="none" fillRule="evenodd"
+                            stroke="currentColor" strokeLinecap="square" strokeWidth="2" d="M2 2l4 5-4 5"></path></svg>
                     </Link>
                 </div>
             </div>
