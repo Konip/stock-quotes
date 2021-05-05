@@ -24,13 +24,10 @@ export default function CardContainer({ type, title }) {
     }
 
     return (
-        <div>
-     
-            <Card title={title} type={type} request={request} data={data} activeTime={activeTime}
-                activeRow={activeRow} colorTheme={colorTheme} activeType={activeType} pair={pair}
-                loading={loading}
-            />
-        </div>
+        <Card title={title} type={type} request={request} data={data} activeTime={activeTime}
+            activeRow={activeRow} colorTheme={colorTheme} activeType={activeType} pair={pair}
+            loading={loading}
+        />
     )
 }
 

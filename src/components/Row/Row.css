@@ -71,6 +71,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 .section3{
     width: 50%;

@@ -117,7 +117,7 @@ export default class Search extends Component {
                 <div className='company-search-results'>
                     {
                         result.map((res, index) => (
-                            <Link className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} to="/" key={res.pair + index}
+                            <Link to={'/markets'} className={this.props.colorTheme ? 'result-items' : 'result-items-dark'} key={res.pair + index}
                                 onClick={() => (this.request(res.type, chartTime, res.pair, res.time))}
                             >
                                 { res.type === 'FOREX' || res.type === 'CRYPTO'

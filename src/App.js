@@ -12,28 +12,42 @@ import Footer from './components/Footer/Footer';
 import SearchContainer from './components/Search/SearchContainer';
 import StockMarketContainer from './components/StockMarket/StockMarketContainer';
 import Error from './components/Error/Error';
+import Burger from './components/Burger/Burger';
 
+let width
+width = window.screen.width
+console.log(width)
 class App extends React.Component {
 
+    
   // componentDidUpdate() {
   //   this.props.startThunk()
   // }
 
   render() {
+    
+    console.log('render')
     return (
       <div className={this.props.colorTheme ? `App` : `App dark`}>
-        <Navbar className="nav" colorTheme={this.props.colorTheme} />
-        <SearchContainer className="search" />
-        { this.props.error &&
-          <Error/>
+        {this.props.burger || width > 768 &&
+          <Navbar className="nav" colorTheme={this.props.colorTheme} burger={this.props.burger}/>
         }
         
-        <Route exact path="/" render={() => <Home />} />
-        <Route exact path="/markets" render={() => <BigCardContainer />} />
-        {/* <Route path="/profile/:userId?" */}
-        <Route path="/stock-market/:type" render={() => <StockMarketContainer />} />
-        <Footer />
-        {/* <Route path="*" component={Error404} /> */}
+        <div className="App-wrap">
+          {width < 768 &&
+            <Burger burg={this.props.burger }/>
+          }
+          <SearchContainer className="search" />
+          {this.props.error &&
+            <Error />
+          }
+          <Route exact path="/" render={() => <Home />} />
+          <Route exact path="/markets" render={() => <BigCardContainer />} />
+          {/* <Route path="/profile/:userId?" */}
+          <Route path="/stock-market/:type" render={() => <StockMarketContainer />} />
+          <Footer />
+          {/* <Route path="*" component={Error404} /> */}
+        </div>
       </div>
     );
   }
@@ -42,7 +56,8 @@ class App extends React.Component {
 let mapStateToProps = (state) => {
   return {
     colorTheme: state.stock.colorTheme,
-    error: state.stock.error
+    error: state.stock.error,
+    burger: state.stock.burger,
   }
 }
 

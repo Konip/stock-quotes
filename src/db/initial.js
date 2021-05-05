@@ -113,7 +113,7 @@ export const initial = {
         { pair: "AAPL", name: "Apple Inc", img: apple, imgD: apple },
         { pair: "TSLA", name: "Tesla Inc", img: tesla, imgD: tesla },
         { pair: "SPOT", name: "Spotify technology SA", img: spotify, imgD: spotify },
-        { pair: "INTC", name: "Intel Corp", img: intel, imgD: intel },
+        { pair: "INTC", name: "Intel Corporation", img: intel, imgD: intel },
         { pair: "AMZN", name: "Amazon Inc", img: amazon, imgD: amazon },
         { pair: "MSFT", name: "Microsoft Corporation", img: microsoft, imgD: microsoft },
     ],

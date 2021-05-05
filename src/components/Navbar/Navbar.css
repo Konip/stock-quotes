@@ -2,6 +2,7 @@
     width: 90px;
     height: 100%;
     position: fixed;
+    /* margin-right: 5px; */
 }
 
 .navbar-light {
@@ -13,10 +14,31 @@
 }
 
 .navbar-wraper {
-    margin-top: 100px;
+    position: relative;
+    /* margin-top: 100px; */
+    top: 100px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: center;
+}
+
+.logo {
+    /* position: absolute; */
+    margin-top: 20px;
+}
+
+.logo span {
+    color: rgb(76, 117, 242);
+}
+
+.logo a {
+    text-decoration: none;
+    color: rgb(189, 189, 189);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
@@ -36,7 +58,6 @@
     color: white;
     font-size: .9em;
     white-space: pre;
- 
 }
 
 .popup::before {
@@ -45,12 +66,10 @@
     width: 12px;
     height: 12px;
     background-color: black;
-  
     left: -4px;
     top: 14px;
     transform: rotate(45deg);
     border-radius: 1px;
-   
 }
 
 .navbar-wrap:hover .popup {
@@ -86,4 +105,16 @@
 .navbar-wrap .chart:hover {
     fill: rgb(76, 117, 242);
     transition: .5s;
+}
+
+@media (max-width: 767px) {
+    .navbar-light, .navbar-dark {
+        /* visibility: hidden; */
+        /* width: 100%;
+        height: 100%; */
+        
+    }
+    /* .navbar-wrap{
+        visibility: hidden;
+    } */
 }

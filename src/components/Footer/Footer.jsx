@@ -5,6 +5,8 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer-wrapper">
+                <mark>Stock Quotes</mark>
+                <p>Quotes and free charts</p>
                 <div className="social">
                     <a className="github" href="https://github.com/Konip">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -28,16 +30,13 @@ export default function Footer() {
                         </svg>
                     </a>
 
-                    <a className="mail" href="gunpowderbit@gmail.com">
+                    <a className="mail" href="mailto:gunpowderbit@gmail.com">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                     </a>
-                </div>
-                <div className="footer-bottom">
-                    <p>Copyright &copy; 2020 Burger</p>
                 </div>
             </div>
         </footer>

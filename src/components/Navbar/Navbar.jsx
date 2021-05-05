@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
 import "./Navbar.css"
-import home from "../../assets/home.svg"
-import moon from "../../assets/moon.svg"
-import book from "../../assets/book.svg"
-import about from "../../assets/about.svg"
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import { addColorTheme } from '../../store/stock-reducer'
 
-export default function Navbar({ colorTheme }) {
+export default function Navbar({ colorTheme, burger }) {
     const dispatch = useDispatch()
     return (
         <div className={colorTheme ? `navbar-light` : `navbar-dark`}>
+            <div className="logo">
+                <Link to='/'>
+                    Stock
+               <span>Quotes</span>
+                </Link>
+            </div>
             <div className="navbar-wraper">
                 <div className="navbar-wrap">
                     <NavLink exact to="/" >
@@ -20,7 +21,7 @@ export default function Navbar({ colorTheme }) {
                             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                             <polyline points="9 22 9 12 15 12 15 22"></polyline>
                         </svg>
-                        
+
                     </NavLink>
                     <div className="popup">Home</div>
                 </div>

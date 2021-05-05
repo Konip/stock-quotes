@@ -235,9 +235,16 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                         onClickItem={(active, frame) => req(type, active, pair, frame)} />
                                 </div>
                                 <div className={colorTheme ? "info-light" : "info-dark"}>
-                                    <div className="info-row">
+                                    {name &&
+                                        <div className="info-row">
+                                            <strong>{`1 ${name}`}</strong>{` равен `}
+                                            <strong>{data[data.length - 1].y}{` ${secCurrency}`}</strong>
+                                        </div>
+                                    }
+
+                                    {/* <div className="info-row">
                                         {name && `1 ${name} равен ${data[data.length - 1].y} ${secCurrency}`}
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                             <div className={colorTheme ? "right-block-light" : "right-block-dark"}>

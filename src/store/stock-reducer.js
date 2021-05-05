@@ -1,5 +1,4 @@
 import { buildChartData } from "./buildChartData"
-import { dataAPI, startAPI } from './../API/API';
 import { initialReducer } from '../db/initial'
 import { description } from '../db/description'
 import { db } from '../db/db'
@@ -19,6 +18,7 @@ const CHART_TIMER = "CHART_TIMER"
 const SHOW_LOADER = "SHOW_LOADER"
 const HIDE_LOADER = "HIDE_LOADER"
 const ERROR = "ERROR"
+const BURGER = "BURGER"
 
 const initialState = {
     STOCK: [],
@@ -47,7 +47,8 @@ const initialState = {
     currency: '',
     timeFrames: '',
     loading: false,
-    error: false
+    error: false,
+    burger: false,
 }
 
 export const stockReducer = (state = initialState, { type, payload }) => {
@@ -106,6 +107,9 @@ export const stockReducer = (state = initialState, { type, payload }) => {
         case ERROR: {
             return { ...state, error: payload }
         }
+        case BURGER: {
+            return { ...state, burger: !state.burger}
+        }
 
         default:
             return state
@@ -126,6 +130,7 @@ export const addChartTimer = (payload) => ({ type: CHART_TIMER, payload })
 export const showLoader = () => ({ type: SHOW_LOADER })
 export const hideLoader = () => ({ type: HIDE_LOADER })
 export const error = (payload) => ({ type: ERROR, payload })
+export const burger = () => ({ type: BURGER })
 
 const STOCK = "STOCK"
 const FOREX = "FOREX"
@@ -223,7 +228,6 @@ export function requestThunk(type, time, pair, frame) {
                         const data = buildChartData(res[response[type][time]], type, time)
 
                         if (initialReducer[type][pair] === pair) {
-                            console.log('1')
                             return Promise.all([
                                 dispatch(addChartTimer(time)),
                                 dispatch(addPair(pair)),
@@ -236,7 +240,6 @@ export function requestThunk(type, time, pair, frame) {
                             ])
                         }
                         else {
-                            console.log('2')
                             return Promise.all([
                                 dispatch(addChartTimer(time)),
                                 dispatch(addPair(pair)),
