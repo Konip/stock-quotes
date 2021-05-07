@@ -2,9 +2,9 @@
     font-size: 1em;
     height: 30px;
     background-color: inherit;
-    /* border: 1px solid black; */
     margin: 5px;
     display: flex;
+    padding-left: 40px;
 }
 
 .timeBig ul {
@@ -27,7 +27,8 @@
 }
 
 .timeBig-dark.active {
-    background-color: rgb(0, 143, 255, .6);
+    background-color: #2f3d5c;
+    /* background-color: rgb(0, 143, 255, .6); */
 }
 
 .timeBig-light:hover {
@@ -44,4 +45,42 @@
 
 .date-dark {
     color: #d1d4dc;
+}
+
+@media (max-width: 1000px) {
+    .timeBig {
+        font-size: .9em;
+    }
+}
+
+@media (max-width: 930px) {
+    .timeBig {
+        padding-left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .timeBig {
+        font-size: 1.2em;
+        height: 40px;
+    }
+    .timeBig li {
+        margin: 0 10px;
+        height: 35px;
+        width: 35px;
+    }
+}
+@media (max-width: 500px) {
+    .timeBig {
+        font-size: 1.1em;
+        height: 40px;
+    }
+    .timeBig li {
+        margin: 0 6px;
+        height: 35px;
+        width: 35px;
+    }
 }

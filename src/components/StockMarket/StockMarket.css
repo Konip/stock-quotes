@@ -1,13 +1,14 @@
 .stock-markets {
-    max-width: 1480px;
+    /* max-width: 1480px; */
+    max-width: 1590px;
     height: 100%;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    text-align: center;
 }
 
 .stock-markets-cards {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }

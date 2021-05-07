@@ -28,12 +28,10 @@
 
 .company-search-input, .company-search-input-dark {
     display: flex;
-    /* width: 600px; */
     height: 64px;
     border: 0;
     border-radius: 5px;
     font-size: 1rem;
-    /* outline: none; */
     padding: 1rem 1rem 1rem 1rem;
 }
 
@@ -58,17 +56,15 @@
 }
 
 .company-search-results {
-    width: 600px;
+    max-width: 600px;
     height: 64px;
-    /* margin-bottom: 20px; */
     padding: 1rem 1rem 0;
-    z-index: 10;
-    color: black;
+    z-index: 8;
+    color: #4d4f51;
 }
 
 .result-items {
     background-color: #ffffffe3;
-    /* background-color: #ffffffd6; */
     text-decoration: none;
     color: inherit;
 }
@@ -85,9 +81,7 @@
 
 .result-item, .result-item-dark {
     padding: 15px;
-    /* padding: 1rem; */
     font-size: 16px;
-    /* font-size: 1.1em; */
     cursor: pointer;
     border-radius: 5px;
 }
@@ -101,7 +95,6 @@
 
 .result-item p, .result-item-dark p {
     margin-left: 40px;
-    /* margin-left: 20px; */
     font-weight: 500;
 }
 
@@ -127,4 +120,51 @@
 
 .MuiSvgIcon-root {
     cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .company-search {
+        max-width: 515px;
+    }
+    .company-search-results {
+        width: 493px;
+    }
+}
+
+@media (max-width: 514px) {
+    .company-search {
+        max-width: calc(100% - 10px);
+    }
+    .company-search-results {
+        max-width: calc(100% - 2px);
+    }
+    .result-item, .result-item-dark {
+        padding: 10px;
+        font-size: 14px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .company-search-input, .company-search-input-dark {
+        height: 64px;
+        /* height: 50px; */
+    }
+}
+
+@media (max-width: 366px) {
+    .result-item p, .result-item-dark p {
+        margin-left: 25px;
+            
+    }
+    .result-item, .result-item-dark {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 300px) {
+    .company-search {
+        padding: 10px 10px 0 10px;
+    }
 }

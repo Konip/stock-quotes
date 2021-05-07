@@ -47,22 +47,16 @@
 }
 
 .market-section1, .market-section2, .market-section3 {
-    margin: 0 15px;
+    margin: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
-
-/* .market-section1,.market-section2{
-    flex-grow: 1;
-} */
-
-/* .market-section2{
-    flex-grow: 1;
-} */
 
 .market-section3 {
     width: 50%;
+    margin: 0 auto;
 }
 
 .logo-STOCK, .logo-CRYPTO {
@@ -114,4 +108,42 @@
 .link {
     text-decoration: none;
     color: black;
+}
+
+@media (max-width: 1089px) {
+    .market-section1, .market-section2, .market-section3 {
+        flex-grow: 1;
+    }
+}
+
+@media (max-width: 570px) {
+    .wrap {
+        padding: 6px;
+    }
+}
+
+@media (max-width: 400px) {
+    .market-section1, .market-section2, .market-section3 {
+        margin: 0 10px;
+    }
+    .logo-FOREX {
+        height: 40px;
+        width: 40px;
+    }
+}
+
+@media (max-width: 300px) {
+    .name-light, .name-dark {
+        font-size: .9em;
+    }
+    .market-section1, .market-section2, .market-section3 {
+        margin: 0 5px;
+    }
+    .currency-pair-light, .currency-pair-dark {
+        font-size: .9em;
+    }
+    .logo-FOREX {
+        height: 35px;
+        width: 35px;
+    }
 }

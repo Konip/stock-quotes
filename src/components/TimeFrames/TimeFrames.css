@@ -9,7 +9,8 @@
 
 .time ul {
     display: flex;
-    list-style-type: none
+    list-style-type: none;
+    padding-left: 40px;
 }
 
 .time li {
@@ -47,4 +48,10 @@
 
 .date-dark {
     color: #d1d4dc;
+}
+
+@media (max-width: 300px) {
+    .time ul {
+        padding-left: 20px;
+    }
 }

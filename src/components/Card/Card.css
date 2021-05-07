@@ -91,3 +91,27 @@
     width: 30px;
     /* background-size: auto; */
 }
+
+@media (max-width: 1089px) {
+    .card-light, .card-dark {
+        width: 550px;
+    }
+}
+
+@media (max-width: 570px) {
+    .card-light, .card-dark {
+        max-width: calc(100% - 10px);
+        margin: 5px 5px 5px 5px;
+        height: 675px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-light, .card-dark {}
+}
+
+@media (max-width: 300px) {
+    .title-light, .title-dark {
+        font-size: 1.2em;
+    }
+}

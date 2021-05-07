@@ -1,15 +1,59 @@
-.burger{
-    position: absolute;
+.burger, .burger-dark {
+    /* position: absolute; */
     top: 0;
     width: 100%;
     height: 90px;
     /* background-color: red; */
     z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.burger svg{
+
+.header {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: rgb(189, 189, 189);
+}
+
+.header span {
+    color: rgb(76, 117, 242);
+}
+
+.burger svg {}
+
+.burger-dark svg {
+    stroke: #bdbdbd;
+}
+
+.burger svg, .burger-dark svg {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     right: 40px;
     top: 30px;
+}
+
+@media (max-width: 400px) {
+    .burger svg, .burger-dark svg {
+        right: 25px;
+        top: 20px;
+    }
+    .burger, .burger-dark {
+        height: 70px;
+    }
+}
+
+@media (max-width: 300px) {
+    .burger svg, .burger-dark svg {
+        right: 20px;
+        top: 20px;
+    }
+    .header {
+        font-size: 1.1em;
+    }
+    .burger svg, .burger-dark svg {
+        width: 30px;
+        height: 30px;
+    }
 }

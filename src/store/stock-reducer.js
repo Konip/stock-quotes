@@ -47,7 +47,7 @@ const initialState = {
     currency: '',
     timeFrames: '',
     loading: false,
-    error: false,
+    error: true,
     burger: false,
 }
 

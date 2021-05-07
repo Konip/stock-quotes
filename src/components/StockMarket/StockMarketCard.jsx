@@ -2,6 +2,7 @@ import React from 'react'
 import './StockMarketCard.css'
 import { initialMarket } from './../../db/initial';
 import MarketRow from './MarketRow';
+import { Link } from 'react-router-dom';
 
 export default function StockMarketCard({ title, type, request, colorTheme, img, pair }) {
 
@@ -21,10 +22,13 @@ export default function StockMarketCard({ title, type, request, colorTheme, img,
 
                 <div className="market-rows">
                     {data.map((i, index) => (
-                        < MarketRow key={`${i.pair}${i.name}`} pair={i.pair} name={i.name} img={colorTheme ? i.img : i.imgD} type={type}
-                        frame={i.time}
-                            onClickItem={(pair, frame) => req(type, '1W', pair, frame)} colorTheme={colorTheme}
-                        />
+                        <Link to={'/markets'}>
+                            < MarketRow key={`${i.pair}${i.name}`} pair={i.pair} name={i.name} img={colorTheme ? i.img : i.imgD} type={type}
+                                frame={i.time}
+                                onClickItem={(pair, frame) => req(type, '1W', pair, frame)} colorTheme={colorTheme}
+                            />
+                        </Link>
+
                     ))}
                 </div>
             </div>

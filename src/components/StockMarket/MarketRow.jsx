@@ -12,7 +12,7 @@ export default function MarketRow({ pair, name, img, type, onClickItem, colorThe
                     <img className={`logo-${type}`} src={img} alt="" />
                 </div>
                 <div className="market-section2">
-                    <Link className="link" to={`/markets`}>
+                    <Link className="link" to={'/markets'}>
                         <span className={colorTheme ? "currency-pair-light" : "currency-pair-dark"}>
                             {pair}
                         </span>

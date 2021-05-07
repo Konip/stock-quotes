@@ -1,9 +1,7 @@
 .market-card-light, .market-card-dark {
-    width: 31.96%;
-    /* height: 535px; */
+    width: 480px;
+    /* width: 31.96%; */
     height: 100%;
-    /* height: 700px; */
-    /* height: 720px; */
     margin: 0 10px;
     border-radius: 6px;
     margin-bottom: 20px;
@@ -30,11 +28,14 @@
     font-size: 1.5em;
     font-weight: 600;
     height: 60px;
+    margin-left: 5px;
 }
+
 .market-title-light span, .market-title-dark span {
     margin-left: 20px;
 }
-.flag{
+
+.flag {
     height: 45px;
     width: 45px;
     border-radius: 25px;
@@ -88,4 +89,31 @@
 .widget-light svg, .widget-dark svg {
     width: 20px;
     margin-top: 4px;
+}
+
+@media (max-width: 1089px) {
+    .market-card-light, .market-card-dark {
+        width: 550px;
+    }
+    .market-title-light, .market-title-dark {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 570px) {
+    .market-card-light, .market-card-dark {
+        max-width: calc(100% - 10px);
+        margin: 5px 3px;
+    }
+    .wrap-widget {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 300px) {
+    .market-title-light, .market-title-dark {
+        font-size: 1.1em;
+        font-weight: 600;
+        height: 45px;
+    }
 }

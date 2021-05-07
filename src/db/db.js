@@ -25,7 +25,7 @@ export const db = [
     { time: "full", type: "STOCK", pair: "PG", name: "Procter & Gamble co" },
     { time: "full", type: "STOCK", pair: "GS", name: "Goldman Sachs Group Inc" },
     { time: "full", type: "STOCK", pair: "HPE", name: "Hewlett Packard Enterprise co" },
-    { time: "full", type: "STOCK", pair: "JNJ", name: "Johnson & johnson" },
+    { time: "full", type: "STOCK", pair: "JNJ", name: "Johnson & Johnson" },
     { time: "full", type: "STOCK", pair: "GM", name: "General Motors co" },
     { time: "full", type: "STOCK", pair: "VZ", name: "Verizon Communications" },
     { time: "full", type: "STOCK", pair: "MS", name: "Morgan Stanley" },

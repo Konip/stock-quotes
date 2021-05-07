@@ -16,27 +16,29 @@ import Burger from './components/Burger/Burger';
 
 let width
 width = window.screen.width
-console.log(width)
+
 class App extends React.Component {
 
-    
+
   // componentDidUpdate() {
   //   this.props.startThunk()
   // }
 
   render() {
-    
-    console.log('render')
-    return (
+
+      return (
       <div className={this.props.colorTheme ? `App` : `App dark`}>
-        {this.props.burger || width > 768 &&
-          <Navbar className="nav" colorTheme={this.props.colorTheme} burger={this.props.burger}/>
+
+        {width < 768 &&
+          <Burger burg={this.props.burger} colorTheme={this.props.colorTheme} />
         }
-        
+        {this.props.burger || width > 768 ?
+          <Navbar className="nav" colorTheme={this.props.colorTheme} burg={this.props.burger} />
+          :
+          <div></div>
+        }
         <div className="App-wrap">
-          {width < 768 &&
-            <Burger burg={this.props.burger }/>
-          }
+
           <SearchContainer className="search" />
           {this.props.error &&
             <Error />
