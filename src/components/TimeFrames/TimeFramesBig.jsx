@@ -4,7 +4,7 @@ const arrTimeFrames = {
     full: ["1D", "1W", "1M", "6M", "1Y", "All"],
     inco: ["1W", "1M", "6M", "1Y", "All"]
 }
-let data
+
 export default function TimeFramesBig({ active, onClickItem, colorTheme, frame }) {
 
     return (

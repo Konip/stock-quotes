@@ -32,7 +32,7 @@
     bottom: unset!important;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1400px) {
     .MuiSnackbar-root {
         display: flex!important;
         z-index: 1400!important;
@@ -61,5 +61,37 @@
     .MuiSnackbar-root .MuiSnackbar-anchorOriginBottomCenter {
         /* width: calc(100% - 5px); */
         height: 50px;
+    }
+}
+
+@media (max-width: 485px) {
+    .MuiSnackbar-root {
+        width: 300px;
+        /* width: calc(100% - 5px); */
+    }
+}
+
+@media (max-width: 325px) {
+    .MuiSnackbar-root {
+        width: 200px;
+        padding: 0px 0px;
+    }
+    .MuiAlert-root {
+        font-size: 0.675rem;
+    }
+    .MuiAlert-message {
+        width: 150px;
+    }
+    .MuiAlert-action {
+        margin-right: -8px;
+        padding-left: 2px!important;
+    }
+    .MuiAlert-icon {
+        padding: 2px 0!important;
+        margin-right: -5px;
+        margin-right: 2px!important;
+    }
+    .MuiSnackbar-root.MuiSnackbar-anchorOriginBottomCenter {
+        transform: translateX(-56%)!important;
     }
 }

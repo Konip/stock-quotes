@@ -47,7 +47,7 @@ const initialState = {
     currency: '',
     timeFrames: '',
     loading: false,
-    error: true,
+    error: false,
     burger: false,
 }
 
@@ -108,7 +108,7 @@ export const stockReducer = (state = initialState, { type, payload }) => {
             return { ...state, error: payload }
         }
         case BURGER: {
-            return { ...state, burger: !state.burger}
+            return { ...state, burger: !state.burger }
         }
 
         default:
@@ -138,7 +138,6 @@ const CRYPTO = "CRYPTO"
 const alphaVantageKey = "LQUDEAVINLE7N2RC"
 const alphaVantageKey1 = 'VZLZ58FTEXZW7QZ6'
 const alphaVantageKey2 = '9A3WH6UYZEPJ88QM'
-const coinAPI = "2AA5C267-67AE-4017-AF88-F84E88DC327C"
 
 const APPLE = "AAPL"
 const EUR = "EUR"
@@ -359,33 +358,31 @@ export const startThunk = () => {
 
     return (dispatch) => {
 
-        // // ------------------STOCK-------------------------
+        // ------------------STOCK-------------------------
 
-        // fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${APPLE}&interval=5min&apikey=${alphaVantageKey1}`)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         const data = buildChartData(res["Time Series (5min)"], STOCK, DAY)
-        //         // console.log(data)
-        //         return dispatch(addDataStock(data))
-        //     })
+        fetch(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${APPLE}&interval=5min&apikey=${alphaVantageKey1}`)
+            .then(res => res.json())
+            .then(res => {
+                const data = buildChartData(res["Time Series (5min)"], STOCK, DAY)
+                return dispatch(addDataStock(data))
+            })
 
-        // // ------------------FOREX-------------------------
+        // ------------------FOREX-------------------------
 
-        // fetch(`https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${USD}&to_symbol=${EUR}&interval=5min&apikey=${alphaVantageKey1}`)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         const data = buildChartData(res["Time Series FX (5min)"], FOREX, DAY)
-        //         // console.log(data)
-        //         return dispatch(addDataForex(data))
-        //     })
+        fetch(`https://www.alphavantage.co/query?function=FX_INTRADAY&from_symbol=${USD}&to_symbol=${EUR}&interval=5min&apikey=${alphaVantageKey1}`)
+            .then(res => res.json())
+            .then(res => {
+                const data = buildChartData(res["Time Series FX (5min)"], FOREX, DAY)
+                return dispatch(addDataForex(data))
+            })
 
-        // // ------------------CRYPTO-------------------------
+        // ------------------CRYPTO-------------------------
 
-        // fetch('https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/latest?period_id=5MIN', headers)
-        //     .then(res => res.json())
-        //     .then(res => {
-        //         const data = buildChartData(res, CRYPTO, DAY)
-        //         dispatch(addDataCrypto(data))
-        //     })
+        fetch('https://rest.coinapi.io/v1/ohlcv/BITSTAMP_SPOT_BTC_USD/latest?period_id=5MIN', headers)
+            .then(res => res.json())
+            .then(res => {
+                const data = buildChartData(res, CRYPTO, DAY)
+                dispatch(addDataCrypto(data))
+            })
     }
 }

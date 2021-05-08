@@ -11,6 +11,24 @@
     background-color: white;
     color: black;
 }
+.card-light {
+    animation-delay: .3s;
+    /* animation-duration: 0.45s; */
+    animation-duration: .5s;
+    animation-fill-mode: both;
+    animation-name: card;
+  }
+  @keyframes card {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
 
 .card-dark {
     background-color: #1e1e30!important;
@@ -27,7 +45,24 @@
     margin-bottom: 30px;
     text-align: center;
 }
-
+.title-light, .title-dark {
+    animation-delay: 1.1s;
+    /* animation-duration: 0.45s; */
+    animation-duration: 1.1s;
+    animation-fill-mode: both;
+    animation-name: title;
+  }
+  @keyframes title {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
 .rows {
     margin: 10px 0;
 }

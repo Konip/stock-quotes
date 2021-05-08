@@ -5,9 +5,9 @@ import { addColorTheme, burger } from '../../store/stock-reducer'
 
 export default function Navbar({ colorTheme, burg }) {
     const dispatch = useDispatch()
-  
+
     const body = document.querySelector('body')
-   
+
     function lock() {
         body.classList.remove('_lock')
         dispatch(burger())
@@ -15,7 +15,6 @@ export default function Navbar({ colorTheme, burg }) {
     return (
         <div className={colorTheme && !burg ? 'navbar-light' : colorTheme && burg ? 'navbar-light-b' : burg ? 'navbar-dark-b' :
             'navbar-dark'} >
-            {/* <div className={colorTheme ? `navbar-light` : `navbar-dark`}> */}
             < div className="logo" >
                 <Link to='/'>
                     Stock

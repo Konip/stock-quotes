@@ -9,9 +9,8 @@ import { Link } from 'react-router-dom';
 import { initialReducer } from '../../db/initial'
 import preloader from '../../assets/preloader.svg'
 
-
 export default function Card({ title, type, request, activeRow, activeTime, data, colorTheme,
-    activeType, pair, loading }) {
+    activeType, pair, loading, delay }) {
 
     const dispatch = useDispatch()
 
@@ -26,9 +25,10 @@ export default function Card({ title, type, request, activeRow, activeTime, data
 
     return (
         <div className={colorTheme ? "card-light" : "card-dark"}>
-          
             <div className="wrap">
-                <div className={colorTheme ? "title-light" : "title-dark"}>
+                <div className={colorTheme ? "title-light" : "title-dark"}
+                style={{animationDelay: `${0.5 + delay * 0.1}s`}}
+                >
                     {title}
                 </div>
                 {loading

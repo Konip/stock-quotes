@@ -1,17 +1,23 @@
 .markets {
   max-width: 1590px;
-  /* max-width: 1480px; */
   height: 100%;
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
   margin: 0 auto;
   flex-wrap: wrap;
- }
+}
 
-@media (max-width: 1500px) {
+@media (max-width: 1589px) {
   .markets {
-    
     justify-content: flex-start;
+    margin: 0 auto;
+    max-width: 1020px;
+  }
+}
+@media (max-width: 1089px) {
+  .markets {
+    justify-content: flex-start;
+    margin: 0 auto;
+    max-width: 570px;
   }
 }

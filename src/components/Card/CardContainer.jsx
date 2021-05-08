@@ -4,7 +4,7 @@ import { requestThunk } from "../../store/stock-reducer"
 import { useDispatch, useSelector } from 'react-redux';
 
 
-export default function CardContainer({ type, title }) {
+export default function CardContainer({ type, title,delay }) {
     const dispatch = useDispatch()
     const stock = useSelector(({ stock }) => stock)
 
@@ -26,7 +26,7 @@ export default function CardContainer({ type, title }) {
     return (
         <Card title={title} type={type} request={request} data={data} activeTime={activeTime}
             activeRow={activeRow} colorTheme={colorTheme} activeType={activeType} pair={pair}
-            loading={loading}
+            loading={loading} delay={delay}
         />
     )
 }

@@ -9,9 +9,9 @@ const CRYPTO = "CRYPTO"
 export default function Home() {
     return (
         <div className="markets">
-            <CardContainer title={"Акции"} type={STOCK} />
-            <CardContainer title={"Валюты"} type={FOREX} />
-            <CardContainer title={"Криптовалюты"} type={CRYPTO} />
+            <CardContainer title={"Акции"} type={STOCK} delay={1}/>
+            <CardContainer title={"Валюты"} type={FOREX} delay={2}/>
+            <CardContainer title={"Криптовалюты"} type={CRYPTO} delay={3}/>
         </div>
     )
 }

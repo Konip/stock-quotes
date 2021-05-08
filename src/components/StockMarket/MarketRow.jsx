@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import "./MarketRow.css"
 
-
 export default function MarketRow({ pair, name, img, type, onClickItem, colorTheme, frame }) {
     
     return (

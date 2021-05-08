@@ -2,7 +2,7 @@ import React from 'react'
 import "./BigChart.css"
 import { Line } from 'react-chartjs-2'
 import * as plugins from "chartjs-plugin-crosshair"
-import ghost from "../../assets/Ghost.gif"
+import Lottie from '../Lottie/Lottie'
 
 
 export default function BigChart({ data, active, colorTheme, currency }) {
@@ -50,7 +50,7 @@ export default function BigChart({ data, active, colorTheme, currency }) {
                     time: {
                         unit: "day",
                         tooltipFormat: "ll",
-    
+
                     },
                     // distribution: 'series',
                 }
@@ -64,7 +64,7 @@ export default function BigChart({ data, active, colorTheme, currency }) {
                 }
             ]
         },
-    
+
     }
     const optionsBlack = {
         legend: {
@@ -110,7 +110,11 @@ export default function BigChart({ data, active, colorTheme, currency }) {
                     time: {
                         unit: "day",
                         tooltipFormat: "ll",
-    
+
+                    },
+                    ticks: {
+                        padding: 0,
+                        margin: 0,
                     },
                     // distribution: 'series',
                 }
@@ -124,7 +128,7 @@ export default function BigChart({ data, active, colorTheme, currency }) {
                 }
             ]
         },
-    
+
     }
     const options1DayWhite = {
         legend: {
@@ -247,10 +251,8 @@ export default function BigChart({ data, active, colorTheme, currency }) {
     return (
         <div className="big-chart">
             {data && data.length > 0 ?
-
                 <Line options={active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite :
                     colorTheme ? optionsBlack : optionsWhite}
-
                     data={
                         colorTheme ?
                             {
@@ -281,7 +283,10 @@ export default function BigChart({ data, active, colorTheme, currency }) {
                             }
                     } />
                 :
-                <img className="big-preloader" src={ghost} alt="" />
+                <div className="big-preloader">
+                    <Lottie />
+                </div>
+
             }
         </div>
     )

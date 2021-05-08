@@ -6,7 +6,6 @@ import Home from './components/Home/Home';
 import { Route } from 'react-router-dom';
 // import Home from './components/Home/Home1';
 import BigCardContainer from './components/BigCard/BigCardContainer';
-import Error404 from './components/404/Error404';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import SearchContainer from './components/Search/SearchContainer';
@@ -19,14 +18,13 @@ width = window.screen.width
 
 class App extends React.Component {
 
-
   // componentDidUpdate() {
   //   this.props.startThunk()
   // }
 
   render() {
 
-      return (
+    return (
       <div className={this.props.colorTheme ? `App` : `App dark`}>
 
         {width < 768 &&
@@ -48,7 +46,7 @@ class App extends React.Component {
           {/* <Route path="/profile/:userId?" */}
           <Route path="/stock-market/:type" render={() => <StockMarketContainer />} />
           <Footer />
-          {/* <Route path="*" component={Error404} /> */}
+
         </div>
       </div>
     );
@@ -63,5 +61,5 @@ let mapStateToProps = (state) => {
   }
 }
 
-// export default connect(mapStateToProps, startThunk)(App);
-export default connect(mapStateToProps, null)(App);
+export default connect(mapStateToProps, startThunk)(App);
+// export default connect(mapStateToProps, null)(App);

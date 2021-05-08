@@ -5,7 +5,6 @@ import { requestThunk } from '../../store/stock-reducer';
 import StockMarketCard from './StockMarketCard';
 import { useDispatch, useSelector } from 'react-redux';
 
-
 export default function StockMarket({ location }) {
     const dispatch = useDispatch()
     const stock = useSelector(({ stock }) => stock)

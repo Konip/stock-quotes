@@ -11,7 +11,9 @@ export default function TimeFrames({ active, onClickItem, colorTheme, frame }) {
                 {arrTimeFrames.map((arr, index) => (
                     <li className={active === arr && colorTheme ? "time-light active" : active === arr && !colorTheme ? "time-dark active" :
                         active !== arr && colorTheme ? "time-light" : "time-dark"}
-                        key={index} onClick={() => onClickItem(arr, frame)}>
+                        key={index} onClick={() => onClickItem(arr, frame)} 
+                        style={{animationDelay: `${0.5 + index * 0.1}s`}}
+                        >
                         <span className={colorTheme ? "date-light" : "date-dark"}>{arr}</span>
                     </li>
                 ))}

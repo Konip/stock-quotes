@@ -241,10 +241,6 @@ export default function BigCard({ type, request, activeRow, activeTime, data, co
                                             <strong>{data[data.length - 1].y}{` ${secCurrency}`}</strong>
                                         </div>
                                     }
-
-                                    {/* <div className="info-row">
-                                        {name && `1 ${name} равен ${data[data.length - 1].y} ${secCurrency}`}
-                                    </div> */}
                                 </div>
                             </div>
                             <div className={colorTheme ? "right-block-light" : "right-block-dark"}>

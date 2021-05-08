@@ -49,7 +49,23 @@
 .date-dark {
     color: #d1d4dc;
 }
-
+.time-light .active,.time-dark .active,.time-light,.time-dark{
+    /* animation-duration: 0.45s; */
+    animation-duration: 0.85s;
+    animation-fill-mode: both;
+    animation-name: time;
+  }
+@keyframes time {
+    0% {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+  
+    100% {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
 @media (max-width: 300px) {
     .time ul {
         padding-left: 20px;

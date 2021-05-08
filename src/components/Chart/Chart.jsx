@@ -1,7 +1,7 @@
 import React from 'react'
 import "./Chart.css"
 import { Line } from 'react-chartjs-2'
-import ghost from "../../assets/Ghost.gif"
+import Lottie from '../Lottie/Lottie'
 
 const optionsWhite = {
     legend: {
@@ -220,7 +220,6 @@ const options1DayBlack = {
 }
 
 export default function Chart({ data, active, colorTheme }) {
-    // console.log('render')
     let options = active === "1D" && colorTheme ? options1DayBlack : active === "1D" && !colorTheme ? options1DayWhite : colorTheme ? optionsBlack : optionsWhite
     return (
         <div className={colorTheme ? "chart-light" : "chart-dark"}>
@@ -256,7 +255,9 @@ export default function Chart({ data, active, colorTheme }) {
                             }
                     } />
                 :
-                <img className="preloader" src={ghost} alt="" />
+                <div className="preloader">
+                    <Lottie />
+                </div>
             }
         </div>
     )
