@@ -9,4 +9,4 @@
 - Chart.js
 - lottie-react
 
-[web]: https://github.com/Konip/stock-quotes
+[web]: https://konip.github.io/stock-quotes/
